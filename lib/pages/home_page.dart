@@ -42,6 +42,27 @@ class HomePage extends StatelessWidget {
           ],
         ),
       ),
+      body: const Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Text(
+            "Without Custom Font",
+            style: TextStyle(
+              fontSize: 40,
+              fontWeight: FontWeight.w700,
+            ),
+          ),
+          Text(
+            "With Custom Font",
+            style: TextStyle(
+              fontSize: 40,
+              fontFamily: "Myriad",
+              fontWeight: FontWeight.w700,
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
