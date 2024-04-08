@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:job_finder/pages/authentication/login_page.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -29,6 +30,14 @@ class HomePage extends StatelessWidget {
                   "https://cdn-images-1.medium.com/max/1200/1*5-aoK8IBmXve5whBQM90GA.png"),
               title: const Text("Home"),
               selected: true,
+            ),
+            ListTile(
+              onTap: () {
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => const Login()));
+              },
+              leading: const Icon(Icons.login),
+              title: const Text("Login"),
             )
           ],
         ),
