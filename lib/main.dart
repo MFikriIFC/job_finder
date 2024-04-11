@@ -19,6 +19,17 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(
           seedColor: const Color.fromARGB(255, 10, 102, 194),
         ),
+
+        iconTheme: const IconThemeData(
+          // Set the default icon color here
+          color: Color.fromARGB(255, 102, 102, 102),
+        ),
+
+        textTheme: const TextTheme(
+          displayMedium: TextStyle(
+            color: Color.fromARGB(255, 165, 165, 165), // Set secondary text color here
+          ),
+        ),
       ),
       home: const JobPage(),
     );
