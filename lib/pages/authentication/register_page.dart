@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
-class Login extends StatelessWidget {
-  const Login({super.key});
+class Register extends StatelessWidget {
+  const Register({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +40,7 @@ class Login extends StatelessWidget {
 
             // greeting text
             const Text(
-              "Sign in",
+              "Join LinkIn",
               style: TextStyle(fontWeight: FontWeight.w600, fontSize: 28),
             ),
 
@@ -50,7 +49,7 @@ class Login extends StatelessWidget {
                 text: "or ",
                 children: [
                   TextSpan(
-                    text: "Join LinkIn",
+                    text: "Sign In",
                     style: TextStyle(
                         fontWeight: FontWeight.w600,
                         color: Color(0xFF006394),
@@ -64,7 +63,20 @@ class Login extends StatelessWidget {
               height: 20,
             ),
 
-            // sign in forms
+            // sign up forms
+            const TextField(
+              decoration: InputDecoration(
+                border: OutlineInputBorder(),
+                label: Text("Full Name"),
+                contentPadding:
+                    EdgeInsets.symmetric(vertical: 8.0, horizontal: 12.0),
+              ),
+            ),
+
+            const SizedBox(
+              height: 16,
+            ),
+
             const TextField(
               decoration: InputDecoration(
                 border: OutlineInputBorder(),
@@ -92,15 +104,40 @@ class Login extends StatelessWidget {
               height: 16,
             ),
 
-            // forgot password
-            const Padding(
-              padding: EdgeInsets.only(left: 12),
-              child: Text(
-                "Forgot Password?",
-                style: TextStyle(
-                    fontWeight: FontWeight.w700,
-                    color: Color(0xFF006394),
-                    fontSize: 12),
+            // user agreement text
+            const Text.rich(
+              style: TextStyle(color: Colors.black54),
+              TextSpan(
+                text: "By clicking Agree & Join or Continue, you agree to ",
+                children: [
+                  TextSpan(
+                    text: "LinkIn's User Agreementand ",
+                    style: TextStyle(
+                      color: Color(0xFF006394),
+                    ),
+                  ),
+                  TextSpan(
+                    text: ", ",
+                  ),
+                  TextSpan(
+                    text: "Privacy Policy",
+                    style: TextStyle(
+                      color: Color(0xFF006394),
+                    ),
+                  ),
+                  TextSpan(
+                    text: ", and ",
+                  ),
+                  TextSpan(
+                    text: "Cookie Policy",
+                    style: TextStyle(
+                      color: Color(0xFF006394),
+                    ),
+                  ),
+                  TextSpan(
+                    text: ".",
+                  ),
+                ],
               ),
             ),
 
@@ -117,7 +154,7 @@ class Login extends StatelessWidget {
                   shadowColor: Colors.transparent,
                 ),
                 child: const Text(
-                  "Sign In",
+                  "Agree & Join",
                   style: TextStyle(
                       color: Colors.white, fontWeight: FontWeight.w600),
                 ),
@@ -156,38 +193,6 @@ class Login extends StatelessWidget {
             ),
 
             // SIGN IN OPTIONS
-            // apple options
-            OutlinedButton(
-              onPressed: () {},
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Image.asset(
-                      "assets/images/social/apple.png",
-                      width: 28,
-                      height: 28,
-                    ),
-                    const SizedBox(
-                      width: 8,
-                    ),
-                    Text(
-                      "Sign In with Apple",
-                      style: TextStyle(
-                        color: Colors.grey.shade700,
-                        fontWeight: FontWeight.w700,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-
-            const SizedBox(
-              height: 12,
-            ),
-
             // google options
             OutlinedButton(
               onPressed: () {},
@@ -205,7 +210,39 @@ class Login extends StatelessWidget {
                       width: 8,
                     ),
                     Text(
-                      "Sign In with Google",
+                      "Continue with Google",
+                      style: TextStyle(
+                        color: Colors.grey.shade700,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+
+            const SizedBox(
+              height: 12,
+            ),
+
+            // apple options
+            OutlinedButton(
+              onPressed: () {},
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Image.asset(
+                      "assets/images/social/apple.png",
+                      width: 28,
+                      height: 28,
+                    ),
+                    const SizedBox(
+                      width: 8,
+                    ),
+                    Text(
+                      "Continue with Apple",
                       style: TextStyle(
                         color: Colors.grey.shade700,
                         fontWeight: FontWeight.w700,
@@ -236,7 +273,7 @@ class Login extends StatelessWidget {
                       width: 8,
                     ),
                     Text(
-                      "Sign In with a one-time link",
+                      "Continue with a one-time link",
                       style: TextStyle(
                         color: Colors.grey.shade700,
                         fontWeight: FontWeight.w700,
