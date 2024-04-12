@@ -1,6 +1,9 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:job_finder/widgets/drawer_template.dart';
+import 'package:job_finder/widgets/jobs/appbar_button.dart';
+import 'package:job_finder/widgets/jobs/hiring_in_network.dart';
+import 'package:job_finder/widgets/jobs/recent_search_item.dart';
+import 'package:job_finder/widgets/scroll_appbar.dart';
 
 class JobPage extends StatelessWidget {
   const JobPage({super.key});
@@ -8,103 +11,19 @@ class JobPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: NestedScrollView(
-        floatHeaderSlivers: true, //to show appbar instanly after scrolling down
-        headerSliverBuilder: (context, innerBoxIsScrolled) => [
-          SliverAppBar(
-            floating: true, //to show appbar instanly after scrolling down
-            automaticallyImplyLeading: false, //remove drawer burger icon
-            scrolledUnderElevation: 0, //prevent appbar bg change when scroll
-            title: Row(
-              children: [
-                Builder(
-                  builder: (BuildContext context) {
-                    return GestureDetector(
-                      onTap: () {
-                        Scaffold.of(context).openDrawer();
-                      },
-                      child: ClipOval(
-                        child: Image.asset(
-                          "assets/images/profile/sule.jpeg",
-                          fit: BoxFit.cover,
-                          width: 30,
-                          height: 30,
-                        ),
-                      ),
-                    );
-                  },
-                ),
-
-                const SizedBox(width: 16,),
-                Expanded(
-                  child: GestureDetector(
-                          onTap: () {
-                            // print('tes');
-                          },
-                          child: Container(
-                            decoration: BoxDecoration(
-                              color: const Color.fromARGB(255,238, 243, 247),
-                              borderRadius: BorderRadius.circular(5.0),
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.all(6),
-                              child: Row(
-                                children: [
-                                  Icon(Icons.search, color: Theme.of(context).iconTheme.color,),
-                                  const SizedBox(width: 8.0),
-                                  const Text('Search jobs', style: TextStyle(fontSize: 16),),
-                                ],
-                              ),
-                            ),
-                          ),
-                        )
-
-                ),
-                const SizedBox(width: 16,),
-                Icon(Icons.chat, color: Theme.of(context).iconTheme.color,),
-              ],
-            ),
-          )],
-          body: SingleChildScrollView(
+      body: ScrollAppbar(body: SingleChildScrollView(
             child: Column(
               children: [
-                SingleChildScrollView(
+                const SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
                   child: Row(
                     children: [
-                      const SizedBox(width: 10,),
-                      OutlinedButton(
-                        onPressed: () {
-                          // Add your onPressed function here
-                        },
-                        style: OutlinedButton.styleFrom(
-                          side: const BorderSide(width: 1, color: Color.fromARGB(255, 140, 140, 140)), 
-                          foregroundColor: const Color.fromARGB(255, 64, 64, 64),
-                        ),
-                        child: const Text('My jobs'),
-                      ),
-                      const SizedBox(width: 10,),
-                      OutlinedButton(
-                        onPressed: () {
-                          // Add your onPressed function here
-                        },
-                        style: OutlinedButton.styleFrom(
-                          side: const BorderSide(width: 1, color: Color.fromARGB(255, 140, 140, 140)), 
-                          foregroundColor: const Color.fromARGB(255, 64, 64, 64),
-                        ),
-                        child: const Text('Preferences'),
-                      ),
-                      const SizedBox(width: 10,),
-                      OutlinedButton(
-                        onPressed: () {
-                          // Add your onPressed function here
-                        },
-                        style: OutlinedButton.styleFrom(
-                          side: const BorderSide(width: 1, color: Color.fromARGB(255, 140, 140, 140)), 
-                          foregroundColor: const Color.fromARGB(255, 64, 64, 64),
-                        ),
-                        child: const Text('Post a free job'),
-                      ),
+                      SizedBox(width: 10,),
+                      AppBarButton(text: 'My jobs'),
+                      SizedBox(width: 10,),
+                      AppBarButton(text: 'Preferences'),
+                      SizedBox(width: 10,),
+                      AppBarButton(text: 'Post a free job'),
                     ],
                   ),
                 ),
@@ -136,66 +55,11 @@ class JobPage extends StatelessWidget {
                       
                       const SizedBox(height: 20,),
                       
-                      const Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                'Chef', 
-                                style: TextStyle(fontWeight: FontWeight.w600),),
-                              Text('Indonesia'),
-                            ],
-                          ),
-                          SizedBox(width: 16,),
-                          Text(
-                            '1 new', 
-                            style: TextStyle(color: Color.fromRGBO(5, 118, 66, 1)),)
-                        ],
-                      ),
-            
+                      const RecentSearchItem(position:"Chef", location:"Indonesia", newJob: "1 new"),
                       const Divider(),
-            
-                      const Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                'Frontend dev', 
-                                style: TextStyle(fontWeight: FontWeight.w600),),
-                              Text('India'),
-                            ],
-                          ),
-                          SizedBox(width: 16,),
-                          Text(
-                            '14 new', 
-                            style: TextStyle(color: Color.fromRGBO(5, 118, 66, 1)),)
-                        ],
-                      ),
-            
+                      const RecentSearchItem(position:"Frontend dev", location:"India", newJob: "14 new"),
                       const Divider(),
-            
-                      const Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                'Racer', 
-                                style: TextStyle(fontWeight: FontWeight.w600),),
-                              Text('England'),
-                            ],
-                          ),
-                          SizedBox(width: 16,),
-                          Text(
-                            '14 new', 
-                            style: TextStyle(color: Color.fromRGBO(5, 118, 66, 1)),)
-                        ],
-                      ),
+                      const RecentSearchItem(position:"Racer", location:"England", newJob: "200 new"),
                     ],
                   ),
                 ),
@@ -281,220 +145,39 @@ class JobPage extends StatelessWidget {
             
                       const SizedBox(height: 10,),
             
-                      Column(
+                      const Column(
                         children: [
-                          Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Image.network(
-                                "https://opr.pt-ssss.com/assets/images/logos/PT-SSSS.png",
-                                fit: BoxFit.cover,
-                                width: 50,
-                                height: 50,
-                              ),
-                              const SizedBox(width: 16,),
-                              Expanded(
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    const Row(
-                                      children: [
-                                        Text(
-                                          'Frontend Developer',
-                                          style: TextStyle(
-                                            fontWeight: FontWeight.w600),
-                                          ),
-                                        Spacer(),
-                                        Icon(Icons.cancel)
-                                      ],
-                                    ),
-                                    const Text('Sumatra Sarana Sekar Sakti'),
-                                    Text(
-                                      'Medan, Indonesia (On-site)',
-                                      style: TextStyle(
-                                        color: Theme.of(context).textTheme.displayMedium!.color
-                                      )
-                                    ),
-                                    const SizedBox(height: 6,),
-                                    Row(
-                                      children: [
-                                        ClipOval(
-                                          child: Image.network(
-                                            'https://thumb.viva.co.id/media/frontend/tokoh/2017/10/16/59e4500ae2296-andre-taulany3_216_287.jpg',
-                                            fit: BoxFit.cover,
-                                            width: 25,
-                                            height: 25,
-                                          ),
-                                        ),
-                                        const Text('  1 mutual connection with the hiring team',
-                                        style: TextStyle(fontWeight: FontWeight.w200))
-                                      ],
-                                    ),
-                                    const SizedBox(height: 6,),
-                                    Row(
-                                      children: [
-                                        const Text('6 months ago',
-                                        style: TextStyle(fontWeight: FontWeight.w200)),
-                                        const SizedBox(width: 8,),
-                                        const Text('•'),
-                                        const SizedBox(width: 8,),
-                                        Image.asset(
-                                          "assets/images/minima_logo.png",
-                                          width: 16,
-                                          height: 16,
-                                        ),
-                                        const SizedBox(width: 6,),
-                                        const Text('Easy Apply',
-                                        style: TextStyle(fontWeight: FontWeight.w200))
-                                      ],
-                                    ),
-                                    const Divider()
-                                  ],
-                                ),
-                              ),
-                            ],
+                          HiringInNetwork(
+                            companyImg: "https://opr.pt-ssss.com/assets/images/logos/PT-SSSS.png", 
+                            position: 'Frontend Developer', 
+                            companyName: 'Sumatra Sarana Sekar Sakti', 
+                            location: 'Medan, Indonesia', 
+                            workSetup: '(On-site)', 
+                            mutualImg: 'https://thumb.viva.co.id/media/frontend/tokoh/2017/10/16/59e4500ae2296-andre-taulany3_216_287.jpg', 
+                            mutualAmount: 1, 
+                            timePosted: '6 months ago'
                           ),
-                          Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Image.network(
-                                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhxhOwtI3TkbGrxuxgCr-0l1vXyW9x_6RfopdDcnlMaA&s",
-                                fit: BoxFit.cover,
-                                width: 50,
-                                height: 50,
-                              ),
-                              const SizedBox(width: 16,),
-                              Expanded(
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    const Row(
-                                      children: [
-                                        Text(
-                                          'Chef',
-                                          style: TextStyle(
-                                            fontWeight: FontWeight.w600),
-                                          ),
-                                        Spacer(),
-                                        Icon(Icons.cancel)
-                                      ],
-                                    ),
-                                    const Text('Topremit'),
-                                    Text(
-                                      'Greater Medan (On-site)',
-                                      style: TextStyle(
-                                        color: Theme.of(context).textTheme.displayMedium!.color
-                                      )
-                                    ),
-                                    const SizedBox(height: 6,),
-                                    Row(
-                                      children: [
-                                        ClipOval(
-                                          child: Image.network(
-                                            'https://thumb.viva.co.id/media/frontend/tokoh/2017/10/16/59e4500ae2296-andre-taulany3_216_287.jpg',
-                                            fit: BoxFit.cover,
-                                            width: 25,
-                                            height: 25,
-                                          ),
-                                        ),
-                                        const Text('  1 mutual connection with the hiring team',
-                                        style: TextStyle(fontWeight: FontWeight.w200))
-                                      ],
-                                    ),
-                                    const SizedBox(height: 6,),
-                                    Row(
-                                      children: [
-                                        const Text('1 week ago',
-                                        style: TextStyle(fontWeight: FontWeight.w200)),
-                                        const SizedBox(width: 8,),
-                                        const Text('•'),
-                                        const SizedBox(width: 8,),
-                                        Image.asset(
-                                          "assets/images/minima_logo.png",
-                                          width: 16,
-                                          height: 16,
-                                        ),
-                                        const SizedBox(width: 6,),
-                                        const Text('Easy Apply',
-                                        style: TextStyle(fontWeight: FontWeight.w200))
-                                      ],
-                                    ),
-                                    const Divider()
-                                  ],
-                                ),
-                              ),
-                            ],
+
+                          HiringInNetwork(
+                            companyImg: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhxhOwtI3TkbGrxuxgCr-0l1vXyW9x_6RfopdDcnlMaA&s", 
+                            position: 'Chef', 
+                            companyName: 'Topremit', 
+                            location: 'Greater Medan', 
+                            workSetup: '(On-site)', 
+                            mutualImg: 'https://thumb.viva.co.id/media/frontend/tokoh/2017/10/16/59e4500ae2296-andre-taulany3_216_287.jpg', 
+                            mutualAmount: 1, 
+                            timePosted: '1 week ago'
                           ),
-                          Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Image.network(
-                                "https://d3g5ywftkpzr0e.cloudfront.net/wp-content/uploads/2023/04/12113212/FIT-HUB-Logo.png",
-                                fit: BoxFit.cover,
-                                width: 50,
-                                height: 50,
-                              ),
-                              const SizedBox(width: 16,),
-                              Expanded(
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    const Row(
-                                      children: [
-                                        Text(
-                                          'Fitness Manager',
-                                          style: TextStyle(
-                                            fontWeight: FontWeight.w600),
-                                          ),
-                                        Spacer(),
-                                        Icon(Icons.cancel)
-                                      ],
-                                    ),
-                                    const Text('FIT HUB'),
-                                    Text(
-                                      'Jakarta, Indonesia (On-site)',
-                                      style: TextStyle(
-                                        color: Theme.of(context).textTheme.displayMedium!.color
-                                      )
-                                    ),
-                                    const SizedBox(height: 6,),
-                                    Row(
-                                      children: [
-                                        ClipOval(
-                                          child: Image.network(
-                                            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxCWIZ7DJcuvrs-ck07PxK4TZQiHLZB12fpwLvkPOdWw&s',
-                                            fit: BoxFit.cover,
-                                            width: 25,
-                                            height: 25,
-                                          ),
-                                        ),
-                                        const Text('  1 mutual connection with the hiring team',
-                                        style: TextStyle(fontWeight: FontWeight.w200))
-                                      ],
-                                    ),
-                                    const SizedBox(height: 6,),
-                                    Row(
-                                      children: [
-                                        const Text('2 weeks ago',
-                                        style: TextStyle(fontWeight: FontWeight.w200)),
-                                        const SizedBox(width: 8,),
-                                        const Text('•'),
-                                        const SizedBox(width: 8,),
-                                        Image.asset(
-                                          "assets/images/minima_logo.png",
-                                          width: 16,
-                                          height: 16,
-                                        ),
-                                        const SizedBox(width: 6,),
-                                        const Text('Easy Apply',
-                                        style: TextStyle(fontWeight: FontWeight.w200))
-                                      ],
-                                    ),
-                                    const Divider()
-                                  ],
-                                ),
-                              ),
-                            ],
+
+                          HiringInNetwork(
+                            companyImg: "https://d3g5ywftkpzr0e.cloudfront.net/wp-content/uploads/2023/04/12113212/FIT-HUB-Logo.png", 
+                            position: 'Fitness Manager', 
+                            companyName: 'FIT HUB', 
+                            location: 'Jakarta, Indonesia', 
+                            workSetup: '(On-site)', 
+                            mutualImg: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxCWIZ7DJcuvrs-ck07PxK4TZQiHLZB12fpwLvkPOdWw&s', 
+                            mutualAmount: 1, 
+                            timePosted: '2 weeks ago'
                           ),
                         ],
                       ),
@@ -566,27 +249,10 @@ class JobPage extends StatelessWidget {
             
               ],
             ),
-          ),
-        ),
+          ),),
         
-        drawer: Drawer(
-          child: ListView(
-            padding: EdgeInsets.zero,
-            children: [
-              const DrawerHeader(
-                decoration: BoxDecoration(color: Colors.blue),
-                child: Text("Drawer Header"),
-              ),
-              ListTile(
-                leading: Image.network(
-                    "https://cdn-images-1.medium.com/max/1200/1*5-aoK8IBmXve5whBQM90GA.png"),
-                title: const Text("Home"),
-                selected: true,
-              )
-            ],
-          ),
-        ),
-      );
+      drawer: const DrawerTemplate()
+    );
 
   }
 }
