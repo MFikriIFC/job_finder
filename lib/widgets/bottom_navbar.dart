@@ -1,6 +1,5 @@
 import "package:flutter/material.dart";
 import "package:job_finder/models/bottom_nav_model.dart";
-import "package:job_finder/pages/home_page.dart";
 import "package:provider/provider.dart";
 
 class MyButtomNavBar extends StatefulWidget {
@@ -11,16 +10,6 @@ class MyButtomNavBar extends StatefulWidget {
 }
 
 class _MyButtomNavBarState extends State<MyButtomNavBar> {
-  int _index = 0;
-
-  final List<Widget> _pages = [const HomePage()];
-
-  void _onTap(int index) {
-    setState(() {
-      _index = index;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
@@ -59,7 +48,11 @@ class _MyButtomNavBarState extends State<MyButtomNavBar> {
       selectedItemColor: Colors.black,
       unselectedItemColor: Colors.grey,
       showUnselectedLabels: true,
+      showSelectedLabels: true,
+      selectedLabelStyle: const TextStyle(fontSize: 12),
       currentIndex: Provider.of<BNavModel>(context).getIndex(),
+      elevation: 10,
+      type: BottomNavigationBarType.fixed,
       onTap: (value) => {
         Provider.of<BNavModel>(context, listen: false).setSelectedIndex(value)
       },
