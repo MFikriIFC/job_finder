@@ -12,7 +12,7 @@ class BNavModel extends ChangeNotifier {
     const HomePage(),
     const NetworkPage(),
     const PostPage(),
-    const NotificationPage(),
+    NotificationPage(),
     const JobsPage(),
   ];
 
