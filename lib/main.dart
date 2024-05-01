@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-// import 'package:job_finder/pages/home_page.dart';
-import 'package:job_finder/pages/jobs/job_page.dart';
+import 'package:job_finder/pages/authentication/login_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -32,7 +31,7 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      home: const JobPage(),
+      home: const Login(),
     );
   }
 }

@@ -1,8 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:job_finder/pages/authentication/register_page.dart';
+import 'package:job_finder/pages/jobs/job_page.dart';
 
-class Login extends StatelessWidget {
+class Login extends StatefulWidget {
   const Login({super.key});
+
+  @override
+  State<Login> createState() => _LoginState();
+}
+
+class _LoginState extends State<Login> {
+  void _changeScreen (screen){
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (ctx) => screen,
+      ),
+    ); // 
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -26,12 +41,12 @@ class Login extends StatelessWidget {
                   "assets/images/logovar1.png",
                   width: 80,
                 ),
-                IconButton(
-                  icon: const Icon(Icons.clear_rounded),
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                )
+                // IconButton(
+                //   icon: const Icon(Icons.clear_rounded),
+                //   onPressed: () {
+                //     Navigator.pop(context);
+                //   },
+                // )
               ],
             ),
 
@@ -45,20 +60,26 @@ class Login extends StatelessWidget {
               style: TextStyle(fontWeight: FontWeight.w600, fontSize: 28),
             ),
 
-            const Text.rich(
-              TextSpan(
-                text: "or ",
-                children: [
-                  TextSpan(
-                    text: "Join LinkIn",
-                    style: TextStyle(
-                        fontWeight: FontWeight.w600,
-                        color: Color(0xFF006394),
-                        fontSize: 12),
-                  ),
-                ],
+            GestureDetector(
+              onTap: () {
+                _changeScreen(const Register()); // Call your _changeScreen function here
+              },
+              child: const Text.rich(
+                TextSpan(
+                  text: "or ",
+                  children: [
+                    TextSpan(
+                      text: "Join LinkIn",
+                      style: TextStyle(
+                          fontWeight: FontWeight.w600,
+                          color: Color(0xFF006394),
+                          fontSize: 12),
+                    ),
+                  ],
+                ),
               ),
             ),
+
 
             const SizedBox(
               height: 20,
@@ -111,7 +132,9 @@ class Login extends StatelessWidget {
             // submit button
             Expanded(
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  _changeScreen(const JobPage());
+                },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color(0xFF006394),
                   shadowColor: Colors.transparent,

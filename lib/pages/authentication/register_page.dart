@@ -1,7 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:job_finder/pages/authentication/login_page.dart';
+import 'package:job_finder/pages/jobs/job_page.dart';
 
-class Register extends StatelessWidget {
+class Register extends StatefulWidget {
   const Register({super.key});
+
+  @override
+  State<Register> createState() => _RegisterState();
+}
+
+class _RegisterState extends State<Register> {
+  void _changeScreen (screen){
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (ctx) => screen,
+      ),
+    ); // 
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -25,12 +40,12 @@ class Register extends StatelessWidget {
                   "assets/images/logovar1.png",
                   width: 80,
                 ),
-                IconButton(
-                  icon: const Icon(Icons.clear_rounded),
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                )
+                // IconButton(
+                //   icon: const Icon(Icons.clear_rounded),
+                //   onPressed: () {
+                //     Navigator.pop(context);
+                //   },
+                // )
               ],
             ),
 
@@ -44,20 +59,26 @@ class Register extends StatelessWidget {
               style: TextStyle(fontWeight: FontWeight.w600, fontSize: 28),
             ),
 
-            const Text.rich(
-              TextSpan(
-                text: "or ",
-                children: [
-                  TextSpan(
-                    text: "Sign In",
-                    style: TextStyle(
-                        fontWeight: FontWeight.w600,
-                        color: Color(0xFF006394),
-                        fontSize: 12),
-                  ),
-                ],
+            GestureDetector(
+              onTap: (){
+                _changeScreen(const Login());
+              },
+              child: const Text.rich(
+                TextSpan(
+                  text: "or ",
+                  children: [
+                    TextSpan(
+                      text: "Sign In",
+                      style: TextStyle(
+                          fontWeight: FontWeight.w600,
+                          color: Color(0xFF006394),
+                          fontSize: 12),
+                    ),
+                  ],
+                ),
               ),
             ),
+
 
             const SizedBox(
               height: 20,
@@ -148,7 +169,9 @@ class Register extends StatelessWidget {
             // submit button
             Expanded(
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  _changeScreen(const JobPage());
+                },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color(0xFF006394),
                   shadowColor: Colors.transparent,
