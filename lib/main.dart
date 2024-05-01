@@ -11,7 +11,6 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-<<<<<<< HEAD
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
@@ -33,11 +32,6 @@ class MyApp extends StatelessWidget {
         ),
       ),
       home: const Login(),
-=======
-    return const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: HomePage(),
->>>>>>> origin/profile
     );
   }
 }

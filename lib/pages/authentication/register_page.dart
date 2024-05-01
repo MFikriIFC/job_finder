@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:job_finder/pages/authentication/login_page.dart';
-import 'package:job_finder/pages/jobs/job_page.dart';
+import 'package:job_finder/pages/home_page.dart';
 
 class Register extends StatefulWidget {
   const Register({super.key});
@@ -170,7 +170,7 @@ class _RegisterState extends State<Register> {
             Expanded(
               child: ElevatedButton(
                 onPressed: () {
-                  _changeScreen(const JobPage());
+                  _changeScreen(const HomePage());
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color(0xFF006394),

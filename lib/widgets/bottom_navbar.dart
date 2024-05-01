@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import "package:job_finder/pages/jobs/job_page.dart";
 
 class MyButtomNavBar extends StatefulWidget {
   const MyButtomNavBar({super.key});
@@ -13,6 +14,12 @@ class _MyButtomNavBarState extends State<MyButtomNavBar> {
   void _onTap(int index) {
     setState(() {
       _index = index;
+      if(_index == 4){
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const JobPage()),
+        );
+      }
     });
   }
 
