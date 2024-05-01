@@ -1,9 +1,29 @@
 import 'package:flutter/material.dart';
 
-class ScrollAppbar extends StatelessWidget {
-  const ScrollAppbar({super.key, required this.body});
+class ScrollAppbar extends StatefulWidget {
+  const ScrollAppbar({
+    super.key, 
+    required this.body,
+    required this.actionIcon,
+    required this.actionScreen,
+  });
 
   final Widget body;
+  final IconData actionIcon;
+  final Widget actionScreen;
+
+  @override
+  State<ScrollAppbar> createState() => _ScrollAppbarState();
+}
+
+class _ScrollAppbarState extends State<ScrollAppbar> {
+  void _changeScreen (){
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (ctx) => widget.actionScreen,
+      ),
+    ); // 
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -59,11 +79,14 @@ class ScrollAppbar extends StatelessWidget {
 
                 ),
                 const SizedBox(width: 16,),
-                Icon(Icons.chat, color: Theme.of(context).iconTheme.color,),
+                IconButton(
+                  onPressed: _changeScreen, 
+                  icon: Icon(widget.actionIcon,color: Theme.of(context).iconTheme.color,)
+                )
               ],
             ),
           )],
-          body: body,
+          body: widget.body,
         );
   }
 }

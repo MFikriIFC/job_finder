@@ -60,6 +60,7 @@ flutter:
     assets:
       - assets/images/profile/sule.jpeg
       - assets/images/minima_logo.png
+      - assets/images/vector/At the office-rafiki.png
 
     # An image asset can refer to one or more resolution-specific "variants", see
     # https://flutter.dev/assets-and-images/#resolution-aware

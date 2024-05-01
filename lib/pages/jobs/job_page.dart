@@ -4,6 +4,7 @@ import 'package:job_finder/widgets/jobs/appbar_button.dart';
 import 'package:job_finder/widgets/jobs/hiring_in_network.dart';
 import 'package:job_finder/widgets/jobs/recent_search_item.dart';
 import 'package:job_finder/widgets/scroll_appbar.dart';
+import 'package:job_finder/pages/chatting_page.dart';
 
 class JobPage extends StatelessWidget {
   const JobPage({super.key});
@@ -148,7 +149,7 @@ class JobPage extends StatelessWidget {
                       const Column(
                         children: [
                           HiringInNetwork(
-                            companyImg: "https://opr.pt-ssss.com/assets/images/logos/PT-SSSS.png", 
+                            companyImg: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLY2_6n1KvFhEmhVfB0vU3KeW75RIFMtKMfT6leeqyoQ&s", 
                             position: 'Frontend Developer', 
                             companyName: 'Sumatra Sarana Sekar Sakti', 
                             location: 'Medan, Indonesia', 
@@ -249,7 +250,10 @@ class JobPage extends StatelessWidget {
             
               ],
             ),
-          ),),
+          ),
+          actionIcon: Icons.chat,
+          actionScreen: const ChattingPage(),
+        ),
         
       drawer: const DrawerTemplate()
     );
