@@ -1,8 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:job_finder/models/bottom_nav_model.dart';
+import 'package:job_finder/pages/container_page.dart';
+import 'package:provider/provider.dart';
 import 'package:job_finder/pages/authentication/login_page.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (context) => BNavModel(),
+        ),
+      ],
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -27,7 +39,8 @@ class MyApp extends StatelessWidget {
 
         textTheme: const TextTheme(
           displayMedium: TextStyle(
-            color: Color.fromARGB(255, 165, 165, 165), // Set secondary text color here
+            color: Color.fromARGB(
+                255, 165, 165, 165), // Set secondary text color here
           ),
         ),
       ),
