@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:job_finder/widgets/appbar_widget.dart';
-import 'package:job_finder/pages/chatting_page.dart';
+import 'package:job_finder/pages/chatting/chatting_page.dart';
 import 'package:job_finder/widgets/bottom_navbar.dart';
-import 'package:job_finder/widgets/card_timeline.dart';
+import 'package:job_finder/widgets/home/card_timeline.dart';
 import 'package:job_finder/widgets/drawer_template.dart';
-import 'package:job_finder/widgets/scroll_appbar.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});

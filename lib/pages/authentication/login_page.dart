@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:job_finder/pages/authentication/register_page.dart';
-import 'package:job_finder/pages/home_page.dart';
+import 'package:job_finder/pages/home/home_page.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});

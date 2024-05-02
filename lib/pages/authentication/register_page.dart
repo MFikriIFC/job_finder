@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:job_finder/pages/authentication/login_page.dart';
-import 'package:job_finder/pages/home_page.dart';
+import 'package:job_finder/pages/home/home_page.dart';
 
 class Register extends StatefulWidget {
   const Register({super.key});
@@ -10,12 +10,12 @@ class Register extends StatefulWidget {
 }
 
 class _RegisterState extends State<Register> {
-  void _changeScreen (screen){
+  void _changeScreen(screen) {
     Navigator.of(context).push(
       MaterialPageRoute(
         builder: (ctx) => screen,
       ),
-    ); // 
+    ); //
   }
 
   @override
@@ -60,7 +60,7 @@ class _RegisterState extends State<Register> {
             ),
 
             GestureDetector(
-              onTap: (){
+              onTap: () {
                 _changeScreen(const Login());
               },
               child: const Text.rich(
@@ -78,7 +78,6 @@ class _RegisterState extends State<Register> {
                 ),
               ),
             ),
-
 
             const SizedBox(
               height: 20,

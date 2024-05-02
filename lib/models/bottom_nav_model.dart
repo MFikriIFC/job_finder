@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:job_finder/pages/home_page.dart';
+import 'package:job_finder/pages/home/home_page.dart';
+import 'package:job_finder/pages/jobs/job_page.dart';
 import 'package:job_finder/pages/jobs_page.dart';
 import 'package:job_finder/pages/network_page.dart';
-import 'package:job_finder/pages/notification_page.dart';
-import 'package:job_finder/pages/post_page.dart';
+import 'package:job_finder/pages/notification/notification_page.dart';
+import 'package:job_finder/pages/post/post_page.dart';
 
 class BNavModel extends ChangeNotifier {
   int _selectedIndex = 0;
@@ -13,7 +14,7 @@ class BNavModel extends ChangeNotifier {
     const NetworkPage(),
     const PostPage(),
     NotificationPage(),
-    const JobsPage(),
+    const JobPage(),
   ];
 
   void setSelectedIndex(int index) {

@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:job_finder/pages/chatting_page_view.dart';
+import 'package:job_finder/pages/chatting/chatting_page_view.dart';
 
 class ChattingRow extends StatefulWidget {
   const ChattingRow({
@@ -24,7 +24,7 @@ class ChattingRow extends StatefulWidget {
 }
 
 class _ChattingRowState extends State<ChattingRow> {
-  void _changeScreen (){
+  void _changeScreen() {
     Navigator.of(context).push(
       MaterialPageRoute(
         builder: (ctx) => ChattingPageView(
@@ -32,13 +32,13 @@ class _ChattingRowState extends State<ChattingRow> {
           userName: widget.userName,
         ),
       ),
-    ); // 
+    ); //
   }
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: (){
+      onTap: () {
         _changeScreen();
       },
       child: Row(
@@ -56,13 +56,16 @@ class _ChattingRowState extends State<ChattingRow> {
             child: Column(
               children: [
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal:8),
+                  padding: const EdgeInsets.symmetric(horizontal: 8),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Row(
                         children: [
-                          Text(widget.userName,style: const TextStyle(fontSize: 18),),
+                          Text(
+                            widget.userName,
+                            style: const TextStyle(fontSize: 18),
+                          ),
                           const Spacer(),
                           Text(widget.lastDate)
                         ],
@@ -70,9 +73,7 @@ class _ChattingRowState extends State<ChattingRow> {
                       Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
-                            widget.you ? 'You: ': ''
-                          ),
+                          Text(widget.you ? 'You: ' : ''),
                           Expanded(
                             child: Text(
                               widget.lastText,
@@ -81,13 +82,14 @@ class _ChattingRowState extends State<ChattingRow> {
                               // style: const  TextStyle(height: 1,),
                             ),
                           ),
-
                         ],
                       )
                     ],
                   ),
                 ),
-                const Divider(height: 32,)
+                const Divider(
+                  height: 32,
+                )
               ],
             ),
           ),

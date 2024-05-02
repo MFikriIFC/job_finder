@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:job_finder/widgets/header_timeline.dart';
+import 'package:job_finder/widgets/home/header_timeline.dart';
 
 class CardTimeLine extends StatelessWidget {
   const CardTimeLine({super.key});
