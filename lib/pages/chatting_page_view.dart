@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
-class ChattingPageView extends StatelessWidget {
+class ChattingPageView extends StatefulWidget {
   const ChattingPageView({
     super.key,
     required this.userImg,
@@ -10,6 +9,13 @@ class ChattingPageView extends StatelessWidget {
 
   final String userImg;
   final String userName;
+
+  @override
+  State<ChattingPageView> createState() => _ChattingPageViewState();
+}
+
+class _ChattingPageViewState extends State<ChattingPageView> {
+  bool _isTyping = false;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +29,7 @@ class ChattingPageView extends StatelessWidget {
           )
         ),
         title: Text(
-          userName,
+          widget.userName,
           maxLines: 1, // Limit to 2 lines
           overflow: TextOverflow.ellipsis,
           style: const TextStyle(height: 1,),
@@ -49,7 +55,7 @@ class ChattingPageView extends StatelessWidget {
                             children: [
                               ClipOval(
                                 child: Image.network(
-                                  userImg,
+                                  widget.userImg,
                                   fit: BoxFit.cover,
                                   width: 50,
                                   height: 50,
@@ -58,7 +64,7 @@ class ChattingPageView extends StatelessWidget {
                               Row(
                                 children: [
                                   Text(
-                                    userName,
+                                    widget.userName,
                                     style: const TextStyle(
                                       fontWeight: FontWeight.w600
                                     )
@@ -90,7 +96,7 @@ class ChattingPageView extends StatelessWidget {
                             children: [
                               ClipOval(
                                 child: Image.network(
-                                  userImg,
+                                  widget.userImg,
                                   fit: BoxFit.cover,
                                   width: 30,
                                   height: 30,
@@ -103,7 +109,7 @@ class ChattingPageView extends StatelessWidget {
                                     Row(
                                       children: [
                                         Text(
-                                          userName,
+                                          widget.userName,
                                           style: const TextStyle(
                                             fontWeight: FontWeight.w600
                                           )
@@ -178,7 +184,7 @@ class ChattingPageView extends StatelessWidget {
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(30.0),
                         border: Border.all(
-                          color: Color.fromARGB(83, 140, 140, 140), // Border color
+                          color: const Color.fromARGB(83, 140, 140, 140), // Border color
                         ),
                       ),
                       child: IconButton(
@@ -187,23 +193,39 @@ class ChattingPageView extends StatelessWidget {
                       ),
                     ),
 
-                    Expanded(
+                  Expanded(
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 10), // Set horizontal margin
                       child: TextFormField(
+                        onChanged: (value) {
+                          setState(() {
+                            _isTyping = value.isNotEmpty;
+                          });
+                        },
                         autocorrect: false,
-                        decoration: const InputDecoration(
-                          labelText: "Some Text",
-                          labelStyle:
-                              TextStyle(fontSize: 20.0, color: Colors.white),
-                          fillColor: Colors.blue,
-                          border: OutlineInputBorder(
-                              // borderRadius:
-                              //     BorderRadius.all(Radius.zero(5.0)),
-                              borderSide: BorderSide(color: Colors.purpleAccent)),
+                        decoration: InputDecoration(
+                          labelText: "Write a message...",
+                          floatingLabelBehavior: FloatingLabelBehavior.never,
+                          filled: true,
+                          fillColor: const Color.fromARGB(255, 244, 242, 238), // Background color
+                          border: InputBorder.none, // Remove the border
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(5.0),
+                            borderSide: const BorderSide(color: Colors.transparent),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(5.0),
+                            borderSide: const BorderSide(color: Colors.transparent),
+                          ),
                         ),
                       ),
                     ),
-                    IconButton(
-                      icon: const Icon(Icons.send),
+                  ),
+
+
+
+                  IconButton(
+                      icon: _isTyping ? const Icon(Icons.send) : const Icon(Icons.mic),
                       iconSize: 20.0,
                       onPressed: () {},
                     )
