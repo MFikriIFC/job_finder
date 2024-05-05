@@ -59,21 +59,33 @@ class _ScrollAppbarState extends State<ScrollAppbar> {
                           onTap: () {
                             // print('tes');
                           },
-                          child: Container(
-                            decoration: BoxDecoration(
-                              color: const Color.fromARGB(255,238, 243, 247),
-                              borderRadius: BorderRadius.circular(5.0),
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.all(6),
-                              child: Row(
-                                children: [
-                                  Icon(Icons.search, color: Theme.of(context).iconTheme.color,),
-                                  const SizedBox(width: 8.0),
-                                  const Text('Search jobs', style: TextStyle(fontSize: 16),),
-                                ],
+                          child: Row(
+                            children: [
+                              // Icon(Icons.search, color: Theme.of(context).iconTheme.color,),
+                              // const SizedBox(width: 8.0),
+                              // const Text('Search jobs', style: TextStyle(fontSize: 16),),
+                              Expanded(
+                                child: SizedBox(
+                                  height: 35, // Set the height to your desired value
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      color: const Color.fromARGB(255, 238, 243, 247),
+                                      borderRadius: BorderRadius.circular(5.0),
+                                    ),
+                                    child: TextField(
+                                      decoration: InputDecoration(
+                                        hintText: 'Search jobs',
+                                        hintStyle: const TextStyle(fontSize: 16),
+                                        border: InputBorder.none,
+                                        prefixIcon: Icon(Icons.search, color: Theme.of(context).iconTheme.color),
+                                      ),
+                                    ),
+                                  ),
+                                ),
                               ),
-                            ),
+
+                                                    
+                            ],
                           ),
                         )
 

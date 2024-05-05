@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:job_finder/pages/new_message.dart';
 import 'package:job_finder/widgets/chatting_page_filter.dart';
 import 'package:job_finder/widgets/chatting_row.dart';
 
@@ -141,7 +142,13 @@ class _ChattingPageState extends State<ChattingPage> {
           ],
         ),
         floatingActionButton: FloatingActionButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (ctx) => const NewMessage()
+              ),
+            );
+          },
           foregroundColor: Colors.white,
           backgroundColor: Theme.of(context).colorScheme.primary,
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
