@@ -4,7 +4,6 @@ import 'package:job_finder/models/pages_model.dart';
 import 'package:job_finder/models/user_model.dart';
 import 'package:job_finder/pages/main_container.dart';
 import 'package:job_finder/models/themes/theme_provider.dart';
-import 'package:job_finder/pages/container_page.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -20,6 +19,9 @@ void main() {
         ChangeNotifierProvider(
           create: (context) => PageModel(),
         ),
+        ChangeNotifierProvider(
+          create: (context) => ThemeProvider(),
+        ),
       ],
       child: const MyApp(),
     ),
@@ -33,29 +35,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        home: const ContainerPage(),
-        theme: Provider.of<ThemeProvider>(context).themeData);
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          // useMaterial3: false,
-          fontFamily: "Myriad",
-          colorScheme: ColorScheme.fromSeed(
-            seedColor: const Color.fromARGB(255, 10, 102, 194),
-          ),
-
-          iconTheme: const IconThemeData(
-            // Set the default icon color here
-            color: Color.fromARGB(255, 102, 102, 102),
-          ),
-
-          textTheme: const TextTheme(
-            displayMedium: TextStyle(
-              color: Color.fromARGB(
-                  255, 165, 165, 165), // Set secondary text color here
-            ),
-          ),
-        ),
-        home: const MainContainer());
+      debugShowCheckedModeBanner: false,
+      home: const MainContainer(),
+      theme: Provider.of<ThemeProvider>(context).themeData,
+    );
   }
 }

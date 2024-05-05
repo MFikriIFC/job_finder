@@ -1,24 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:job_finder/models/themes/theme_provider.dart';
 import 'package:provider/provider.dart';
-import 'package:job_finder/pages/profile/profile.dart';
-
-class DrawerTemplate extends StatefulWidget {
-  const DrawerTemplate({super.key});
-
-  @override
-  State<DrawerTemplate> createState() => _DrawerTemplateState();
-}
-
-class _DrawerTemplateState extends State<DrawerTemplate> {
-  void _changeScreen(screen) {
-    Navigator.of(context).push(
-      MaterialPageRoute(
-        builder: (ctx) => screen,
-      ),
-    );
-  }
 
 class DrawerTemplate extends StatelessWidget {
   final setIndex;
