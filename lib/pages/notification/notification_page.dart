@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:job_finder/widgets/appbar_widget.dart';
+import 'package:job_finder/models/pages_model.dart';
+import 'package:job_finder/pages/chatting/chatting_page.dart';
+
 import 'package:job_finder/widgets/bottom_navbar.dart';
+import 'package:job_finder/widgets/drawer_template.dart';
+import 'package:job_finder/widgets/scroll_appbar.dart';
+import 'package:provider/provider.dart';
 
 class NotificationPage extends StatefulWidget {
   NotificationPage({super.key});
@@ -17,7 +22,12 @@ class _NotificationPageState extends State<NotificationPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: DrawerTemplate(
+          setIndex: () => Provider.of<PageModel>(context, listen: false)
+              .setNotification(1)),
       body: ScrollAppbar(
+        actionIcon: Icons.chat,
+        actionScreen: ChattingPage(),
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

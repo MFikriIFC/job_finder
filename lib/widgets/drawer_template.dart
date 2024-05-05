@@ -1,23 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:job_finder/pages/profile/profile.dart';
 
-class DrawerTemplate extends StatefulWidget {
-  const DrawerTemplate({super.key});
-
-  @override
-  State<DrawerTemplate> createState() => _DrawerTemplateState();
-}
-
-class _DrawerTemplateState extends State<DrawerTemplate> {
-  void _changeScreen(screen) {
-    Navigator.of(context).push(
-      MaterialPageRoute(
-        builder: (ctx) => screen,
-      ),
-    ); //
-  }
+class DrawerTemplate extends StatelessWidget {
+  final setIndex;
+  DrawerTemplate({super.key, required this.setIndex});
 
   @override
   Widget build(BuildContext context) {
@@ -49,9 +34,7 @@ class _DrawerTemplateState extends State<DrawerTemplate> {
                           height: 1, fontSize: 24, fontWeight: FontWeight.w600),
                     ),
                     GestureDetector(
-                      onTap: () {
-                        _changeScreen(const Profile());
-                      },
+                      onTap: setIndex,
                       child: Text(
                         'View profile',
                         style: TextStyle(

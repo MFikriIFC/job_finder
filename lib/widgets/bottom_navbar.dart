@@ -1,7 +1,6 @@
 import "package:flutter/material.dart";
 import "package:job_finder/models/bottom_nav_model.dart";
 import "package:provider/provider.dart";
-import "package:job_finder/pages/jobs/job_page.dart";
 
 class MyButtomNavBar extends StatefulWidget {
   const MyButtomNavBar({super.key});

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:job_finder/models/pages_model.dart';
 import 'package:job_finder/widgets/bottom_navbar.dart';
 import 'package:job_finder/widgets/drawer_template.dart';
 import 'package:job_finder/widgets/jobs/appbar_button.dart';
@@ -6,6 +7,7 @@ import 'package:job_finder/widgets/jobs/hiring_in_network.dart';
 import 'package:job_finder/widgets/jobs/recent_search_item.dart';
 import 'package:job_finder/widgets/scroll_appbar.dart';
 import 'package:job_finder/pages/chatting/chatting_page.dart';
+import 'package:provider/provider.dart';
 
 class JobPage extends StatelessWidget {
   const JobPage({super.key});
@@ -244,8 +246,8 @@ class JobPage extends StatelessWidget {
                 child: Expanded(
                   child: Column(
                     children: [
-                      Image.network(
-                          'https://static.licdn.com/aero-v1/sc/h/e7ufxrklstvt6scuvejy6t4sx'),
+                      // Image.network(
+                      //     'https://static.licdn.com/aero-v1/sc/h/e7ufxrklstvt6scuvejy6t4sx'),
                       const Text('Want more jobs?'),
                       const Text(
                           "Search for jobs and we'll server recommendations that match your criteria"),
@@ -268,7 +270,10 @@ class JobPage extends StatelessWidget {
         actionIcon: Icons.chat,
         actionScreen: const ChattingPage(),
       ),
-      drawer: const DrawerTemplate(),
+      drawer: DrawerTemplate(
+        setIndex: () =>
+            Provider.of<PageModel>(context, listen: false).setJob(1),
+      ),
       bottomNavigationBar: const MyButtomNavBar(),
     );
   }

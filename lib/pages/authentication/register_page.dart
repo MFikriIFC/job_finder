@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:job_finder/models/user_model.dart';
 import 'package:job_finder/pages/authentication/login_page.dart';
 import 'package:job_finder/pages/home/home_page.dart';
+import 'package:job_finder/pages/main_container.dart';
+import 'package:provider/provider.dart';
 
 class Register extends StatefulWidget {
-  const Register({super.key});
+  Register({super.key});
 
   @override
   State<Register> createState() => _RegisterState();
@@ -17,6 +20,10 @@ class _RegisterState extends State<Register> {
       ),
     ); //
   }
+
+  final nameController = TextEditingController();
+  final emailController = TextEditingController();
+  final pwdController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -61,7 +68,7 @@ class _RegisterState extends State<Register> {
 
             GestureDetector(
               onTap: () {
-                _changeScreen(const Login());
+                _changeScreen(const MainContainer());
               },
               child: const Text.rich(
                 TextSpan(
@@ -84,8 +91,9 @@ class _RegisterState extends State<Register> {
             ),
 
             // sign up forms
-            const TextField(
-              decoration: InputDecoration(
+            TextField(
+              controller: nameController,
+              decoration: const InputDecoration(
                 border: OutlineInputBorder(),
                 label: Text("Full Name"),
                 contentPadding:
@@ -97,8 +105,9 @@ class _RegisterState extends State<Register> {
               height: 16,
             ),
 
-            const TextField(
-              decoration: InputDecoration(
+            TextField(
+              controller: emailController,
+              decoration: const InputDecoration(
                 border: OutlineInputBorder(),
                 label: Text("Email"),
                 contentPadding:
@@ -110,8 +119,9 @@ class _RegisterState extends State<Register> {
               height: 16,
             ),
 
-            const TextField(
-              decoration: InputDecoration(
+            TextField(
+              controller: pwdController,
+              decoration: const InputDecoration(
                 border: OutlineInputBorder(),
                 label: Text("Password"),
                 contentPadding:
@@ -169,7 +179,10 @@ class _RegisterState extends State<Register> {
             Expanded(
               child: ElevatedButton(
                 onPressed: () {
-                  _changeScreen(const HomePage());
+                  Provider.of<UserModel>(context, listen: false).addUser(
+                      nameController.text,
+                      emailController.text,
+                      pwdController.text);
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color(0xFF006394),

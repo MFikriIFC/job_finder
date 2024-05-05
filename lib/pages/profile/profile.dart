@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import "package:job_finder/models/pages_model.dart";
 import "package:job_finder/widgets/bottom_navbar.dart";
 import "package:job_finder/widgets/profile/about_section.dart";
 import "package:job_finder/widgets/profile/activity_section.dart";
@@ -9,6 +10,7 @@ import "package:job_finder/widgets/profile/experience_section.dart";
 import "package:job_finder/widgets/profile/interest_section.dart";
 import "package:job_finder/widgets/profile/profile_img_section.dart";
 import "package:job_finder/widgets/profile/resource_section.dart";
+import "package:provider/provider.dart";
 
 class Profile extends StatelessWidget {
   const Profile({super.key});
@@ -16,33 +18,16 @@ class Profile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   // toolbarHeight: 100,
-      //   title: const SizedBox(
-      //     height: 70,
-      //     child: Padding(
-      //       padding: EdgeInsets.symmetric(vertical: 12),
-      //       child: TextField(
-      //         decoration: InputDecoration(
-      //           prefixIcon: Icon(Icons.search),
-      //           hintText: "M.Fikri .....",
-      //           border: OutlineInputBorder(),
-      //           hintStyle: TextStyle(
-      //             fontSize: 15,
-      //           ),
-      //           fillColor: Colors.grey,
-      //           focusColor: Colors.grey,
-      //         ),
-      //       ),
-      //     ),
-      //   ),
-      //   actions: const [
-      //     Padding(
-      //       padding: EdgeInsets.all(8.0),
-      //       child: Icon(Icons.settings),
-      //     )
-      //   ],
-      // ),
+      appBar: AppBar(
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            Provider.of<PageModel>(context, listen: false).resetIndex();
+          },
+        ),
+        title: const Text("Profile"),
+        centerTitle: true,
+      ),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -118,7 +103,6 @@ class Profile extends StatelessWidget {
           ],
         ),
       ),
-
       bottomNavigationBar: const MyButtomNavBar(),
     );
   }

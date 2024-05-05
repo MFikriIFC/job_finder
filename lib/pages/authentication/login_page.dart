@@ -1,23 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:job_finder/models/user_model.dart';
 import 'package:job_finder/pages/authentication/register_page.dart';
 import 'package:job_finder/pages/home/home_page.dart';
+import 'package:provider/provider.dart';
 
 class Login extends StatefulWidget {
-  const Login({super.key});
+  Login({super.key});
 
   @override
   State<Login> createState() => _LoginState();
 }
 
 class _LoginState extends State<Login> {
-  void _changeScreen (screen){
+  void _changeScreen(screen) {
     Navigator.of(context).push(
       MaterialPageRoute(
         builder: (ctx) => screen,
       ),
-    ); // 
+    ); //
   }
+
+  final emailController = TextEditingController();
+  final pwdController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -62,7 +67,8 @@ class _LoginState extends State<Login> {
 
             GestureDetector(
               onTap: () {
-                _changeScreen(const Register()); // Call your _changeScreen function here
+                _changeScreen(
+                    Register()); // Call your _changeScreen function here
               },
               child: const Text.rich(
                 TextSpan(
@@ -80,14 +86,14 @@ class _LoginState extends State<Login> {
               ),
             ),
 
-
             const SizedBox(
               height: 20,
             ),
 
             // sign in forms
-            const TextField(
-              decoration: InputDecoration(
+            TextField(
+              controller: emailController,
+              decoration: const InputDecoration(
                 border: OutlineInputBorder(),
                 label: Text("Email"),
                 contentPadding:
@@ -99,8 +105,9 @@ class _LoginState extends State<Login> {
               height: 16,
             ),
 
-            const TextField(
-              decoration: InputDecoration(
+            TextField(
+              controller: pwdController,
+              decoration: const InputDecoration(
                 border: OutlineInputBorder(),
                 label: Text("Password"),
                 contentPadding:
@@ -133,7 +140,8 @@ class _LoginState extends State<Login> {
             Expanded(
               child: ElevatedButton(
                 onPressed: () {
-                  _changeScreen(const HomePage());
+                  Provider.of<UserModel>(context, listen: false)
+                      .getLogin(emailController.text, pwdController.text);
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color(0xFF006394),
