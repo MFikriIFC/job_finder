@@ -16,12 +16,15 @@ class NetworkPage extends StatelessWidget {
         setIndex: () =>
             Provider.of<PageModel>(context, listen: false).setNetwork(1),
       ),
-      body: const ScrollAppbar(
-        body: Center(
-          child: Text("Network Page"),
+      body: const SafeArea(
+        top: true,
+        child: ScrollAppbar(
+          body: Center(
+            child: Text("Network Page"),
+          ),
+          actionIcon: Icons.chat,
+          actionScreen: ChattingPage(),
         ),
-        actionIcon: Icons.chat,
-        actionScreen: ChattingPage(),
       ),
       bottomNavigationBar: const MyButtomNavBar(),
     );

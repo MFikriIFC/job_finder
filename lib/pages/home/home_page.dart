@@ -23,18 +23,21 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       drawer: DrawerTemplate(setIndex: setIndex),
       bottomNavigationBar: const MyButtomNavBar(),
-      body: const ScrollAppbar(
-        body: SingleChildScrollView(
-          child: Column(
-            children: [
-              CardTimeLine(),
-              CardTimeLine(),
-              CardTimeLine(),
-            ],
+      body: const SafeArea(
+        top: true,
+        child: ScrollAppbar(
+          body: SingleChildScrollView(
+            child: Column(
+              children: [
+                CardTimeLine(),
+                CardTimeLine(),
+                CardTimeLine(),
+              ],
+            ),
           ),
+          actionIcon: Icons.chat,
+          actionScreen: ChattingPage(),
         ),
-        actionIcon: Icons.chat,
-        actionScreen: ChattingPage(),
       ),
     );
   }
