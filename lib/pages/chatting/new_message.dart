@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart'; 
-import 'package:job_finder/widgets/new_message_row.dart';
+import 'package:job_finder/widgets/chatting/new_message_row.dart';
 
 class NewMessage extends StatelessWidget {
   const NewMessage({super.key});

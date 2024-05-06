@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:job_finder/pages/chatting_page_view.dart';
+import 'package:job_finder/pages/chatting/chatting_page_view.dart';
 
 class NewMessageRow extends StatelessWidget {
   const NewMessageRow({
