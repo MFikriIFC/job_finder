@@ -30,11 +30,11 @@ class _ChattingPageFilterState extends State<ChattingPageFilter> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: const BoxDecoration(
-          color: Colors.white,
+      decoration: BoxDecoration(
+          color: Theme.of(context).colorScheme.background,
           borderRadius: BorderRadius.only(
               topLeft: Radius.circular(25.0), topRight: Radius.circular(25.0))),
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 32),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -54,7 +54,7 @@ class _ChattingPageFilterState extends State<ChattingPageFilter> {
                   label: label,
                 ),
                 const SizedBox(
-                  height: 16,
+                  height: 8,
                 )
               ],
             );

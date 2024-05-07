@@ -16,14 +16,11 @@ class NewMessageRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: (){
+      onTap: () {
         Navigator.of(context).push(
           MaterialPageRoute(
-            builder: (ctx) => ChattingPageView(
-              userImg: userImg, 
-              userName: userName
-            )
-          ),
+              builder: (ctx) =>
+                  ChattingPageView(userImg: userImg, userName: userName)),
         );
       },
       child: Row(
@@ -35,8 +32,8 @@ class NewMessageRow extends StatelessWidget {
                 child: Image.network(
                   userImg,
                   fit: BoxFit.cover,
-                  width: 50,
-                  height: 50,
+                  width: 52,
+                  height: 52,
                 ),
               ),
               Positioned(
@@ -53,24 +50,39 @@ class NewMessageRow extends StatelessWidget {
               ),
             ],
           ),
+          const SizedBox(
+            width: 12,
+          ),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal:8),
+                  padding: const EdgeInsets.symmetric(horizontal: 4),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(userName,style: const TextStyle(fontSize: 18),),
+                      Text(
+                        userName,
+                        style: const TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
                       Text(
                         userDesc,
-                        overflow: TextOverflow.ellipsis
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                            color:
+                                Theme.of(context).colorScheme.inversePrimary),
                       ),
                     ],
                   ),
                 ),
-                const Divider(height: 32,)
+                Divider(
+                  height: 32,
+                  color: Theme.of(context).colorScheme.outline,
+                )
               ],
             ),
           ),

@@ -42,7 +42,7 @@ class _ChattingRowState extends State<ChattingRow> {
         _changeScreen();
       },
       child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           ClipOval(
             child: Image.network(
@@ -52,11 +52,14 @@ class _ChattingRowState extends State<ChattingRow> {
               height: 50,
             ),
           ),
+          const SizedBox(
+            width: 12,
+          ),
           Expanded(
             child: Column(
               children: [
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 8),
+                  padding: const EdgeInsets.all(0),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -64,22 +67,34 @@ class _ChattingRowState extends State<ChattingRow> {
                         children: [
                           Text(
                             widget.userName,
-                            style: const TextStyle(fontSize: 18),
+                            style: const TextStyle(
+                                fontSize: 16, fontWeight: FontWeight.w500),
                           ),
                           const Spacer(),
-                          Text(widget.lastDate)
+                          Text(
+                            widget.lastDate,
+                            style: TextStyle(
+                                color: Theme.of(context)
+                                    .colorScheme
+                                    .inversePrimary,
+                                fontSize: 12),
+                          )
                         ],
                       ),
                       Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(widget.you ? 'You: ' : ''),
+                          Text(widget.you ? 'You : ' : ''),
                           Expanded(
                             child: Text(
                               widget.lastText,
-                              maxLines: 2, // Limit to 2 lines
+                              maxLines: 2,
                               overflow: TextOverflow.ellipsis,
-                              // style: const  TextStyle(height: 1,),
+                              style: TextStyle(
+                                color: Theme.of(context)
+                                    .colorScheme
+                                    .inversePrimary,
+                              ),
                             ),
                           ),
                         ],
@@ -87,9 +102,6 @@ class _ChattingRowState extends State<ChattingRow> {
                     ],
                   ),
                 ),
-                const Divider(
-                  height: 32,
-                )
               ],
             ),
           ),
