@@ -28,12 +28,11 @@ class _ScrollAppbarState extends State<ScrollAppbar> {
   @override
   Widget build(BuildContext context) {
     return NestedScrollView(
-      floatHeaderSlivers: true, //to show appbar instanly after scrolling down
-
+      floatHeaderSlivers: true,
       headerSliverBuilder: (context, innerBoxIsScrolled) => [
         SliverAppBar(
-          automaticallyImplyLeading: false, //remove drawer burger icon
-          scrolledUnderElevation: 0, //prevent appbar bg change when scroll
+          automaticallyImplyLeading: false,
+          scrolledUnderElevation: 0,
           title: Row(
             children: [
               Builder(
@@ -63,15 +62,12 @@ class _ScrollAppbarState extends State<ScrollAppbar> {
                 },
                 child: Row(
                   children: [
-                    // Icon(Icons.search, color: Theme.of(context).iconTheme.color,),
-                    // const SizedBox(width: 8.0),
-                    // const Text('Search jobs', style: TextStyle(fontSize: 16),),
                     Expanded(
                       child: SizedBox(
                         height: 35, // Set the height to your desired value
                         child: Container(
                           decoration: BoxDecoration(
-                            color: const Color.fromARGB(255, 238, 243, 247),
+                            color: Theme.of(context).colorScheme.background,
                             borderRadius: BorderRadius.circular(5.0),
                           ),
                           child: TextField(
@@ -80,7 +76,9 @@ class _ScrollAppbarState extends State<ScrollAppbar> {
                               hintStyle: const TextStyle(fontSize: 16),
                               border: InputBorder.none,
                               prefixIcon: Icon(Icons.search,
-                                  color: Theme.of(context).iconTheme.color),
+                                  color: Theme.of(context)
+                                      .colorScheme
+                                      .inversePrimary),
                             ),
                           ),
                         ),

@@ -33,7 +33,9 @@ class HiringInNetwork extends StatelessWidget {
           width: 50,
           height: 50,
         ),
-        const SizedBox(width: 16,),
+        const SizedBox(
+          width: 16,
+        ),
         Expanded(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -43,54 +45,71 @@ class HiringInNetwork extends StatelessWidget {
                   Text(
                     position,
                     style: const TextStyle(
-                      fontWeight: FontWeight.w600),
-                    ),
+                        fontWeight: FontWeight.w500, fontSize: 16),
+                  ),
                   const Spacer(),
-                  const Icon(Icons.cancel)
+                  const Icon(
+                    Icons.cancel,
+                    size: 16,
+                  )
                 ],
               ),
               Text(companyName),
-              Text(
-                '$location $workSetup',
-                style: TextStyle(
-                  color: Theme.of(context).textTheme.displayMedium!.color
-                )
+              Text('$location $workSetup',
+                  style: TextStyle(
+                      color: Theme.of(context).colorScheme.secondary)),
+              const SizedBox(
+                height: 12,
               ),
-              const SizedBox(height: 6,),
               Row(
                 children: [
                   ClipOval(
                     child: Image.network(
                       mutualImg,
                       fit: BoxFit.cover,
-                      width: 25,
-                      height: 25,
+                      width: 24,
+                      height: 24,
                     ),
                   ),
-                  Text('  $mutualAmount mutual connection with the hiring team',
-                  style: const TextStyle(fontWeight: FontWeight.w200))
+                  const SizedBox(
+                    width: 8,
+                  ),
+                  Text('$mutualAmount mutual connection with the hiring team',
+                      style: const TextStyle(fontWeight: FontWeight.w200))
                 ],
               ),
-              const SizedBox(height: 6,),
+              const SizedBox(
+                height: 6,
+              ),
               Row(
                 children: [
                   Text(timePosted,
-                    style: const TextStyle(fontWeight: FontWeight.w200)
+                      style: TextStyle(
+                        color: Theme.of(context).colorScheme.secondary,
+                      )),
+                  const SizedBox(
+                    width: 8,
                   ),
-                  const SizedBox(width: 8,),
                   const Text('•'),
-                  const SizedBox(width: 8,),
+                  const SizedBox(
+                    width: 8,
+                  ),
                   Image.asset(
                     "assets/images/minima_logo.png",
                     width: 16,
                     height: 16,
                   ),
-                  const SizedBox(width: 6,),
-                  const Text('Easy Apply',
-                  style: TextStyle(fontWeight: FontWeight.w200))
+                  const SizedBox(
+                    width: 6,
+                  ),
+                  Text('Easy Apply',
+                      style: TextStyle(
+                          color: Theme.of(context).colorScheme.secondary,))
                 ],
               ),
-              const Divider()
+              Divider(
+                color: Theme.of(context).colorScheme.outline,
+              )
             ],
           ),
         ),

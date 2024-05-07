@@ -16,20 +16,25 @@ class RecentSearchItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              position, 
-              style: const TextStyle(fontWeight: FontWeight.w600),),
+              position,
+              style: const TextStyle(fontWeight: FontWeight.w600),
+            ),
             Text(location),
           ],
         ),
-        const SizedBox(width: 16,),
+        const SizedBox(
+          width: 16,
+        ),
         Text(
-          newJob, 
-          style: const TextStyle(color: Color.fromRGBO(5, 118, 66, 1)),)
+          newJob,
+          style: const TextStyle(color: Colors.green),
+        )
       ],
     );
   }

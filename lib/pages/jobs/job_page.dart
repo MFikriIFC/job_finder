@@ -26,44 +26,39 @@ class JobPage extends StatelessWidget {
                   child: Row(
                     children: [
                       SizedBox(
-                        width: 10,
+                        width: 12,
                       ),
                       AppBarButton(text: 'My jobs'),
                       SizedBox(
-                        width: 10,
+                        width: 12,
                       ),
                       AppBarButton(text: 'Preferences'),
                       SizedBox(
-                        width: 10,
+                        width: 12,
                       ),
                       AppBarButton(text: 'Post a free job'),
                     ],
                   ),
                 ),
-                const Divider(
-                  height: 30,
-                  thickness: 15,
-                  color: Color.fromARGB(255, 244, 242, 238),
-                ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
                   child: Column(
                     children: [
                       Row(
                         children: [
                           const Text(
-                            'Recent searches',
+                            'Recent Searches',
                             style: TextStyle(
-                                fontSize: 24, fontWeight: FontWeight.w600),
+                                fontSize: 20, fontWeight: FontWeight.w600),
                           ),
                           const Spacer(),
                           Text(
                             'Clear',
                             style: TextStyle(
                                 color: Theme.of(context)
-                                    .textTheme
-                                    .displayMedium!
-                                    .color),
+                                    .colorScheme
+                                    .inversePrimary),
                           )
                         ],
                       ),
@@ -73,24 +68,28 @@ class JobPage extends StatelessWidget {
                       const RecentSearchItem(
                           position: "Chef",
                           location: "Indonesia",
-                          newJob: "1 new"),
-                      const Divider(),
+                          newJob: "1 New"),
+                      Divider(
+                        color: Theme.of(context).colorScheme.outline,
+                      ),
                       const RecentSearchItem(
                           position: "Frontend dev",
                           location: "India",
-                          newJob: "14 new"),
-                      const Divider(),
+                          newJob: "14 New"),
+                      Divider(
+                        color: Theme.of(context).colorScheme.outline,
+                      ),
                       const RecentSearchItem(
                           position: "Racer",
                           location: "England",
-                          newJob: "200 new"),
+                          newJob: "200 New"),
                     ],
                   ),
                 ),
-                const Divider(
+                Divider(
                   height: 30,
                   thickness: 10,
-                  color: Color.fromARGB(255, 244, 242, 238),
+                  color: Theme.of(context).colorScheme.outline,
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -99,7 +98,7 @@ class JobPage extends StatelessWidget {
                     children: [
                       ClipOval(
                         child: Image.asset(
-                          "assets/images/profile/sule.jpeg",
+                          "assets/images/gyt.png",
                           fit: BoxFit.cover,
                           width: 50,
                           height: 50,
@@ -113,7 +112,7 @@ class JobPage extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             const Text(
-                              "See the full list of jobs where youd'd be a top applicant",
+                              "See the full list of jobs where you'd be a top applicant",
                               style: TextStyle(
                                   fontSize: 18, fontWeight: FontWeight.w600),
                             ),
@@ -144,10 +143,10 @@ class JobPage extends StatelessWidget {
                     ],
                   ),
                 ),
-                const Divider(
+                Divider(
                   height: 30,
                   thickness: 10,
-                  color: Color.fromARGB(255, 244, 242, 238),
+                  color: Theme.of(context).colorScheme.outline,
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -157,7 +156,7 @@ class JobPage extends StatelessWidget {
                       child: Text(
                         'Hiring in your network',
                         style: TextStyle(
-                            fontSize: 24, fontWeight: FontWeight.w600),
+                            fontSize: 20, fontWeight: FontWeight.w600),
                       ),
                     ),
                     SizedBox(
@@ -165,10 +164,8 @@ class JobPage extends StatelessWidget {
                       child: Text(
                         'Explore relevant jobs in your network',
                         style: TextStyle(
-                            color: Theme.of(context)
-                                .textTheme
-                                .displayMedium!
-                                .color),
+                            color:
+                                Theme.of(context).colorScheme.inversePrimary),
                       ),
                     ),
                     const SizedBox(
@@ -212,9 +209,7 @@ class JobPage extends StatelessWidget {
                       ],
                     ),
                     TextButton(
-                      onPressed: () {
-                        // Add your onPressed function here
-                      },
+                      onPressed: () {},
                       child: const Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
@@ -225,10 +220,10 @@ class JobPage extends StatelessWidget {
                     ),
                   ]),
                 ),
-                const Divider(
+                Divider(
                   height: 30,
                   thickness: 10,
-                  color: Color.fromARGB(255, 244, 242, 238),
+                  color: Theme.of(context).colorScheme.outline,
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -236,22 +231,29 @@ class JobPage extends StatelessWidget {
                     alignment: Alignment.topLeft,
                     child: const Text('Top job picks for you',
                         style: TextStyle(
-                            fontSize: 24, fontWeight: FontWeight.w600)),
+                          fontSize: 20,
+                          fontWeight: FontWeight.w600,
+                        )),
                   ),
                 ),
-                const Divider(
-                  height: 30,
-                  thickness: 10,
-                  color: Color.fromARGB(255, 244, 242, 238),
-                ),
+                // Divider(
+                //   height: 30,
+                //   thickness: 10,
+                //   color: Theme.of(context).colorScheme.outline,
+                // ),
                 Padding(
                   padding:
                       const EdgeInsets.symmetric(horizontal: 48, vertical: 16),
                   child: Expanded(
                     child: Column(
                       children: [
-                        // Image.network(
-                        //     'https://static.licdn.com/aero-v1/sc/h/e7ufxrklstvt6scuvejy6t4sx'),
+                        Image.asset(
+                          'assets/images/koper.png',
+                          width: 92,
+                        ),
+                        const SizedBox(
+                          height: 12,
+                        ),
                         const Text('Want more jobs?'),
                         const Text(
                             "Search for jobs and we'll server recommendations that match your criteria"),
@@ -259,14 +261,14 @@ class JobPage extends StatelessWidget {
                           height: 32,
                         ),
                         TextButton(
-                            onPressed: () {}, child: const Text('Search jobs'))
+                            onPressed: () {},
+                            child: Text(
+                              'Search jobs',
+                              style: TextStyle(color: Colors.blue.shade900),
+                            ))
                       ],
                     ),
                   ),
-                ),
-                const Divider(
-                  thickness: 10,
-                  color: Color.fromARGB(255, 244, 242, 238),
                 ),
               ],
             ),
