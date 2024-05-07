@@ -1,6 +1,5 @@
 import "package:flutter/material.dart";
 import "package:job_finder/models/pages_model.dart";
-import "package:job_finder/widgets/bottom_navbar.dart";
 import "package:job_finder/widgets/profile/about_section.dart";
 import "package:job_finder/widgets/profile/activity_section.dart";
 import "package:job_finder/widgets/profile/analytic_section.dart";
@@ -26,7 +25,9 @@ class Profile extends StatelessWidget {
           },
         ),
         title: const Text("Profile"),
-        centerTitle: true,
+        actions: [
+          IconButton(onPressed: () {}, icon: const Icon(Icons.settings))
+        ],
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -103,7 +104,6 @@ class Profile extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: const MyButtomNavBar(),
     );
   }
 }

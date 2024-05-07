@@ -16,12 +16,12 @@ class HeaderTimeLine extends StatelessWidget {
                 color: Colors.grey,
                 borderRadius: BorderRadius.circular(30),
               ),
-              child: Padding(
-                padding: const EdgeInsets.all(15.0),
+              child: ClipOval(
                 child: Image.network(
                   "https://media.licdn.com/dms/image/D5603AQHiurAb7d24ng/profile-displayphoto-shrink_800_800/0/1680149648357?e=1718236800&v=beta&t=yuxNamHnXL0Ka-gRv1htaGTbq03YMzqsEfoCfj42Crw",
                   fit: BoxFit.cover,
-                  width: 30,
+                  width: 52,
+                  height: 52,
                 ),
               ),
             ),
@@ -51,24 +51,24 @@ class HeaderTimeLine extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(
-                      width: 5,
+                      width: 6,
                     ),
                     Container(
-                      width: 3,
-                      height: 3,
+                      width: 4,
+                      height: 4,
                       decoration: BoxDecoration(
                         color: Colors.black,
                         borderRadius: BorderRadius.circular(15),
                       ),
                     ),
                     const SizedBox(
-                      width: 5,
+                      width: 6,
                     ),
                     const Text(
-                      "Anda",
+                      "Teman anda",
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
-                        fontSize: 15,
+                        fontSize: 14,
                       ),
                     )
                   ],

@@ -30,7 +30,7 @@ class ProfileImgSection extends StatelessWidget {
             decoration: BoxDecoration(
               shape: BoxShape.circle,
               border: Border.all(
-                color: Colors.white,
+                color: Theme.of(context).colorScheme.background,
                 width: 4,
               ),
               image: DecorationImage(

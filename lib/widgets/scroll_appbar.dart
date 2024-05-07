@@ -44,10 +44,10 @@ class _ScrollAppbarState extends State<ScrollAppbar> {
                     },
                     child: ClipOval(
                       child: Image.asset(
-                        "assets/images/profile/sule.jpeg",
+                        "assets/images/gyt.png",
                         fit: BoxFit.cover,
-                        width: 30,
-                        height: 30,
+                        width: 32,
+                        height: 32,
                       ),
                     ),
                   );
@@ -58,49 +58,51 @@ class _ScrollAppbarState extends State<ScrollAppbar> {
               ),
               Expanded(
                   child: GestureDetector(
-                          onTap: () {
-                            // print('tes');
-                          },
-                          child: Row(
-                            children: [
-                              // Icon(Icons.search, color: Theme.of(context).iconTheme.color,),
-                              // const SizedBox(width: 8.0),
-                              // const Text('Search jobs', style: TextStyle(fontSize: 16),),
-                              Expanded(
-                                child: SizedBox(
-                                  height: 35, // Set the height to your desired value
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      color: const Color.fromARGB(255, 238, 243, 247),
-                                      borderRadius: BorderRadius.circular(5.0),
-                                    ),
-                                    child: TextField(
-                                      decoration: InputDecoration(
-                                        hintText: 'Search jobs',
-                                        hintStyle: const TextStyle(fontSize: 16),
-                                        border: InputBorder.none,
-                                        prefixIcon: Icon(Icons.search, color: Theme.of(context).iconTheme.color),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-
-                                                    
-                            ],
+                onTap: () {
+                  // print('tes');
+                },
+                child: Row(
+                  children: [
+                    // Icon(Icons.search, color: Theme.of(context).iconTheme.color,),
+                    // const SizedBox(width: 8.0),
+                    // const Text('Search jobs', style: TextStyle(fontSize: 16),),
+                    Expanded(
+                      child: SizedBox(
+                        height: 35, // Set the height to your desired value
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: const Color.fromARGB(255, 238, 243, 247),
+                            borderRadius: BorderRadius.circular(5.0),
                           ),
-                        )
-
+                          child: TextField(
+                            decoration: InputDecoration(
+                              hintText: 'Search jobs',
+                              hintStyle: const TextStyle(fontSize: 16),
+                              border: InputBorder.none,
+                              prefixIcon: Icon(Icons.search,
+                                  color: Theme.of(context).iconTheme.color),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
-                const SizedBox(width: 16,),
-                IconButton(
-                  onPressed: _changeScreen, 
-                  icon: Icon(widget.actionIcon,color: Theme.of(context).iconTheme.color,)
-                )
-              ],
-            ),
-          )],
-          body: widget.body,
-        );
+              )),
+              const SizedBox(
+                width: 16,
+              ),
+              IconButton(
+                  onPressed: _changeScreen,
+                  icon: Icon(
+                    widget.actionIcon,
+                    color: Theme.of(context).iconTheme.color,
+                  ))
+            ],
+          ),
+        )
+      ],
+      body: widget.body,
+    );
   }
 }
