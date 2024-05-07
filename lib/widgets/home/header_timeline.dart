@@ -16,8 +16,8 @@ class HeaderTimeLine extends StatelessWidget {
                 borderRadius: BorderRadius.circular(30),
               ),
               child: ClipOval(
-                child: Image.network(
-                  "https://media.licdn.com/dms/image/D5603AQHiurAb7d24ng/profile-displayphoto-shrink_800_800/0/1680149648357?e=1718236800&v=beta&t=yuxNamHnXL0Ka-gRv1htaGTbq03YMzqsEfoCfj42Crw",
+                child: Image.asset(
+                  "assets/images/fikri.jpeg",
                   fit: BoxFit.cover,
                   width: 52,
                   height: 52,
@@ -40,7 +40,7 @@ class HeaderTimeLine extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(
-                      width: 5,
+                      width: 4,
                     ),
                     const Text(
                       "(He/Him)",
@@ -56,7 +56,7 @@ class HeaderTimeLine extends StatelessWidget {
                       width: 4,
                       height: 4,
                       decoration: BoxDecoration(
-                        color: Colors.black,
+                        color: Theme.of(context).colorScheme.inversePrimary,
                         borderRadius: BorderRadius.circular(99),
                       ),
                     ),
@@ -66,7 +66,6 @@ class HeaderTimeLine extends StatelessWidget {
                     const Text(
                       "Teman anda",
                       style: TextStyle(
-                        fontWeight: FontWeight.w600,
                         fontSize: 14,
                       ),
                     )
@@ -83,17 +82,17 @@ class HeaderTimeLine extends StatelessWidget {
                     const Text(
                       "6 bln",
                       style: TextStyle(
-                        fontSize: 16,
+                        fontSize: 12,
                       ),
                     ),
                     const SizedBox(
-                      width: 5,
+                      width: 6,
                     ),
                     Container(
                       width: 4,
                       height: 4,
                       decoration: BoxDecoration(
-                        color: Colors.black,
+                        color: Theme.of(context).colorScheme.inversePrimary,
                         borderRadius: BorderRadius.circular(99),
                       ),
                     ),
@@ -102,7 +101,7 @@ class HeaderTimeLine extends StatelessWidget {
                     ),
                     const Icon(
                       Icons.public,
-                      size: 16,
+                      size: 12,
                     )
                   ],
                 )

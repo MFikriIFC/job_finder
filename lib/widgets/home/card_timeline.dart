@@ -26,14 +26,14 @@ class CardTimeLine extends StatelessWidget {
               Text(
                 "#AndroidBasics",
                 style: TextStyle(
-                  color: Colors.blue.shade900,
+                  color: Colors.blue.shade600,
                   fontWeight: FontWeight.bold,
                 ),
               ),
               Text(
                 "#JuaraAndroid",
                 style: TextStyle(
-                  color: Colors.blue.shade900,
+                  color: Colors.blue.shade600,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -44,9 +44,13 @@ class CardTimeLine extends StatelessWidget {
           padding: const EdgeInsets.all(8.0),
           child: Row(
             children: [
-              Image.network(
-                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSS-b518sO-hr6_AQAJA_hnpeLR7AtI3CgEGcmP7nLUJA&s",
+              Image.asset(
+                "assets/images/gdev.webp",
                 width: 100,
+                height: 100,
+              ),
+              const SizedBox(
+                width: 8,
               ),
               Expanded(
                 child: Column(
@@ -61,22 +65,30 @@ class CardTimeLine extends StatelessWidget {
                     ),
                     Row(
                       children: [
-                        const Text("developers.google.com"),
+                        Text(
+                          "developers.google.com",
+                          style: TextStyle(
+                              color: Theme.of(context).colorScheme.secondary),
+                        ),
                         const SizedBox(
-                          width: 5,
+                          width: 4,
                         ),
                         Container(
-                          width: 3,
-                          height: 3,
+                          width: 4,
+                          height: 4,
                           decoration: BoxDecoration(
-                            color: Colors.black,
+                            color: Theme.of(context).colorScheme.inversePrimary,
                             borderRadius: BorderRadius.circular(15),
                           ),
                         ),
                         const SizedBox(
-                          width: 5,
+                          width: 4,
                         ),
-                        const Text("bacaan 1 menit")
+                        Text(
+                          "bacaan 1 menit",
+                          style: TextStyle(
+                              color: Theme.of(context).colorScheme.secondary),
+                        )
                       ],
                     ),
                   ],
@@ -85,86 +97,115 @@ class CardTimeLine extends StatelessWidget {
             ],
           ),
         ),
-        const Padding(
-          padding: EdgeInsets.all(8.0),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
           child: Row(
             children: [
-              Icon(Icons.thumb_up_alt_outlined, color: Colors.blue),
-              SizedBox(
-                width: 5,
+              Icon(Icons.thumb_up_alt_outlined, color: Colors.blue.shade600),
+              const SizedBox(
+                width: 4,
               ),
-              Text("150"),
+              const Text("150"),
             ],
           ),
         ),
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            children: [
-              Ink(
-                color: Colors.grey,
-                height: 1,
-              ),
-              const SizedBox(
-                height: 8,
-              ),
-              const Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Column(
-                    children: [
-                      Icon(
-                        Icons.thumb_up_alt_outlined,
-                        color: Colors.blue,
-                      ),
-                      Text(
-                        "Like",
-                        style: TextStyle(color: Colors.blue),
-                      )
-                    ],
-                  ),
-                  Column(
-                    children: [Icon(Icons.comment), Text("Comment")],
-                  ),
-                  Column(
-                    children: [Icon(Icons.share), Text("Share")],
-                  ),
-                  Column(
-                    children: [
-                      Icon(Icons.send),
-                      Text("Send"),
-                    ],
-                  ),
-                ],
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              const Row(
+        Column(
+          children: [
+            Divider(
+              color: Theme.of(context).colorScheme.outline,
+            ),
+            // const SizedBox(
+            //   height: 8,
+            // ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Column(
+                  children: [
+                    Icon(
+                      Icons.thumb_up_alt_outlined,
+                      color: Colors.blue.shade600,
+                    ),
+                    const SizedBox(
+                      height: 2,
+                    ),
+                    Text(
+                      "Like",
+                      style: TextStyle(color: Colors.blue.shade600),
+                    )
+                  ],
+                ),
+                Column(
+                  children: [
+                    Icon(
+                      Icons.comment,
+                      color: Theme.of(context).colorScheme.inversePrimary,
+                    ),
+                    const SizedBox(
+                      height: 2,
+                    ),
+                    const Text("Comment")
+                  ],
+                ),
+                Column(
+                  children: [
+                    Icon(
+                      Icons.share,
+                      color: Theme.of(context).colorScheme.inversePrimary,
+                    ),
+                    const SizedBox(
+                      height: 2,
+                    ),
+                    const Text("Share")
+                  ],
+                ),
+                Column(
+                  children: [
+                    Icon(
+                      Icons.send,
+                      color: Theme.of(context).colorScheme.inversePrimary,
+                    ),
+                    const SizedBox(
+                      height: 2,
+                    ),
+                    const Text("Send"),
+                  ],
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 12,
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8),
+              child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Row(
+                  const Row(
                     children: [
-                      Icon(Icons.bar_chart_sharp),
+                      Icon(
+                        Icons.bar_chart_sharp,
+                        size: 14,
+                      ),
+                      SizedBox(
+                        width: 4,
+                      ),
                       Text(
                         "462 impressions",
-                        style: TextStyle(
-                          fontSize: 16,
-                        ),
                       )
                     ],
                   ),
                   Text(
                     "View",
                     style: TextStyle(
-                        fontWeight: FontWeight.w600,
-                        fontSize: 16,
-                        color: Colors.blue),
+                      fontWeight: FontWeight.w600,
+                      color: Colors.blue.shade600,
+                    ),
                   )
                 ],
-              )
-            ],
-          ),
+              ),
+            )
+          ],
         )
       ],
     );

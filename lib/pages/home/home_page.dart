@@ -23,30 +23,30 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       drawer: DrawerTemplate(setIndex: setIndex),
       bottomNavigationBar: const MyButtomNavBar(),
-      body: const SafeArea(
+      body: SafeArea(
         top: true,
         child: ScrollAppbar(
           body: SingleChildScrollView(
             child: Column(
               children: [
-                CardTimeLine(),
+                const CardTimeLine(),
                 Divider(
                   height: 24,
                   thickness: 8,
-                  color: Color.fromARGB(255, 244, 242, 238),
+                  color: Theme.of(context).colorScheme.outline,
                 ),
-                CardTimeLine(),
-                CardTimeLine(),
+                const CardTimeLine(),
                 Divider(
                   height: 24,
                   thickness: 8,
-                  color: Color.fromARGB(255, 244, 242, 238),
+                  color: Theme.of(context).colorScheme.outline,
                 ),
+                const CardTimeLine(),
               ],
             ),
           ),
           actionIcon: Icons.chat,
-          actionScreen: ChattingPage(),
+          actionScreen: const ChattingPage(),
         ),
       ),
     );
