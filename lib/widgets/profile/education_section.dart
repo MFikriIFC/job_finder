@@ -19,11 +19,13 @@ class EducationSection extends StatelessWidget {
               ),
               Row(
                 children: [
-                  Icon(Icons.add, color: Colors.grey.shade700),
+                  Icon(Icons.add,
+                      color: Theme.of(context).colorScheme.inversePrimary),
                   const SizedBox(
                     width: 16,
                   ),
-                  Icon(Icons.create_outlined, color: Colors.grey.shade700),
+                  Icon(Icons.create_outlined,
+                      color: Theme.of(context).colorScheme.inversePrimary),
                 ],
               ),
             ],

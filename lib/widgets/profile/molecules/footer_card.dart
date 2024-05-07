@@ -18,9 +18,9 @@ class FooterCard extends StatelessWidget {
           children: [
             TextSpan(
               text: text,
-              style: const TextStyle(
+              style: TextStyle(
                   fontSize: 16,
-                  color: Colors.black,
+                  color: Theme.of(context).colorScheme.inversePrimary,
                   fontWeight: FontWeight.w500),
             ),
             WidgetSpan(
@@ -28,7 +28,7 @@ class FooterCard extends StatelessWidget {
               child: Icon(
                 footerIcon,
                 size: 16,
-                color: Colors.black,
+                color: Theme.of(context).colorScheme.inversePrimary,
               ),
             ),
           ],

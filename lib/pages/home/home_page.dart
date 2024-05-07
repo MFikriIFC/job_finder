@@ -30,8 +30,18 @@ class _HomePageState extends State<HomePage> {
             child: Column(
               children: [
                 CardTimeLine(),
+                Divider(
+                  height: 24,
+                  thickness: 8,
+                  color: Color.fromARGB(255, 244, 242, 238),
+                ),
                 CardTimeLine(),
                 CardTimeLine(),
+                Divider(
+                  height: 24,
+                  thickness: 8,
+                  color: Color.fromARGB(255, 244, 242, 238),
+                ),
               ],
             ),
           ),

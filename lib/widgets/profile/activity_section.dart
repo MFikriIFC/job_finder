@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:job_finder/widgets/profile/molecules/footer_card.dart';
 
 class ActivitySection extends StatelessWidget {
   const ActivitySection({super.key});
@@ -24,7 +25,7 @@ class ActivitySection extends StatelessWidget {
                   Text(
                     "1.5M Followers",
                     style: TextStyle(
-                      color: Colors.blue.shade900,
+                      color: Colors.blue.shade600,
                       fontWeight: FontWeight.w600,
                     ),
                   )
@@ -35,18 +36,19 @@ class ActivitySection extends StatelessWidget {
                   OutlinedButton(
                     onPressed: () {},
                     style: OutlinedButton.styleFrom(
-                        side: BorderSide(color: Colors.blue.shade900),
+                        side: BorderSide(color: Colors.blue.shade600),
                         padding: const EdgeInsets.symmetric(
                             vertical: 0, horizontal: 12)),
                     child: Text(
                       "Create a post",
-                      style: TextStyle(color: Colors.blue.shade900),
+                      style: TextStyle(color: Colors.blue.shade600),
                     ),
                   ),
                   const SizedBox(
                     width: 16,
                   ),
-                  Icon(Icons.create_outlined, color: Colors.grey.shade700),
+                  Icon(Icons.create_outlined,
+                      color: Theme.of(context).colorScheme.inversePrimary),
                 ],
               ),
             ],
@@ -69,29 +71,8 @@ class ActivitySection extends StatelessWidget {
           const SizedBox(
             height: 12,
           ),
-          const Center(
-            child: Text.rich(
-              TextSpan(
-                children: [
-                  TextSpan(
-                    text: "Show all activity ",
-                    style: TextStyle(
-                        fontSize: 16,
-                        color: Colors.black,
-                        fontWeight: FontWeight.w500),
-                  ),
-                  WidgetSpan(
-                    alignment: PlaceholderAlignment.middle,
-                    child: Icon(
-                      Icons.arrow_forward,
-                      size: 16,
-                      color: Colors.black,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
+          const FooterCard(
+              text: "Show All Activity", footerIcon: Icons.arrow_forward),
         ],
       ),
     );

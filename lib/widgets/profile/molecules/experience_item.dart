@@ -51,11 +51,13 @@ class ExperienceItem extends StatelessWidget {
               ),
               Text(
                 jobLongevity,
-                style: TextStyle(color: Colors.grey.shade700),
+                style:
+                    TextStyle(color: Theme.of(context).colorScheme.secondary),
               ),
               Text(
                 companyRegion,
-                style: TextStyle(color: Colors.grey.shade700),
+                style:
+                    TextStyle(color: Theme.of(context).colorScheme.secondary),
               ),
               const SizedBox(
                 height: 12,
@@ -64,7 +66,8 @@ class ExperienceItem extends StatelessWidget {
                 visible: otherInfo.isNotEmpty,
                 child: Text(
                   otherInfo,
-                  style: const TextStyle(color: Colors.black),
+                  style:
+                      TextStyle(color: Theme.of(context).colorScheme.secondary),
                 ),
               ),
               const SizedBox(

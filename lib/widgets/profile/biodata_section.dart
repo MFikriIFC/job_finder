@@ -44,16 +44,16 @@ class BiodataSection extends StatelessWidget {
           OutlinedButton.icon(
             onPressed: () {},
             style: OutlinedButton.styleFrom(
-              side: BorderSide(color: Colors.blue.shade900),
+              side: BorderSide(color: Colors.blue.shade700),
               padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 12),
             ),
             icon: Icon(
               Icons.verified_rounded,
-              color: Colors.blue.shade900,
+              color: Colors.blue.shade700,
             ),
             label: Text(
               "Verify Now",
-              style: TextStyle(color: Colors.blue.shade900),
+              style: TextStyle(color: Colors.blue.shade700),
             ),
           ),
           const SizedBox(
@@ -76,7 +76,8 @@ class BiodataSection extends StatelessWidget {
           ),
           Text(
             region,
-            style: TextStyle(fontSize: 14, color: Colors.grey.shade700),
+            style: TextStyle(
+                fontSize: 14, color: Theme.of(context).colorScheme.primary),
           ),
           const SizedBox(
             height: 12,
@@ -85,7 +86,7 @@ class BiodataSection extends StatelessWidget {
             "$connectionCount Connections",
             style: TextStyle(
               fontWeight: FontWeight.w600,
-              color: Colors.blue.shade900,
+              color: Colors.blue.shade700,
             ),
           ),
           const SizedBox(
@@ -97,7 +98,7 @@ class BiodataSection extends StatelessWidget {
                 child: ElevatedButton(
                   onPressed: () {},
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.blue.shade900,
+                    backgroundColor: Colors.blue.shade700,
                     elevation: 0,
                   ),
                   child: const Text(
@@ -113,11 +114,11 @@ class BiodataSection extends StatelessWidget {
                 child: OutlinedButton(
                   onPressed: () {},
                   style: OutlinedButton.styleFrom(
-                    side: BorderSide(color: Colors.blue.shade900),
+                    side: BorderSide(color: Colors.blue.shade700),
                   ),
                   child: Text(
                     "Add Section",
-                    style: TextStyle(color: Colors.blue.shade900),
+                    style: TextStyle(color: Colors.blue.shade700),
                   ),
                 ),
               ),

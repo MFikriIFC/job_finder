@@ -24,14 +24,14 @@ class AnalyticSession extends StatelessWidget {
                   child: Icon(
                     Icons.remove_red_eye,
                     size: 14,
-                    color: Colors.grey.shade700,
+                    color: Theme.of(context).colorScheme.secondary,
                   ),
                 ),
                 TextSpan(
                   text: " Private to you",
                   style: TextStyle(
                     fontSize: 14,
-                    color: Colors.grey.shade700,
+                    color: Theme.of(context).colorScheme.secondary,
                   ),
                 ),
               ],

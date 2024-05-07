@@ -7,7 +7,6 @@ class HeaderTimeLine extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Row(
           children: [
@@ -26,7 +25,7 @@ class HeaderTimeLine extends StatelessWidget {
               ),
             ),
             const SizedBox(
-              width: 10,
+              width: 12,
             ),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -58,7 +57,7 @@ class HeaderTimeLine extends StatelessWidget {
                       height: 4,
                       decoration: BoxDecoration(
                         color: Colors.black,
-                        borderRadius: BorderRadius.circular(15),
+                        borderRadius: BorderRadius.circular(99),
                       ),
                     ),
                     const SizedBox(
@@ -74,7 +73,7 @@ class HeaderTimeLine extends StatelessWidget {
                   ],
                 ),
                 const Text(
-                  "Front-End Developer || React Developer",
+                  "Front-End React Developer",
                   style: TextStyle(
                     fontSize: 15,
                   ),
@@ -84,35 +83,32 @@ class HeaderTimeLine extends StatelessWidget {
                     const Text(
                       "6 bln",
                       style: TextStyle(
-                        fontSize: 15,
+                        fontSize: 16,
                       ),
                     ),
                     const SizedBox(
                       width: 5,
                     ),
                     Container(
-                      width: 3,
-                      height: 3,
+                      width: 4,
+                      height: 4,
                       decoration: BoxDecoration(
                         color: Colors.black,
-                        borderRadius: BorderRadius.circular(15),
+                        borderRadius: BorderRadius.circular(99),
                       ),
                     ),
                     const SizedBox(
-                      width: 5,
+                      width: 6,
                     ),
                     const Icon(
                       Icons.public,
-                      size: 15,
+                      size: 16,
                     )
                   ],
                 )
               ],
             ),
           ],
-        ),
-        const SizedBox(
-          width: 26,
         ),
         const Icon(Icons.keyboard_control_rounded),
       ],

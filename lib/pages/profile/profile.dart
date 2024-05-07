@@ -45,7 +45,7 @@ class Profile extends StatelessWidget {
                   IconButton(
                     onPressed: () {},
                     icon: const Icon(Icons.create_outlined),
-                    color: Colors.grey.shade700,
+                    color: Theme.of(context).colorScheme.inversePrimary,
                   )
                 ],
               ),
@@ -59,46 +59,46 @@ class Profile extends StatelessWidget {
               region: "Seoul, Gyeonggi, South Korea",
               connectionCount: "999+",
             ),
-            const Divider(
+            Divider(
               height: 24,
               thickness: 8,
-              color: Color.fromARGB(255, 244, 242, 238),
+              color: Theme.of(context).colorScheme.outline,
             ),
             const AnalyticSession(),
-            const Divider(
+            Divider(
               height: 24,
               thickness: 8,
-              color: Color.fromARGB(255, 244, 242, 238),
+              color: Theme.of(context).colorScheme.outline,
             ),
             const ResourceSection(),
-            const Divider(
+            Divider(
               height: 24,
               thickness: 8,
-              color: Color.fromARGB(255, 244, 242, 238),
+              color: Theme.of(context).colorScheme.outline,
             ),
             const AboutSection(),
-            const Divider(
+            Divider(
               height: 24,
               thickness: 8,
-              color: Color.fromARGB(255, 244, 242, 238),
+              color: Theme.of(context).colorScheme.outline,
             ),
             const ActivitySection(),
-            const Divider(
+            Divider(
               height: 24,
               thickness: 8,
-              color: Color.fromARGB(255, 244, 242, 238),
+              color: Theme.of(context).colorScheme.outline,
             ),
             const ExperienceSection(),
-            const Divider(
+            Divider(
               height: 24,
               thickness: 8,
-              color: Color.fromARGB(255, 244, 242, 238),
+              color: Theme.of(context).colorScheme.outline,
             ),
             const EducationSection(),
-            const Divider(
+            Divider(
               height: 24,
               thickness: 8,
-              color: Color.fromARGB(255, 244, 242, 238),
+              color: Theme.of(context).colorScheme.outline,
             ),
             const InterestSection(),
           ],

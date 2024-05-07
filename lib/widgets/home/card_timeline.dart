@@ -10,13 +10,7 @@ class CardTimeLine extends StatelessWidget {
       children: [
         const Padding(
           padding: EdgeInsets.all(8.0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              HeaderTimeLine(),
-            ],
-          ),
+          child: HeaderTimeLine(),
         ),
         Padding(
           padding: const EdgeInsets.all(8.0),
@@ -155,7 +149,6 @@ class CardTimeLine extends StatelessWidget {
                       Text(
                         "462 impressions",
                         style: TextStyle(
-                          fontWeight: FontWeight.bold,
                           fontSize: 16,
                         ),
                       )

@@ -19,7 +19,7 @@ class AboutSection extends StatelessWidget {
               ),
               Icon(
                 Icons.create_outlined,
-                color: Colors.grey.shade700,
+                color: Theme.of(context).colorScheme.inversePrimary,
               )
             ],
           ),

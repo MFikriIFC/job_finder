@@ -35,7 +35,7 @@ class InterestItem extends StatelessWidget {
             ),
             Text(
               "$followersCount Followers",
-              style: TextStyle(color: Colors.grey.shade700),
+              style: TextStyle(color: Theme.of(context).colorScheme.secondary),
             ),
             const SizedBox(
               height: 16,
@@ -44,15 +44,15 @@ class InterestItem extends StatelessWidget {
               onPressed: () {},
               icon: Icon(
                 Icons.check,
-                color: Colors.grey.shade700,
+                color: Colors.blue.shade600,
                 size: 16,
               ),
               label: Text(
                 "Following",
-                style: TextStyle(color: Colors.grey.shade700, fontSize: 14),
+                style: TextStyle(color: Colors.blue.shade600, fontSize: 14),
               ),
               style: OutlinedButton.styleFrom(
-                  side: BorderSide(color: Colors.grey.shade700),
+                  side: BorderSide(color: Colors.blue.shade600),
                   padding:
                       const EdgeInsets.symmetric(horizontal: 12, vertical: 0)),
             ),

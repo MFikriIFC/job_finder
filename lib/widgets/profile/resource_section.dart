@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:job_finder/widgets/profile/molecules/footer_card.dart';
 import 'package:job_finder/widgets/profile/molecules/resource_item.dart';
 
 class ResourceSection extends StatelessWidget {
@@ -23,14 +24,14 @@ class ResourceSection extends StatelessWidget {
                   child: Icon(
                     Icons.remove_red_eye,
                     size: 14,
-                    color: Colors.grey.shade700,
+                    color: Theme.of(context).colorScheme.secondary,
                   ),
                 ),
                 TextSpan(
                   text: " Private to you",
                   style: TextStyle(
                     fontSize: 14,
-                    color: Colors.grey.shade700,
+                    color: Theme.of(context).colorScheme.secondary,
                   ),
                 ),
               ],
@@ -57,28 +58,9 @@ class ResourceSection extends StatelessWidget {
           const SizedBox(
             height: 12,
           ),
-          const Center(
-            child: Text.rich(
-              TextSpan(
-                children: [
-                  TextSpan(
-                    text: "Show all 4 Resources ",
-                    style: TextStyle(
-                        fontSize: 16,
-                        color: Colors.black,
-                        fontWeight: FontWeight.w500),
-                  ),
-                  WidgetSpan(
-                    alignment: PlaceholderAlignment.middle,
-                    child: Icon(
-                      Icons.arrow_forward,
-                      size: 16,
-                      color: Colors.black,
-                    ),
-                  ),
-                ],
-              ),
-            ),
+          const FooterCard(
+            text: "Show all 4 Resources ",
+            footerIcon: Icons.arrow_forward,
           ),
         ],
       ),

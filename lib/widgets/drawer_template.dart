@@ -17,7 +17,7 @@ class DrawerTemplate extends StatelessWidget {
         child: Column(
           children: [
             SizedBox(
-              height: 240,
+              height: 266,
               child: DrawerHeader(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,

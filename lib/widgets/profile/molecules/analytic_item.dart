@@ -18,16 +18,19 @@ class AnalyticItem extends StatelessWidget {
       contentPadding: const EdgeInsets.all(0),
       leading: Icon(
         leadingIcon,
-        color: Colors.black,
+        color: Theme.of(context).colorScheme.inversePrimary,
       ),
       title: Text(
         title,
-        style: const TextStyle(
-            fontSize: 16, fontWeight: FontWeight.w600, color: Colors.black),
+        style: TextStyle(
+            fontSize: 16,
+            fontWeight: FontWeight.w600,
+            color: Theme.of(context).colorScheme.inversePrimary),
       ),
       subtitle: Text(
         subtitle,
-        style: TextStyle(fontSize: 14, color: Colors.grey.shade800),
+        style: TextStyle(
+            fontSize: 14, color: Theme.of(context).colorScheme.secondary),
       ),
     );
   }
