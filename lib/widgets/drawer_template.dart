@@ -46,7 +46,7 @@ class DrawerTemplate extends StatelessWidget {
                         'View profile',
                         style: TextStyle(
                           fontSize: 14,
-                          color: Theme.of(context).colorScheme.primary,
+                          color: Theme.of(context).colorScheme.inversePrimary,
                         ),
                       ),
                     ),
@@ -62,7 +62,8 @@ class DrawerTemplate extends StatelessWidget {
                         Text(
                           'profile viewers',
                           style: TextStyle(
-                              color: Theme.of(context).colorScheme.primary),
+                              color:
+                                  Theme.of(context).colorScheme.inversePrimary),
                         )
                       ],
                     ),

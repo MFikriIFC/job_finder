@@ -29,13 +29,13 @@ class _NotificationPageState extends State<NotificationPage> {
         top: true,
         child: ScrollAppbar(
           actionIcon: Icons.chat,
-          actionScreen: ChattingPage(),
+          actionScreen: const ChattingPage(),
           body: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
                 padding:
-                    const EdgeInsets.symmetric(vertical: 0, horizontal: 12),
+                    const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
                 child: Wrap(
                   spacing: 8,
                   crossAxisAlignment: WrapCrossAlignment.start,
@@ -55,18 +55,15 @@ class _NotificationPageState extends State<NotificationPage> {
                           borderRadius: BorderRadius.circular(20),
                         ),
                         showCheckmark: false,
-                        selectedColor: Colors.green[800],
+                        selectedColor: Colors.blue.shade900,
                         labelStyle: TextStyle(
                             color: filters.indexOf(e) == _index
                                 ? Colors.white
-                                : Colors.black),
+                                : Theme.of(context).colorScheme.inversePrimary),
                       );
                     },
                   ).toList(),
                 ),
-              ),
-              const Divider(
-                thickness: 10,
               ),
               SingleChildScrollView(
                 child: Column(
@@ -89,19 +86,28 @@ class _NotificationPageState extends State<NotificationPage> {
                             child: Padding(
                               padding: const EdgeInsets.only(top: 4.0),
                               child: RichText(
-                                text: const TextSpan(
+                                text: TextSpan(
                                   text: "New from ",
-                                  style: TextStyle(color: Colors.black),
+                                  style: TextStyle(
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .primary),
                                   children: [
                                     TextSpan(
                                       text: "Generative AI ",
                                       style: TextStyle(
-                                          fontWeight: FontWeight.bold),
+                                          fontWeight: FontWeight.bold,
+                                          color: Theme.of(context)
+                                              .colorScheme
+                                              .primary),
                                     ),
                                     TextSpan(
-                                      text:
-                                          "in The Atlas: 🚀 Time to Add AI to Your Portfolio? 🚀",
-                                    ),
+                                        text:
+                                            "in The Atlas: 🚀 Time to Add AI to Your Portfolio? 🚀",
+                                        style: TextStyle(
+                                            color: Theme.of(context)
+                                                .colorScheme
+                                                .primary)),
                                   ],
                                 ),
                                 maxLines: 3,
@@ -112,12 +118,17 @@ class _NotificationPageState extends State<NotificationPage> {
                           const SizedBox(
                             width: 15,
                           ),
-                          const Column(
+                          Column(
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.end,
                             children: [
                               Text("28m"),
-                              Icon(Icons.keyboard_control_rounded)
+                              Icon(
+                                Icons.keyboard_control_rounded,
+                                color: Theme.of(context)
+                                    .colorScheme
+                                    .inversePrimary,
+                              )
                             ],
                           )
                         ],
@@ -141,22 +152,30 @@ class _NotificationPageState extends State<NotificationPage> {
                             child: Padding(
                               padding: const EdgeInsets.only(top: 4.0),
                               child: RichText(
-                                text: const TextSpan(
+                                text: TextSpan(
                                   text: "",
-                                  style: TextStyle(color: Colors.black),
                                   children: [
                                     TextSpan(
                                       text: "Rekrutmen Bersama BUMN ",
                                       style: TextStyle(
-                                          fontWeight: FontWeight.bold),
+                                          fontWeight: FontWeight.bold,
+                                          color: Theme.of(context)
+                                              .colorScheme
+                                              .primary),
                                     ),
                                     TextSpan(
-                                      text: "posted: ",
-                                    ),
+                                        text: "posted: ",
+                                        style: TextStyle(
+                                            color: Theme.of(context)
+                                                .colorScheme
+                                                .primary)),
                                     TextSpan(
-                                      text:
-                                          "Lowongan Kerja BUMN PT Bank Tabungan Negara (Persero) Tbk (Bank BTN)",
-                                    ),
+                                        text:
+                                            "Lowongan Kerja BUMN PT Bank Tabungan Negara (Persero) Tbk (Bank BTN)",
+                                        style: TextStyle(
+                                            color: Theme.of(context)
+                                                .colorScheme
+                                                .primary)),
                                   ],
                                 ),
                                 maxLines: 3,
@@ -167,12 +186,17 @@ class _NotificationPageState extends State<NotificationPage> {
                           const SizedBox(
                             width: 15,
                           ),
-                          const Column(
+                          Column(
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.end,
                             children: [
-                              Text("1h"),
-                              Icon(Icons.keyboard_control_rounded)
+                              const Text("1h"),
+                              Icon(
+                                Icons.keyboard_control_rounded,
+                                color: Theme.of(context)
+                                    .colorScheme
+                                    .inversePrimary,
+                              )
                             ],
                           )
                         ],
@@ -196,22 +220,30 @@ class _NotificationPageState extends State<NotificationPage> {
                             child: Padding(
                               padding: const EdgeInsets.only(top: 4.0),
                               child: RichText(
-                                text: const TextSpan(
+                                text: TextSpan(
                                   text: "",
-                                  style: TextStyle(color: Colors.black),
                                   children: [
                                     TextSpan(
                                       text: "Coding Ninjas ",
                                       style: TextStyle(
-                                          fontWeight: FontWeight.bold),
+                                          fontWeight: FontWeight.bold,
+                                          color: Theme.of(context)
+                                              .colorScheme
+                                              .primary),
                                     ),
                                     TextSpan(
-                                      text: "posted: ",
-                                    ),
+                                        text: "posted: ",
+                                        style: TextStyle(
+                                            color: Theme.of(context)
+                                                .colorScheme
+                                                .primary)),
                                     TextSpan(
-                                      text:
-                                          "Just like these fighters have fought the circumstances and reached their Destination X - Top Tech Companies like Amazon and Microsoft, you can do it too.",
-                                    ),
+                                        text:
+                                            "Just like these fighters have fought the circumstances and reached their Destination X - Top Tech Companies like Amazon and Microsoft, you can do it too.",
+                                        style: TextStyle(
+                                            color: Theme.of(context)
+                                                .colorScheme
+                                                .primary)),
                                   ],
                                 ),
                                 maxLines: 3,
@@ -222,12 +254,17 @@ class _NotificationPageState extends State<NotificationPage> {
                           const SizedBox(
                             width: 15,
                           ),
-                          const Column(
+                          Column(
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.end,
                             children: [
-                              Text("1h"),
-                              Icon(Icons.keyboard_control_rounded)
+                              const Text("1h"),
+                              Icon(
+                                Icons.keyboard_control_rounded,
+                                color: Theme.of(context)
+                                    .colorScheme
+                                    .inversePrimary,
+                              )
                             ],
                           )
                         ],
@@ -251,22 +288,30 @@ class _NotificationPageState extends State<NotificationPage> {
                             child: Padding(
                               padding: const EdgeInsets.only(top: 4.0),
                               child: RichText(
-                                text: const TextSpan(
+                                text: TextSpan(
                                   text: "",
-                                  style: TextStyle(color: Colors.black),
                                   children: [
                                     TextSpan(
                                       text: "Tech in Asia ",
                                       style: TextStyle(
-                                          fontWeight: FontWeight.bold),
+                                          fontWeight: FontWeight.bold,
+                                          color: Theme.of(context)
+                                              .colorScheme
+                                              .primary),
                                     ),
                                     TextSpan(
-                                      text: "posted: ",
-                                    ),
+                                        text: "posted: ",
+                                        style: TextStyle(
+                                            color: Theme.of(context)
+                                                .colorScheme
+                                                .primary)),
                                     TextSpan(
-                                      text:
-                                          "[Published in March 2024] 📉 The House votes to potentially force ByteDance to sell TikTok's US assets, stirring widespread concern about the app's future in the market. 💼 Analysts suggest a forced sale might financially benefit ByteDance, possibly enhancing its valuation through a public IPO of TikTok in the US. 📊 Without TikTok, ByteDance may face challenges going public, as it could depend heavily on the Chinese market, potentially reducing its global valuation.  🌏 Ongoing political scrutiny could force TikTok and similar companies to reassess their operational strategies globally, affecting investor confidence and business stability.",
-                                    ),
+                                        text:
+                                            "[Published in March 2024] 📉 The House votes to potentially force ByteDance to sell TikTok's US assets, stirring widespread concern about the app's future in the market. 💼 Analysts suggest a forced sale might financially benefit ByteDance, possibly enhancing its valuation through a public IPO of TikTok in the US. 📊 Without TikTok, ByteDance may face challenges going public, as it could depend heavily on the Chinese market, potentially reducing its global valuation.  🌏 Ongoing political scrutiny could force TikTok and similar companies to reassess their operational strategies globally, affecting investor confidence and business stability.",
+                                        style: TextStyle(
+                                            color: Theme.of(context)
+                                                .colorScheme
+                                                .primary)),
                                   ],
                                 ),
                                 maxLines: 3,
@@ -277,12 +322,17 @@ class _NotificationPageState extends State<NotificationPage> {
                           const SizedBox(
                             width: 15,
                           ),
-                          const Column(
+                          Column(
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.end,
                             children: [
-                              Text("2h"),
-                              Icon(Icons.keyboard_control_rounded)
+                              const Text("2h"),
+                              Icon(
+                                Icons.keyboard_control_rounded,
+                                color: Theme.of(context)
+                                    .colorScheme
+                                    .inversePrimary,
+                              )
                             ],
                           )
                         ],
