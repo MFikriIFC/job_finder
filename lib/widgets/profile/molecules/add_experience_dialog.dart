@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:job_finder/widgets/profile/ui/date_form_input.dart';
 import 'package:job_finder/widgets/profile/ui/date_input.dart';
 import 'package:job_finder/widgets/profile/ui/form_text_input.dart';
@@ -28,21 +27,6 @@ class _AddExperienceDialogState extends State<AddExperienceDialog> {
   final TextEditingController _endDateController = TextEditingController();
   final TextEditingController _descriptionController = TextEditingController();
   final TextEditingController _skillsController = TextEditingController();
-
-  Future<void> _selectDate(
-      BuildContext context, TextEditingController controller) async {
-    final DateTime? picked = await showDatePicker(
-      context: context,
-      initialDate: DateTime.now(),
-      firstDate: DateTime(2000),
-      lastDate: DateTime(2101),
-    );
-    if (picked != null) {
-      setState(() {
-        controller.text = DateFormat('MMMM yyyy').format(picked);
-      });
-    }
-  }
 
   final List<String> jobTypes = [
     "Full-time",
@@ -226,6 +210,5 @@ class _AddExperienceDialogState extends State<AddExperienceDialog> {
         ),
       ),
     );
-    ;
   }
 }
