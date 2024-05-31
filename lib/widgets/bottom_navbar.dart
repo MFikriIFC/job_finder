@@ -54,7 +54,31 @@ class _MyButtomNavBarState extends State<MyButtomNavBar> {
       elevation: 10,
       type: BottomNavigationBarType.fixed,
       onTap: (value) => {
-        Provider.of<BNavModel>(context, listen: false).setSelectedIndex(value)
+        if (value != 2)
+          {
+            Provider.of<BNavModel>(context, listen: false)
+                .setSelectedIndex(value)
+          }
+        else
+          {
+            showDialog(
+              context: context,
+              builder: (BuildContext context) => Dialog.fullscreen(
+                  child: Column(
+                children: [
+                  Row(
+                    children: [
+                      IconButton(
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                          icon: const Icon(Icons.close))
+                    ],
+                  )
+                ],
+              )),
+            ),
+          }
       },
     );
   }
