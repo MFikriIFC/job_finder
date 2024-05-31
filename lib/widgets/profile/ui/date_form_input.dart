@@ -45,6 +45,7 @@ class _FormDateInputState extends State<FormDateInput> {
       },
       decoration: InputDecoration(
         border: const OutlineInputBorder(),
+        focusedBorder: const OutlineInputBorder(),
         errorBorder: const OutlineInputBorder(
           borderSide: BorderSide(
             color: Colors.red,

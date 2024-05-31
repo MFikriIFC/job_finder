@@ -22,6 +22,7 @@ class TextNoFormInput extends StatelessWidget {
       controller: inputController,
       decoration: InputDecoration(
         border: const OutlineInputBorder(),
+        focusedBorder: const OutlineInputBorder(),
         label: Text('$label'),
         floatingLabelBehavior: FloatingLabelBehavior.always,
         contentPadding:

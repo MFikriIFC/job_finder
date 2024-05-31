@@ -41,6 +41,7 @@ class _DateNoFormInputState extends State<DateNoFormInput> {
       controller: widget.inputController,
       decoration: InputDecoration(
         border: const OutlineInputBorder(),
+        focusedBorder: const OutlineInputBorder(),
         labelText: "End Date*",
         floatingLabelBehavior: FloatingLabelBehavior.always,
         contentPadding: const EdgeInsets.symmetric(

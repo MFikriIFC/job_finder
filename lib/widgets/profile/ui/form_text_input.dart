@@ -27,9 +27,8 @@ class FormTextInput extends StatelessWidget {
         return null;
       },
       decoration: InputDecoration(
-        border: const OutlineInputBorder(
-          borderSide: BorderSide(),
-        ),
+        border: const OutlineInputBorder(),
+        focusedBorder: const OutlineInputBorder(),
         errorBorder: const OutlineInputBorder(
           borderSide: BorderSide(
             color: Colors.red,

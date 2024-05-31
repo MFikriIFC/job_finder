@@ -38,6 +38,7 @@ class FormSelectState extends State<FormSelect> {
       },
       decoration: InputDecoration(
         border: const OutlineInputBorder(),
+        focusedBorder: const OutlineInputBorder(),
         labelText: '${widget.label}*',
         floatingLabelBehavior: FloatingLabelBehavior.always,
         hintText: widget.hintText,
