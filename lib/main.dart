@@ -3,6 +3,7 @@ import 'package:job_finder/models/bottom_nav_model.dart';
 import 'package:job_finder/models/pages_model.dart';
 import 'package:job_finder/models/user_model.dart';
 import 'package:job_finder/pages/main_container.dart';
+import 'package:job_finder/pages/profile/profile.dart';
 import 'package:job_finder/models/themes/theme_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -36,7 +37,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: const MainContainer(),
+      home: const Profile(),
       theme: Provider.of<ThemeProvider>(context).themeData,
     );
   }

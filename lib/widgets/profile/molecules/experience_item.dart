@@ -51,13 +51,13 @@ class ExperienceItem extends StatelessWidget {
               ),
               Text(
                 jobLongevity,
-                style:
-                    TextStyle(color: Theme.of(context).colorScheme.secondary),
+                style: TextStyle(
+                    color: Theme.of(context).colorScheme.inversePrimary),
               ),
               Text(
                 companyRegion,
-                style:
-                    TextStyle(color: Theme.of(context).colorScheme.secondary),
+                style: TextStyle(
+                    color: Theme.of(context).colorScheme.inversePrimary),
               ),
               const SizedBox(
                 height: 12,
@@ -66,34 +66,37 @@ class ExperienceItem extends StatelessWidget {
                 visible: otherInfo.isNotEmpty,
                 child: Text(
                   otherInfo,
-                  style:
-                      TextStyle(color: Theme.of(context).colorScheme.secondary),
+                  style: TextStyle(
+                      color: Theme.of(context).colorScheme.inversePrimary),
                 ),
               ),
               const SizedBox(
                 height: 12,
               ),
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Icon(
-                    Icons.diamond_outlined,
-                    size: 16,
-                  ),
-                  const SizedBox(
-                    width: 4,
-                  ),
-                  Expanded(
-                    child: Text(
-                      skills,
-                      overflow: TextOverflow.ellipsis,
-                      style: const TextStyle(
-                        fontWeight: FontWeight.w600,
-                      ),
-                      maxLines: 2,
+              Visibility(
+                visible: skills.isNotEmpty,
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Icon(
+                      Icons.diamond_outlined,
+                      size: 16,
                     ),
-                  )
-                ],
+                    const SizedBox(
+                      width: 4,
+                    ),
+                    Expanded(
+                      child: Text(
+                        skills,
+                        overflow: TextOverflow.ellipsis,
+                        style: const TextStyle(
+                          fontWeight: FontWeight.w600,
+                        ),
+                        maxLines: 2,
+                      ),
+                    )
+                  ],
+                ),
               )
             ],
           ),

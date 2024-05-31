@@ -88,7 +88,7 @@ class Profile extends StatelessWidget {
               thickness: 8,
               color: Theme.of(context).colorScheme.outline,
             ),
-            const ExperienceSection(),
+            ExperienceSection(),
             Divider(
               height: 24,
               thickness: 8,

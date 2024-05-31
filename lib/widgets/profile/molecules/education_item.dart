@@ -41,7 +41,8 @@ class EducationItem extends StatelessWidget {
             ),
             Text(
               educationLongevity,
-              style: TextStyle(color: Theme.of(context).colorScheme.secondary),
+              style: TextStyle(
+                  color: Theme.of(context).colorScheme.inversePrimary),
             ),
           ],
         ),
