@@ -139,7 +139,7 @@ class CardTimeLine extends StatelessWidget {
                   children: [
                     Icon(
                       Icons.comment,
-                      color: Theme.of(context).colorScheme.inversePrimary,
+                      color: Theme.of(context).iconTheme.color,
                     ),
                     const SizedBox(
                       height: 2,
@@ -151,7 +151,7 @@ class CardTimeLine extends StatelessWidget {
                   children: [
                     Icon(
                       Icons.share,
-                      color: Theme.of(context).colorScheme.inversePrimary,
+                      color: Theme.of(context).iconTheme.color,
                     ),
                     const SizedBox(
                       height: 2,
@@ -163,7 +163,7 @@ class CardTimeLine extends StatelessWidget {
                   children: [
                     Icon(
                       Icons.send,
-                      color: Theme.of(context).colorScheme.inversePrimary,
+                      color: Theme.of(context).iconTheme.color,
                     ),
                     const SizedBox(
                       height: 2,

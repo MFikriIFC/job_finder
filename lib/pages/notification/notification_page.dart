@@ -126,8 +126,8 @@ class _NotificationPageState extends State<NotificationPage> {
                               Icon(
                                 Icons.keyboard_control_rounded,
                                 color: Theme.of(context)
-                                    .colorScheme
-                                    .inversePrimary,
+                                    .iconTheme
+                                    .color,
                               )
                             ],
                           )
@@ -194,8 +194,8 @@ class _NotificationPageState extends State<NotificationPage> {
                               Icon(
                                 Icons.keyboard_control_rounded,
                                 color: Theme.of(context)
-                                    .colorScheme
-                                    .inversePrimary,
+                                    .iconTheme
+                                    .color,
                               )
                             ],
                           )
@@ -262,8 +262,8 @@ class _NotificationPageState extends State<NotificationPage> {
                               Icon(
                                 Icons.keyboard_control_rounded,
                                 color: Theme.of(context)
-                                    .colorScheme
-                                    .inversePrimary,
+                                    .iconTheme
+                                    .color,
                               )
                             ],
                           )
@@ -330,8 +330,8 @@ class _NotificationPageState extends State<NotificationPage> {
                               Icon(
                                 Icons.keyboard_control_rounded,
                                 color: Theme.of(context)
-                                    .colorScheme
-                                    .inversePrimary,
+                                    .iconTheme
+                                    .color,
                               )
                             ],
                           )

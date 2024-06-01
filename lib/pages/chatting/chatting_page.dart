@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:job_finder/pages/chatting/new_message.dart';
 import 'package:job_finder/widgets/chatting/chatting_page_filter.dart';
 import 'package:job_finder/widgets/chatting/chatting_row.dart';
+import 'package:provider/provider.dart';
+import 'package:job_finder/models/themes/theme_provider.dart';
 
 class ChattingPage extends StatefulWidget {
   const ChattingPage({super.key});
@@ -27,34 +29,35 @@ class _ChattingPageState extends State<ChattingPage> {
       length: 2,
       child: Scaffold(
         appBar: AppBar(
+          iconTheme: IconThemeData(
+            color: Theme.of(context).iconTheme.color,
+          ),
+          backgroundColor: Theme.of(context).colorScheme.background,
           title: Row(
             children: [
               Expanded(
-                  child: GestureDetector(
-                onTap: () {},
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: Theme.of(context).colorScheme.background,
-                    borderRadius: BorderRadius.circular(5.0),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(6),
-                    child: Row(
-                      children: [
-                        Icon(
-                          Icons.search,
-                          color: Theme.of(context).iconTheme.color,
-                        ),
-                        const SizedBox(width: 8.0),
-                        const Text(
-                          'Search messages',
-                          style: TextStyle(fontSize: 16),
-                        ),
-                      ],
+                child: SizedBox(
+                  height: 35, // Set the height to your desired value
+                  child: Container(
+                    decoration: BoxDecoration(
+                      // color: Theme.of(context).colorScheme.background,
+                      color: Provider.of<ThemeProvider>(context).isDarkMode
+                      ? Colors.grey.shade900
+                      : const Color.fromARGB(255,238, 243, 247),
+                      borderRadius: BorderRadius.circular(5.0),
+                    ),
+                    child: TextField(
+                      decoration: InputDecoration(
+                        hintText: 'Search messages',
+                        hintStyle: const TextStyle(fontSize: 16),
+                        border: InputBorder.none,
+                        prefixIcon: Icon(Icons.search,
+                            color: Theme.of(context).iconTheme.color),
+                      ),
                     ),
                   ),
                 ),
-              )),
+              ),
             ],
           ),
           actions: [

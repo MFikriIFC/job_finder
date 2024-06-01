@@ -13,7 +13,7 @@ class AppBarButton extends StatelessWidget {
       },
       style: OutlinedButton.styleFrom(
         side: const BorderSide(width: 1, color: Color.fromARGB(255, 140, 140, 140)), 
-        foregroundColor: const Color.fromARGB(255, 64, 64, 64),
+        foregroundColor: Theme.of(context).colorScheme.primary,
       ),
       child: Text(text),
     );

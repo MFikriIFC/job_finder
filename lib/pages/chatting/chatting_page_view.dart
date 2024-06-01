@@ -21,6 +21,10 @@ class _ChattingPageViewState extends State<ChattingPageView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        iconTheme: IconThemeData(
+          color: Theme.of(context).iconTheme.color,
+        ),
+        backgroundColor: Theme.of(context).colorScheme.background,
         shape: const Border(
             bottom:
                 BorderSide(color: Color.fromARGB(83, 140, 140, 140), width: 1)),

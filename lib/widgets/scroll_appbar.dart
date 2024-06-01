@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:job_finder/models/themes/theme_provider.dart'; 
 
 class ScrollAppbar extends StatefulWidget {
   const ScrollAppbar({
@@ -33,6 +35,7 @@ class _ScrollAppbarState extends State<ScrollAppbar> {
         SliverAppBar(
           automaticallyImplyLeading: false,
           scrolledUnderElevation: 0,
+          backgroundColor: Theme.of(context).colorScheme.background,
           title: Row(
             children: [
               Builder(
@@ -67,7 +70,10 @@ class _ScrollAppbarState extends State<ScrollAppbar> {
                         height: 35, // Set the height to your desired value
                         child: Container(
                           decoration: BoxDecoration(
-                            color: Theme.of(context).colorScheme.background,
+                            // color: Theme.of(context).colorScheme.background,
+                            color: Provider.of<ThemeProvider>(context).isDarkMode
+                            ? Colors.grey.shade900
+                            : const Color.fromARGB(255,238, 243, 247),
                             borderRadius: BorderRadius.circular(5.0),
                           ),
                           child: TextField(
@@ -76,9 +82,7 @@ class _ScrollAppbarState extends State<ScrollAppbar> {
                               hintStyle: const TextStyle(fontSize: 16),
                               border: InputBorder.none,
                               prefixIcon: Icon(Icons.search,
-                                  color: Theme.of(context)
-                                      .colorScheme
-                                      .inversePrimary),
+                                  color: Theme.of(context).iconTheme.color),
                             ),
                           ),
                         ),

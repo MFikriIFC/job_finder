@@ -210,11 +210,11 @@ class JobPage extends StatelessWidget {
                     ),
                     TextButton(
                       onPressed: () {},
-                      child: const Row(
+                      child: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          Text("Show all "),
-                          Icon(Icons.arrow_right_alt_sharp, size: 18),
+                          const Text("Show all "),
+                          Icon(Icons.arrow_right_alt_sharp, size: 18, color: Theme.of(context).iconTheme.color,),
                         ],
                       ),
                     ),
