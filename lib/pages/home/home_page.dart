@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:job_finder/models/pages_model.dart';
+import 'package:job_finder/models/post_models.dart';
 import 'package:job_finder/pages/chatting/chatting_page.dart';
 import 'package:job_finder/widgets/bottom_navbar.dart';
 import 'package:job_finder/widgets/home/card_timeline.dart';
@@ -27,24 +28,26 @@ class _HomePageState extends State<HomePage> {
         top: true,
         child: ScrollAppbar(
           body: SingleChildScrollView(
-            child: Column(
+              child: Consumer<PostProvider>(
+            builder: (context, value, child) => Column(
               children: [
-                const CardTimeLine(),
-                Divider(
-                  height: 24,
-                  thickness: 8,
-                  color: Theme.of(context).colorScheme.outline,
-                ),
-                const CardTimeLine(),
-                Divider(
-                  height: 24,
-                  thickness: 8,
-                  color: Theme.of(context).colorScheme.outline,
-                ),
-                const CardTimeLine(),
+                ...value.getPost().map(
+                      (e) => Column(
+                        children: [
+                          CardTimeLine(
+                            data: e,
+                          ),
+                          Divider(
+                            height: 24,
+                            thickness: 8,
+                            color: Theme.of(context).colorScheme.outline,
+                          ),
+                        ],
+                      ),
+                    ),
               ],
             ),
-          ),
+          )),
           actionIcon: Icons.chat,
           actionScreen: const ChattingPage(),
         ),

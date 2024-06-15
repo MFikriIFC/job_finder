@@ -2,101 +2,99 @@ import 'package:flutter/material.dart';
 import 'package:job_finder/widgets/home/header_timeline.dart';
 
 class CardTimeLine extends StatelessWidget {
-  const CardTimeLine({super.key});
+  Map<String, dynamic> data;
+  CardTimeLine({super.key, required this.data});
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const Padding(
+        Padding(
           padding: EdgeInsets.all(8.0),
-          child: HeaderTimeLine(),
+          child: HeaderTimeLine(
+            data: data,
+          ),
         ),
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
-                "I have complited an introduction to programming concepts in Kotlin to prepare for creating Android applications in Kotlin.",
+              Text(
+                data["desc"],
               ),
               const SizedBox(
                 height: 20,
               ),
-              Text(
-                "#AndroidBasics",
-                style: TextStyle(
-                  color: Colors.blue.shade600,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              Text(
-                "#JuaraAndroid",
-                style: TextStyle(
-                  color: Colors.blue.shade600,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ],
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Row(
-            children: [
-              Image.asset(
-                "assets/images/gdev.webp",
-                width: 100,
-                height: 100,
-              ),
-              const SizedBox(
-                width: 8,
-              ),
-              Expanded(
-                child: Column(
-                  children: [
-                    const SizedBox(
-                      child: Text(
-                        "Introduction to programming in Kotlin | Google Developer Profile | Google for Developers",
-                        overflow: TextOverflow.ellipsis,
-                        maxLines: 2,
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                    Row(
-                      children: [
-                        Text(
-                          "developers.google.com",
-                          style: TextStyle(
-                              color: Theme.of(context).colorScheme.secondary),
-                        ),
-                        const SizedBox(
-                          width: 4,
-                        ),
-                        Container(
-                          width: 4,
-                          height: 4,
-                          decoration: BoxDecoration(
-                            color: Theme.of(context).colorScheme.inversePrimary,
-                            borderRadius: BorderRadius.circular(15),
-                          ),
-                        ),
-                        const SizedBox(
-                          width: 4,
-                        ),
-                        Text(
-                          "bacaan 1 menit",
-                          style: TextStyle(
-                              color: Theme.of(context).colorScheme.secondary),
-                        )
-                      ],
-                    ),
-                  ],
+              ...data["tag"].map(
+                (e) => Text(
+                  e,
+                  style: TextStyle(
+                    color: Colors.blue.shade600,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               )
             ],
           ),
         ),
+        // Padding(
+        //   padding: const EdgeInsets.all(8.0),
+        //   child: Row(
+        //     children: [
+        //       Image.asset(
+        //         "assets/images/gdev.webp",
+        //         width: 100,
+        //         height: 100,
+        //       ),
+        //       const SizedBox(
+        //         width: 8,
+        //       ),
+        //       Expanded(
+        //         child: Column(
+        //           children: [
+        //             const SizedBox(
+        //               child: Text(
+        //                 "Introduction to programming in Kotlin | Google Developer Profile | Google for Developers",
+        //                 overflow: TextOverflow.ellipsis,
+        //                 maxLines: 2,
+        //                 style: TextStyle(fontWeight: FontWeight.bold),
+        //               ),
+        //             ),
+        //             Row(
+        //               children: [
+        //                 Text(
+        //                   "developers.google.com",
+        //                   style: TextStyle(
+        //                       color: Theme.of(context).colorScheme.secondary),
+        //                 ),
+        //                 const SizedBox(
+        //                   width: 4,
+        //                 ),
+        //                 Container(
+        //                   width: 4,
+        //                   height: 4,
+        //                   decoration: BoxDecoration(
+        //                     color: Theme.of(context).colorScheme.inversePrimary,
+        //                     borderRadius: BorderRadius.circular(15),
+        //                   ),
+        //                 ),
+        //                 const SizedBox(
+        //                   width: 4,
+        //                 ),
+        //                 Text(
+        //                   "bacaan 1 menit",
+        //                   style: TextStyle(
+        //                       color: Theme.of(context).colorScheme.secondary),
+        //                 )
+        //               ],
+        //             ),
+        //           ],
+        //         ),
+        //       )
+        //     ],
+        //   ),
+        // ),
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: Row(

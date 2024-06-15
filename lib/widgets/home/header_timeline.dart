@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 class HeaderTimeLine extends StatelessWidget {
-  const HeaderTimeLine({super.key});
+  Map<String, dynamic> data;
+  HeaderTimeLine({super.key, required this.data});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +18,7 @@ class HeaderTimeLine extends StatelessWidget {
               ),
               child: ClipOval(
                 child: Image.asset(
-                  "assets/images/fikri.jpeg",
+                  "assets/images/${data["userData"]["profile"]}",
                   fit: BoxFit.cover,
                   width: 52,
                   height: 52,
@@ -32,9 +33,9 @@ class HeaderTimeLine extends StatelessWidget {
               children: [
                 Row(
                   children: [
-                    const Text(
-                      "M. Fikri",
-                      style: TextStyle(
+                    Text(
+                      data["userData"]["name"],
+                      style: const TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 16,
                       ),
@@ -42,9 +43,9 @@ class HeaderTimeLine extends StatelessWidget {
                     const SizedBox(
                       width: 4,
                     ),
-                    const Text(
-                      "(He/Him)",
-                      style: TextStyle(
+                    Text(
+                      data["pronoun"],
+                      style: const TextStyle(
                         fontWeight: FontWeight.w600,
                         fontSize: 14,
                       ),
@@ -63,25 +64,25 @@ class HeaderTimeLine extends StatelessWidget {
                     const SizedBox(
                       width: 6,
                     ),
-                    const Text(
-                      "Teman anda",
-                      style: TextStyle(
+                    Text(
+                      data["status"],
+                      style: const TextStyle(
                         fontSize: 14,
                       ),
                     )
                   ],
                 ),
-                const Text(
-                  "Front-End React Developer",
-                  style: TextStyle(
+                Text(
+                  data["user_skill"],
+                  style: const TextStyle(
                     fontSize: 15,
                   ),
                 ),
                 Row(
                   children: [
-                    const Text(
-                      "6 bln",
-                      style: TextStyle(
+                    Text(
+                      data["time"],
+                      style: const TextStyle(
                         fontSize: 12,
                       ),
                     ),

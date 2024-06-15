@@ -10,6 +10,19 @@ class UserModel extends ChangeNotifier {
       "name": "1",
       "email": "1",
       "password": "1",
+      "profile": "default.png",
+    },
+    {
+      "name": "M. Fikri",
+      "email": "muhammadfikri4402@gmail.com",
+      "password": "password",
+      "profile": "fikri.jpeg",
+    },
+    {
+      "name": "Go Youn Jung",
+      "email": "gyj",
+      "password": "gyj",
+      "profile": "gyt.png",
     }
   ];
 
@@ -17,6 +30,7 @@ class UserModel extends ChangeNotifier {
     "name": "",
     "email": "",
     "password": "",
+    "profile": "default.png",
   };
 
   bool getLogin(String email, String password) {
@@ -63,6 +77,10 @@ class UserModel extends ChangeNotifier {
       berhasil = false;
       notifyListeners();
     }
+  }
+
+  Map<String, dynamic> getUser() {
+    return user;
   }
 
   void logout() {

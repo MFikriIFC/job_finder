@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:job_finder/models/user_model.dart';
+import 'package:provider/provider.dart';
 
 class ScrollAppbar extends StatefulWidget {
   const ScrollAppbar({
@@ -43,7 +45,7 @@ class _ScrollAppbarState extends State<ScrollAppbar> {
                     },
                     child: ClipOval(
                       child: Image.asset(
-                        "assets/images/gyt.png",
+                        "assets/images/${Provider.of<UserModel>(context).getUser()["profile"]}",
                         fit: BoxFit.cover,
                         width: 32,
                         height: 32,
