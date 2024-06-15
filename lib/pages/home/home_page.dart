@@ -27,9 +27,8 @@ class _HomePageState extends State<HomePage> {
       body: SafeArea(
         top: true,
         child: ScrollAppbar(
-          body: SingleChildScrollView(
-              child: Consumer<PostProvider>(
-            builder: (context, value, child) => Column(
+          body: Consumer<PostProvider>(
+            builder: (context, value, child) => ListView(
               children: [
                 ...value.getPost().map(
                       (e) => Column(
@@ -47,7 +46,7 @@ class _HomePageState extends State<HomePage> {
                     ),
               ],
             ),
-          )),
+          ),
           actionIcon: Icons.chat,
           actionScreen: const ChattingPage(),
         ),

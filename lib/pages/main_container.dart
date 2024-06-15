@@ -11,7 +11,7 @@ class MainContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<UserModel>(
       builder: (context, value, child) =>
-          value.isLogin ? const ContainerPage() : Login(),
+          value.getLoginStatus() ? const ContainerPage() : Login(),
     );
   }
 }

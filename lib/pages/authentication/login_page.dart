@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:job_finder/models/user_model.dart';
 import 'package:job_finder/pages/authentication/register_page.dart';
-import 'package:job_finder/pages/home/home_page.dart';
 import 'package:provider/provider.dart';
 
 class Login extends StatefulWidget {
@@ -18,7 +16,7 @@ class _LoginState extends State<Login> {
       MaterialPageRoute(
         builder: (ctx) => screen,
       ),
-    ); //
+    );
   }
 
   final emailController = TextEditingController();
@@ -46,12 +44,6 @@ class _LoginState extends State<Login> {
                   "assets/images/logovar1.png",
                   width: 80,
                 ),
-                // IconButton(
-                //   icon: const Icon(Icons.clear_rounded),
-                //   onPressed: () {
-                //     Navigator.pop(context);
-                //   },
-                // )
               ],
             ),
 
@@ -67,8 +59,7 @@ class _LoginState extends State<Login> {
 
             GestureDetector(
               onTap: () {
-                _changeScreen(
-                    Register()); // Call your _changeScreen function here
+                _changeScreen(Register());
               },
               child: const Text.rich(
                 TextSpan(
@@ -137,21 +128,19 @@ class _LoginState extends State<Login> {
             ),
 
             // submit button
-            Expanded(
-              child: ElevatedButton(
-                onPressed: () {
-                  Provider.of<UserModel>(context, listen: false)
-                      .getLogin(emailController.text, pwdController.text);
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xFF006394),
-                  shadowColor: Colors.transparent,
-                ),
-                child: const Text(
-                  "Sign In",
-                  style: TextStyle(
-                      color: Colors.white, fontWeight: FontWeight.w600),
-                ),
+            ElevatedButton(
+              onPressed: () {
+                Provider.of<UserModel>(context, listen: false)
+                    .getLogin(emailController.text, pwdController.text);
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: const Color(0xFF006394),
+                shadowColor: Colors.transparent,
+              ),
+              child: const Text(
+                "Sign In",
+                style:
+                    TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
               ),
             ),
 

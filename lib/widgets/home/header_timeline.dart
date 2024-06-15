@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:job_finder/models/user_model.dart';
+import 'package:provider/provider.dart';
 
 class HeaderTimeLine extends StatelessWidget {
-  Map<String, dynamic> data;
-  HeaderTimeLine({super.key, required this.data});
+  final Map<String, dynamic> data;
+  const HeaderTimeLine({super.key, required this.data});
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +46,7 @@ class HeaderTimeLine extends StatelessWidget {
                       width: 4,
                     ),
                     Text(
-                      data["pronoun"],
+                      data["userData"]["pronoun"],
                       style: const TextStyle(
                         fontWeight: FontWeight.w600,
                         fontSize: 14,
@@ -65,7 +67,10 @@ class HeaderTimeLine extends StatelessWidget {
                       width: 6,
                     ),
                     Text(
-                      data["status"],
+                      data["userData"]["name"] ==
+                              Provider.of<UserModel>(context).getUser()["name"]
+                          ? "Anda"
+                          : "Orang Lain",
                       style: const TextStyle(
                         fontSize: 14,
                       ),
@@ -73,7 +78,7 @@ class HeaderTimeLine extends StatelessWidget {
                   ],
                 ),
                 Text(
-                  data["user_skill"],
+                  data["userData"]["user_skill"],
                   style: const TextStyle(
                     fontSize: 15,
                   ),
