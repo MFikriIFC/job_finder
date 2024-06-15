@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:job_finder/providers/chat_data_provider.dart';
+import 'package:intl/intl.dart';
 
 class ChattingPageView extends StatefulWidget {
   const ChattingPageView({
@@ -16,9 +19,40 @@ class ChattingPageView extends StatefulWidget {
 
 class _ChattingPageViewState extends State<ChattingPageView> {
   bool _isTyping = false;
+  final TextEditingController _messageController = TextEditingController();
 
+  void _sendMessage() {
+    if (_messageController.text.isEmpty) return;
+
+    Provider.of<ChatDataProvider>(context, listen: false).addMessage(
+      widget.userName,
+      {
+        "sender": "Me",
+        "message": _messageController.text,
+        "time": DateTime.now().toString(),
+      },
+    );
+
+    // Clear the text field after sending message
+    _messageController.clear();
+
+    // Optional: Set _isTyping to false if needed
+    _isTyping = false;
+  }
+
+
+  
+  
+
+  String _formatDate(String dateString) {
+    DateTime date = DateTime.parse(dateString);
+    return DateFormat('MMM d, yyyy, h:mm a').format(date);
+  }
+  
   @override
   Widget build(BuildContext context) {
+    final chatHistory = Provider.of<ChatDataProvider>(context).getChatHistory(widget.userName);
+
     return Scaffold(
       appBar: AppBar(
         iconTheme: IconThemeData(
@@ -26,8 +60,7 @@ class _ChattingPageViewState extends State<ChattingPageView> {
         ),
         backgroundColor: Theme.of(context).colorScheme.background,
         shape: const Border(
-            bottom:
-                BorderSide(color: Color.fromARGB(83, 140, 140, 140), width: 1)),
+            bottom: BorderSide(color: Color.fromARGB(83, 140, 140, 140), width: 1)),
         title: Text(
           widget.userName,
           maxLines: 1,
@@ -61,138 +94,51 @@ class _ChattingPageViewState extends State<ChattingPageView> {
       body: Column(
         children: [
           Expanded(
-            child: ListView(
-              children: <Widget>[
-                Padding(
-                  padding: const EdgeInsetsDirectional.all(16),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      ClipOval(
-                        child: Image.network(
-                          widget.userImg,
-                          fit: BoxFit.cover,
-                          width: 50,
-                          height: 50,
-                        ),
+              child: ListView(
+            children: chatHistory.map((chat) {
+              return Padding(
+                padding: const EdgeInsets.all(12),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    ClipOval(
+                      child: Image.network(
+                        chat["sender"] == "Me"
+                            ? "assets/images/gyt.png"
+                            : widget.userImg,
+                        fit: BoxFit.cover,
+                        width: 32,
+                        height: 32,
                       ),
-                      const SizedBox(
-                        height: 8,
-                      ),
-                      Row(
+                    ),
+                    const SizedBox(
+                      width: 8,
+                    ),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(widget.userName,
-                              style:
-                                  const TextStyle(fontWeight: FontWeight.w500)),
-                          const Text(' (He/Him)')
+                          Row(
+                            children: [
+                              Text(chat["sender"],
+                                  style: const TextStyle(
+                                      fontWeight: FontWeight.w500)),
+                              Text(' • ${_formatDate(chat["time"])}',
+                                  style: TextStyle(
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .inversePrimary))
+                            ],
+                          ),
+                          Text(chat["message"])
                         ],
                       ),
-                    ],
-                  ),
+                    )
+                  ],
                 ),
-                Row(children: <Widget>[
-                  Expanded(
-                    child: Container(
-                        margin: const EdgeInsets.only(right: 20.0),
-                        child: Divider(
-                          color: Theme.of(context).colorScheme.outline,
-                        )),
-                  ),
-                  const Text(
-                    "SEP 14, 2023",
-                    style: TextStyle(fontWeight: FontWeight.w400),
-                  ),
-                  Expanded(
-                    child: Container(
-                        margin: const EdgeInsets.only(
-                          left: 20.0,
-                        ),
-                        child: Divider(
-                          color: Theme.of(context).colorScheme.outline,
-                        )),
-                  ),
-                ]),
-                Padding(
-                  padding: const EdgeInsets.all(12),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      ClipOval(
-                        child: Image.network(
-                          widget.userImg,
-                          fit: BoxFit.cover,
-                          width: 32,
-                          height: 32,
-                        ),
-                      ),
-                      const SizedBox(
-                        width: 8,
-                      ),
-                      Expanded(
-                        child: Column(
-                          children: [
-                            Row(
-                              children: [
-                                Text(widget.userName,
-                                    style: const TextStyle(
-                                        fontWeight: FontWeight.w500)),
-                                Text(' (He/Him) • 11:31 AM',
-                                    style: TextStyle(
-                                        color: Theme.of(context)
-                                            .colorScheme
-                                            .inversePrimary))
-                              ],
-                            ),
-                            const Text(
-                                'Hi Go Youn Jung\n\nSalam kenal saya Coach Shin, Recruitment Supervisor PT SSSS.\nSaat ini kami lagi nyari kandidat potensial nih untuk posisi Frontend Developer penempatan di Kota Medan.\n\nKira-kira apakah bapak tertarik untuk kesempatan ini?\n\nKalau mau sharing lebih detil lagi jangan sungkan untuk balas pesan ini yaa, Thanks.\n\nBest Regards,\nJordan Pravin')
-                          ],
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(12),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      ClipOval(
-                        child: Image.asset(
-                          "assets/images/gyt.png",
-                          fit: BoxFit.cover,
-                          width: 32,
-                          height: 32,
-                        ),
-                      ),
-                      const SizedBox(
-                        width: 8,
-                      ),
-                      Expanded(
-                        child: Column(
-                          children: [
-                            Row(
-                              children: [
-                                const Text("Go Youn Jung",
-                                    style:
-                                        TextStyle(fontWeight: FontWeight.w500)),
-                                Text(' (She/Her) • 11:50 AM',
-                                    style: TextStyle(
-                                        color: Theme.of(context)
-                                            .colorScheme
-                                            .inversePrimary))
-                              ],
-                            ),
-                            const Text(
-                                'Hi juga pak Jordan\n\nTerima kasih untuk kesempatan yang bapak berikan, kalau boleh tau, apa saja ya kriteria kriteria yang harus dipenuhi untuk posisi ini ya?')
-                          ],
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ),
+              );
+            }).toList(),
+          )),
           Container(
               decoration: const BoxDecoration(
                 border: Border(
@@ -221,6 +167,7 @@ class _ChattingPageViewState extends State<ChattingPageView> {
                     margin: const EdgeInsets.symmetric(
                         horizontal: 10), // Set horizontal margin
                     child: TextFormField(
+                      controller: _messageController,
                       onChanged: (value) {
                         setState(() {
                           _isTyping = value.isNotEmpty;
@@ -253,7 +200,7 @@ class _ChattingPageViewState extends State<ChattingPageView> {
                       ? const Icon(Icons.send)
                       : const Icon(Icons.mic),
                   iconSize: 20.0,
-                  onPressed: () {},
+                  onPressed: _sendMessage,
                 )
               ])),
         ],

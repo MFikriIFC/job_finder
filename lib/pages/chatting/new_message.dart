@@ -1,11 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:job_finder/pages/chatting/chatting_page_view.dart';
 import 'package:job_finder/widgets/chatting/new_message_row.dart';
+import 'package:provider/provider.dart';
+import 'package:job_finder/providers/chat_data_provider.dart';
 
 class NewMessage extends StatelessWidget {
-  const NewMessage({super.key});
+  const NewMessage({Key? key}) : super(key: key);
+
+  void _startChat(BuildContext context, String userImg, String userName) {
+    final chatProvider = Provider.of<ChatDataProvider>(context, listen: false);
+    chatProvider.addOrUpdateChat(userImg, userName, context);
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (ctx) => ChattingPageView(userImg: userImg, userName: userName),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
+    final chatProvider = Provider.of<ChatDataProvider>(context);
+    final userList = chatProvider.userList;
+
+    // Sort userList by userName
+    userList.sort((a, b) => a['userName'].compareTo(b['userName']));
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('New message'),
@@ -37,23 +56,24 @@ class NewMessage extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
         child: ListView(
-          children: const [
-            Text(
+          children: [
+            const Text(
               'Suggested',
               style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
             ),
-            SizedBox(
+            const SizedBox(
               height: 16,
             ),
             Column(
-              children: [
-                NewMessageRow(
-                    userImg:
-                        'https://akcdn.detik.net.id/community/media/visual/2024/01/27/shin-tae-yong_169.jpeg?w=600&q=90',
-                    userName: 'Shin Tae Young',
-                    userDesc: 'Indonesia Football coach')
-              ],
-            )
+              children: userList.map((user) {
+                return NewMessageRow(
+                  userImg: user['userImg'],
+                  userName: user['userName'],
+                  userDesc: user['userDesc'],
+                  onTap: () => _startChat(context, user['userImg'], user['userName']),
+                );
+              }).toList(),
+            ),
           ],
         ),
       ),

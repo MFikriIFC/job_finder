@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:job_finder/pages/chatting/chatting_page_view.dart';
+import 'package:intl/intl.dart';
 
 class ChattingRow extends StatefulWidget {
   const ChattingRow({
@@ -32,7 +32,12 @@ class _ChattingRowState extends State<ChattingRow> {
           userName: widget.userName,
         ),
       ),
-    ); //
+    );
+  }
+
+  String _formatDate(String dateString) {
+    DateTime date = DateTime.parse(dateString);
+    return DateFormat('MMM d, yyyy, h:mm a').format(date);
   }
 
   @override
@@ -72,7 +77,7 @@ class _ChattingRowState extends State<ChattingRow> {
                           ),
                           const Spacer(),
                           Text(
-                            widget.lastDate,
+                            _formatDate(widget.lastDate),
                             style: TextStyle(
                                 color: Theme.of(context)
                                     .colorScheme

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:job_finder/pages/chatting/chatting_page_view.dart';
 
 class NewMessageRow extends StatelessWidget {
   const NewMessageRow({
@@ -7,22 +6,18 @@ class NewMessageRow extends StatelessWidget {
     required this.userImg,
     required this.userName,
     required this.userDesc,
+    required this.onTap,
   });
 
   final String userImg;
   final String userName;
   final String userDesc;
+  final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        Navigator.of(context).push(
-          MaterialPageRoute(
-              builder: (ctx) =>
-                  ChattingPageView(userImg: userImg, userName: userName)),
-        );
-      },
+      onTap: onTap,
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

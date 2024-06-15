@@ -5,6 +5,7 @@ import 'package:job_finder/models/user_model.dart';
 import 'package:job_finder/pages/main_container.dart';
 import 'package:job_finder/models/themes/theme_provider.dart';
 import 'package:provider/provider.dart';
+import 'package:job_finder/providers/chat_data_provider.dart';
 
 void main() {
   runApp(
@@ -21,6 +22,9 @@ void main() {
         ),
         ChangeNotifierProvider(
           create: (context) => ThemeProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => ChatDataProvider(), // Add this line
         ),
       ],
       child: const MyApp(),

@@ -4,6 +4,8 @@ import 'package:job_finder/widgets/chatting/chatting_page_filter.dart';
 import 'package:job_finder/widgets/chatting/chatting_row.dart';
 import 'package:provider/provider.dart';
 import 'package:job_finder/models/themes/theme_provider.dart';
+import 'package:job_finder/providers/chat_data_provider.dart';
+import 'dart:async';
 
 class ChattingPage extends StatefulWidget {
   const ChattingPage({super.key});
@@ -22,6 +24,37 @@ class _ChattingPageState extends State<ChattingPage> {
     );
   }
 
+  Future<List<Widget>> _fetchChattingRows(BuildContext context) async {
+    await Future.delayed(const Duration(seconds: 3));
+    var chatData = Provider.of<ChatDataProvider>(context, listen: false).chatData;
+
+    // Sort the data by lastDate (latest date first)
+    chatData.sort((a, b) => DateTime.parse(b['lastDate']).compareTo(DateTime.parse(a['lastDate'])));
+
+    return chatData.map((e) {
+      return Column(
+        children: [
+          ChattingRow(
+            key: UniqueKey(),
+            userImg: e['userImg'],
+            userName: e['userName'],
+            lastText: e['lastText'],
+            lastDate: e['lastDate'],
+            you: e['you'],
+          ),
+          Divider(
+            height: 32,
+            color: Theme.of(context).colorScheme.outline,
+          ),
+        ],
+      );
+    }).toList();
+  }
+
+  Future<void> _refreshChattingRows() async {
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -37,13 +70,12 @@ class _ChattingPageState extends State<ChattingPage> {
             children: [
               Expanded(
                 child: SizedBox(
-                  height: 35, // Set the height to your desired value
+                  height: 35,
                   child: Container(
                     decoration: BoxDecoration(
-                      // color: Theme.of(context).colorScheme.background,
                       color: Provider.of<ThemeProvider>(context).isDarkMode
-                      ? Colors.grey.shade900
-                      : const Color.fromARGB(255,238, 243, 247),
+                          ? Colors.grey.shade900
+                          : const Color.fromARGB(255, 238, 243, 247),
                       borderRadius: BorderRadius.circular(5.0),
                     ),
                     child: TextField(
@@ -62,11 +94,19 @@ class _ChattingPageState extends State<ChattingPage> {
           ),
           actions: [
             IconButton(
-                onPressed: _openChattingPageFilter,
-                icon: Icon(
-                  Icons.filter_list,
-                  color: Theme.of(context).iconTheme.color,
-                )),
+              onPressed: _openChattingPageFilter,
+              icon: Icon(
+                Icons.filter_list,
+                color: Theme.of(context).iconTheme.color,
+              ),
+            ),
+            IconButton(
+              onPressed: _refreshChattingRows,
+              icon: Icon(
+                Icons.refresh,
+                color: Theme.of(context).iconTheme.color,
+              ),
+            ),
           ],
           bottom: const TabBar(
             tabs: [
@@ -83,39 +123,23 @@ class _ChattingPageState extends State<ChattingPage> {
           children: [
             Padding(
               padding: const EdgeInsets.all(16),
-              child: ListView(
-                children: [
-                  const ChattingRow(
-                      userImg:
-                          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLY2_6n1KvFhEmhVfB0vU3KeW75RIFMtKMfT6leeqyoQ&s',
-                      userName: 'Sumatra Sarana Sekar Sakti',
-                      lastText:
-                          'Hi juga pak Jordan. Terima kasih untuk kesempatan yang bapak berikan, kalau boleh tau, apa saja ya kriteria kriteria yang harus dipenuhi untuk posisi ini ya?',
-                      lastDate: 'Fri',
-                      you: true),
-                  Divider(
-                    height: 32,
-                    color: Theme.of(context).colorScheme.outline,
-                  ),
-                  const ChattingRow(
-                      userImg:
-                          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxCWIZ7DJcuvrs-ck07PxK4TZQiHLZB12fpwLvkPOdWw&s',
-                      userName: 'Deddy Corbuzier',
-                      lastText: 'Gimana bro, jadi lamar di fit hub?',
-                      lastDate: 'Mar 24',
-                      you: false),
-                  Divider(
-                    height: 32,
-                    color: Theme.of(context).colorScheme.outline,
-                  ),
-                  const ChattingRow(
-                      userImg:
-                          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhxhOwtI3TkbGrxuxgCr-0l1vXyW9x_6RfopdDcnlMaA&s',
-                      userName: 'Topremit',
-                      lastText: 'Halo Go Youn Jung, ada loker ni, mau gak?',
-                      lastDate: 'Nov 15, 2023',
-                      you: false),
-                ],
+              child: FutureBuilder<List<Widget>>(
+                future: _fetchChattingRows(context),
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return const Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  } else if (snapshot.hasError) {
+                    return Center(
+                      child: Text('Error fetching data: ${snapshot.error}'),
+                    );
+                  } else {
+                    return ListView(
+                      children: snapshot.data ?? [],
+                    );
+                  }
+                },
               ),
             ),
             Center(
@@ -161,8 +185,7 @@ class _ChattingPageState extends State<ChattingPage> {
           },
           foregroundColor: Colors.white,
           backgroundColor: Colors.blue.shade600,
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
           child: const Icon(Icons.create),
         ),
       ),
