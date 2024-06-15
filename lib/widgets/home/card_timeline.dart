@@ -2,15 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:job_finder/widgets/home/header_timeline.dart';
 
 class CardTimeLine extends StatelessWidget {
-  const CardTimeLine({super.key});
+  final bool isLoading;
+
+  const CardTimeLine({super.key, required this.isLoading});
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const Padding(
-          padding: EdgeInsets.all(8.0),
-          child: HeaderTimeLine(),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: HeaderTimeLine(isLoading: isLoading),
         ),
         Padding(
           padding: const EdgeInsets.all(8.0),
@@ -73,12 +75,16 @@ class CardTimeLine extends StatelessWidget {
                         const SizedBox(
                           width: 4,
                         ),
-                        Container(
-                          width: 4,
-                          height: 4,
-                          decoration: BoxDecoration(
-                            color: Theme.of(context).colorScheme.inversePrimary,
-                            borderRadius: BorderRadius.circular(15),
+                        Visibility(
+                          visible: !isLoading,
+                          child: Container(
+                            width: 4,
+                            height: 4,
+                            decoration: BoxDecoration(
+                              color:
+                                  Theme.of(context).colorScheme.inversePrimary,
+                              borderRadius: BorderRadius.circular(15),
+                            ),
                           ),
                         ),
                         const SizedBox(
@@ -111,12 +117,12 @@ class CardTimeLine extends StatelessWidget {
         ),
         Column(
           children: [
-            Divider(
-              color: Theme.of(context).colorScheme.outline,
+            Visibility(
+              visible: !isLoading,
+              child: Divider(
+                color: Theme.of(context).colorScheme.outline,
+              ),
             ),
-            // const SizedBox(
-            //   height: 8,
-            // ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
