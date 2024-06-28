@@ -22,15 +22,15 @@ class AnalyticItem extends StatelessWidget {
       ),
       title: Text(
         title,
-        style: TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.w600,
-            color: Theme.of(context).colorScheme.inversePrimary),
+        style: const TextStyle(
+          fontSize: 16,
+          fontWeight: FontWeight.w600,
+        ),
       ),
       subtitle: Text(
         subtitle,
         style: TextStyle(
-            fontSize: 14, color: Theme.of(context).colorScheme.secondary),
+            fontSize: 14, color: Theme.of(context).colorScheme.inversePrimary),
       ),
     );
   }

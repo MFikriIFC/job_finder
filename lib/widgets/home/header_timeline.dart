@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class HeaderTimeLine extends StatelessWidget {
-  const HeaderTimeLine({super.key});
+  final bool isLoading;
+
+  const HeaderTimeLine({super.key, required this.isLoading});
 
   @override
   Widget build(BuildContext context) {
@@ -52,12 +54,15 @@ class HeaderTimeLine extends StatelessWidget {
                     const SizedBox(
                       width: 6,
                     ),
-                    Container(
-                      width: 4,
-                      height: 4,
-                      decoration: BoxDecoration(
-                        color: Theme.of(context).colorScheme.inversePrimary,
-                        borderRadius: BorderRadius.circular(99),
+                    Visibility(
+                      visible: !isLoading,
+                      child: Container(
+                        width: 4,
+                        height: 4,
+                        decoration: BoxDecoration(
+                          color: Theme.of(context).colorScheme.inversePrimary,
+                          borderRadius: BorderRadius.circular(99),
+                        ),
                       ),
                     ),
                     const SizedBox(
@@ -68,7 +73,7 @@ class HeaderTimeLine extends StatelessWidget {
                       style: TextStyle(
                         fontSize: 14,
                       ),
-                    )
+                    ),
                   ],
                 ),
                 const Text(
@@ -88,12 +93,15 @@ class HeaderTimeLine extends StatelessWidget {
                     const SizedBox(
                       width: 6,
                     ),
-                    Container(
-                      width: 4,
-                      height: 4,
-                      decoration: BoxDecoration(
-                        color: Theme.of(context).colorScheme.inversePrimary,
-                        borderRadius: BorderRadius.circular(99),
+                    Visibility(
+                      visible: !isLoading,
+                      child: Container(
+                        width: 4,
+                        height: 4,
+                        decoration: BoxDecoration(
+                          color: Theme.of(context).colorScheme.inversePrimary,
+                          borderRadius: BorderRadius.circular(99),
+                        ),
                       ),
                     ),
                     const SizedBox(
@@ -102,9 +110,9 @@ class HeaderTimeLine extends StatelessWidget {
                     const Icon(
                       Icons.public,
                       size: 12,
-                    )
+                    ),
                   ],
-                )
+                ),
               ],
             ),
           ],

@@ -35,7 +35,8 @@ class InterestItem extends StatelessWidget {
             ),
             Text(
               "$followersCount Followers",
-              style: TextStyle(color: Theme.of(context).colorScheme.secondary),
+              style: TextStyle(
+                  color: Theme.of(context).colorScheme.inversePrimary),
             ),
             const SizedBox(
               height: 16,
