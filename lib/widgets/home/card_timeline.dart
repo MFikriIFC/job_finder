@@ -13,7 +13,7 @@ class CardTimeLine extends StatelessWidget {
       children: [
         Padding(
           padding: const EdgeInsets.all(8.0),
-          child: HeaderTimeLine(isLoading: isLoading),
+          child: HeaderTimeLine(isLoading: isLoading, data: data),
         ),
         Padding(
           padding: const EdgeInsets.all(8.0),

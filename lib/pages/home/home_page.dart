@@ -54,40 +54,47 @@ class _HomePageState extends State<HomePage> {
 
   Widget _buildSkeleton() {
     return Skeletonizer(
-      child: SingleChildScrollView(
-        child: Column(
-          children: List.generate(3, (_) => CardTimeLine(isLoading: _isLoading))
-              .expand((widget) => [
-                    widget,
+        child: Consumer<PostProvider>(
+      builder: (context, value, child) => ListView(
+        children: value.allPost
+            .map((e) => CardTimeLine(
+                  isLoading: _isLoading,
+                  data: e,
+                ))
+            .expand(
+              (widget) => [
+                widget,
+                Divider(
+                  height: 24,
+                  thickness: 8,
+                  color: Theme.of(context).colorScheme.outline,
+                ),
+              ],
+            )
+            .toList(),
+      ),
+    ));
+  }
+
+  Widget _buildContent() {
+    return Consumer<PostProvider>(
+      builder: (context, value, child) => ListView(
+        children: [
+          ...value.getPost().map(
+                (e) => Column(
+                  children: [
+                    CardTimeLine(
+                      data: e,
+                      isLoading: _isLoading,
+                    ),
                     Divider(
                       height: 24,
                       thickness: 8,
                       color: Theme.of(context).colorScheme.outline,
                     ),
-                  ])
-              .toList(),
-        ),
-      ),
-    );
-  }
-
-  Widget _buildContent() {
-    return SingleChildScrollView(
-      child: Column(
-        children: [
-          CardTimeLine(isLoading: _isLoading),
-          Divider(
-            height: 24,
-            thickness: 8,
-            color: Theme.of(context).colorScheme.outline,
-          ),
-          CardTimeLine(isLoading: _isLoading),
-          Divider(
-            height: 24,
-            thickness: 8,
-            color: Theme.of(context).colorScheme.outline,
-          ),
-          CardTimeLine(isLoading: _isLoading),
+                  ],
+                ),
+              ),
         ],
       ),
     );

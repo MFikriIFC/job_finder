@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:job_finder/models/themes/theme_provider.dart';
 import 'package:job_finder/models/user_model.dart';
-import 'package:provider/provider.dart';
 
 class ScrollAppbar extends StatefulWidget {
   const ScrollAppbar({
