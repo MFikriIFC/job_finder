@@ -4,7 +4,8 @@ import 'package:job_finder/widgets/home/header_timeline.dart';
 class CardTimeLine extends StatelessWidget {
   final bool isLoading;
 
-  const CardTimeLine({super.key, required this.isLoading});
+  final Map<String, dynamic> data;
+  const CardTimeLine({super.key, required this.isLoading, required this.data});
 
   @override
   Widget build(BuildContext context) {

@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import "package:job_finder/models/bottom_nav_model.dart";
+import "package:job_finder/pages/post/post_page.dart";
 import "package:provider/provider.dart";
 
 class MyButtomNavBar extends StatefulWidget {
@@ -54,7 +55,19 @@ class _MyButtomNavBarState extends State<MyButtomNavBar> {
       elevation: 10,
       type: BottomNavigationBarType.fixed,
       onTap: (value) => {
-        Provider.of<BNavModel>(context, listen: false).setSelectedIndex(value)
+        if (value != 2)
+          {
+            Provider.of<BNavModel>(context, listen: false)
+                .setSelectedIndex(value)
+          }
+        else
+          {
+            showDialog(
+              context: context,
+              builder: (BuildContext context) =>
+                  Dialog.fullscreen(child: PostPage()),
+            ),
+          }
       },
     );
   }

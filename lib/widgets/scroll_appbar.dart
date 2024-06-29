@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:job_finder/models/themes/theme_provider.dart'; 
+import 'package:job_finder/models/themes/theme_provider.dart';
+import 'package:job_finder/models/user_model.dart';
+import 'package:provider/provider.dart';
 
 class ScrollAppbar extends StatefulWidget {
   const ScrollAppbar({
@@ -46,7 +48,7 @@ class _ScrollAppbarState extends State<ScrollAppbar> {
                     },
                     child: ClipOval(
                       child: Image.asset(
-                        "assets/images/gyt.png",
+                        "assets/images/${Provider.of<UserModel>(context).getUser()["profile"]}",
                         fit: BoxFit.cover,
                         width: 32,
                         height: 32,
@@ -71,9 +73,10 @@ class _ScrollAppbarState extends State<ScrollAppbar> {
                         child: Container(
                           decoration: BoxDecoration(
                             // color: Theme.of(context).colorScheme.background,
-                            color: Provider.of<ThemeProvider>(context).isDarkMode
-                            ? Colors.grey.shade900
-                            : const Color.fromARGB(255,238, 243, 247),
+                            color:
+                                Provider.of<ThemeProvider>(context).isDarkMode
+                                    ? Colors.grey.shade900
+                                    : const Color.fromARGB(255, 238, 243, 247),
                             borderRadius: BorderRadius.circular(5.0),
                           ),
                           child: TextField(

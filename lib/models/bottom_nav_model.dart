@@ -11,7 +11,7 @@ class BNavModel extends ChangeNotifier {
   final List<Widget> _pages = [
     const HomeContainer(),
     const NetworkContainer(),
-    const PostPage(),
+    PostPage(),
     NotificationContainer(),
     const JobContainer(),
   ];

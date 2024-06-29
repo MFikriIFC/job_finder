@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:job_finder/models/user_model.dart';
-import 'package:job_finder/pages/authentication/login_page.dart';
-import 'package:job_finder/pages/home/home_page.dart';
 import 'package:job_finder/pages/main_container.dart';
 import 'package:provider/provider.dart';
 
@@ -176,22 +174,32 @@ class _RegisterState extends State<Register> {
             ),
 
             // submit button
-            Expanded(
-              child: ElevatedButton(
-                onPressed: () {
-                  Provider.of<UserModel>(context, listen: false).addUser(
-                      nameController.text,
-                      emailController.text,
-                      pwdController.text);
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xFF006394),
-                  shadowColor: Colors.transparent,
-                ),
-                child: const Text(
-                  "Agree & Join",
-                  style: TextStyle(
-                      color: Colors.white, fontWeight: FontWeight.w600),
+            Consumer<UserModel>(
+              builder: (context, value, child) => Expanded(
+                child: ElevatedButton(
+                  onPressed: () {
+                    value.addUser(nameController.text, emailController.text,
+                        pwdController.text);
+                    if (value.getStatus()) {
+                      value.setBerhasil();
+                      // Navigator.of(context).push(
+                      //   MaterialPageRoute(
+                      //     builder: (BuildContext context) {
+                      //       return Login();
+                      //     },
+                      //   ),
+                      // );
+                    }
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color(0xFF006394),
+                    shadowColor: Colors.transparent,
+                  ),
+                  child: const Text(
+                    "Agree & Join",
+                    style: TextStyle(
+                        color: Colors.white, fontWeight: FontWeight.w600),
+                  ),
                 ),
               ),
             ),

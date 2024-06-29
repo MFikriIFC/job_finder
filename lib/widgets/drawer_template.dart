@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:job_finder/models/themes/theme_provider.dart';
+import 'package:job_finder/models/user_model.dart';
 import 'package:provider/provider.dart';
 
 class DrawerTemplate extends StatelessWidget {
@@ -24,7 +25,7 @@ class DrawerTemplate extends StatelessWidget {
                   children: [
                     ClipOval(
                       child: Image.asset(
-                        "assets/images/gyt.png",
+                        "assets/images/${Provider.of<UserModel>(context).getUser()["profile"]}",
                         fit: BoxFit.cover,
                         width: 96,
                         height: 96,
@@ -33,9 +34,9 @@ class DrawerTemplate extends StatelessWidget {
                     const SizedBox(
                       height: 12,
                     ),
-                    const Text(
-                      'Go Youn Jung',
-                      style: TextStyle(
+                    Text(
+                      Provider.of<UserModel>(context).getUser()["name"],
+                      style: const TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.w700,
                       ),
