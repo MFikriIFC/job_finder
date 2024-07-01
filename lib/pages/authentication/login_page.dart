@@ -22,6 +22,10 @@ class _LoginState extends State<Login> {
   final emailController = TextEditingController();
   final pwdController = TextEditingController();
 
+  SnackBar snackBar = const SnackBar(
+    content: Text('Yay! A SnackBar!'),
+  );
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -130,8 +134,8 @@ class _LoginState extends State<Login> {
             // submit button
             ElevatedButton(
               onPressed: () {
-                Provider.of<UserModel>(context, listen: false)
-                    .getLogin(emailController.text, pwdController.text);
+                Provider.of<UserModel>(context, listen: false).getLogin(
+                    emailController.text, pwdController.text, context);
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: const Color(0xFF006394),

@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:job_finder/models/themes/theme_provider.dart';
 import 'package:job_finder/models/user_model.dart';
+import 'package:job_finder/pages/settings/settings_page.dart';
 import 'package:provider/provider.dart';
 
 class DrawerTemplate extends StatelessWidget {
@@ -18,18 +19,17 @@ class DrawerTemplate extends StatelessWidget {
         child: Column(
           children: [
             SizedBox(
-              height: 266,
+              height: 287,
               child: DrawerHeader(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     ClipOval(
                       child: Image.asset(
-                        "assets/images/${Provider.of<UserModel>(context).getUser()["profile"]}",
-                        fit: BoxFit.cover,
-                        width: 96,
-                        height: 96,
-                      ),
+                          "assets/images/${Provider.of<UserModel>(context).getUser()["profile"]}",
+                          fit: BoxFit.cover,
+                          width: 95,
+                          height: 95),
                     ),
                     const SizedBox(
                       height: 12,
@@ -135,9 +135,17 @@ class DrawerTemplate extends StatelessWidget {
                       'Try Premium for IDR0',
                       style: TextStyle(fontWeight: FontWeight.w600),
                     )),
-                const ListTile(
-                    leading: Icon(Icons.settings),
-                    title: Text(
+                ListTile(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const SettingsPage(),
+                        ),
+                      );
+                    },
+                    leading: const Icon(Icons.settings),
+                    title: const Text(
                       'Settings',
                       style: TextStyle(fontWeight: FontWeight.w600),
                     ))

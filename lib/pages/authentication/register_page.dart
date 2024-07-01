@@ -16,7 +16,7 @@ class _RegisterState extends State<Register> {
       MaterialPageRoute(
         builder: (ctx) => screen,
       ),
-    ); //
+    );
   }
 
   final nameController = TextEditingController();
@@ -175,31 +175,22 @@ class _RegisterState extends State<Register> {
 
             // submit button
             Consumer<UserModel>(
-              builder: (context, value, child) => Expanded(
-                child: ElevatedButton(
-                  onPressed: () {
-                    value.addUser(nameController.text, emailController.text,
-                        pwdController.text);
-                    if (value.getStatus()) {
-                      value.setBerhasil();
-                      // Navigator.of(context).push(
-                      //   MaterialPageRoute(
-                      //     builder: (BuildContext context) {
-                      //       return Login();
-                      //     },
-                      //   ),
-                      // );
-                    }
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color(0xFF006394),
-                    shadowColor: Colors.transparent,
-                  ),
-                  child: const Text(
-                    "Agree & Join",
-                    style: TextStyle(
-                        color: Colors.white, fontWeight: FontWeight.w600),
-                  ),
+              builder: (context, value, child) => ElevatedButton(
+                onPressed: () {
+                  value.addUser(nameController.text, emailController.text,
+                      pwdController.text, context);
+                  if (value.getStatus()) {
+                    value.setBerhasil();
+                  }
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: const Color(0xFF006394),
+                  shadowColor: Colors.transparent,
+                ),
+                child: const Text(
+                  "Agree & Join",
+                  style: TextStyle(
+                      color: Colors.white, fontWeight: FontWeight.w600),
                 ),
               ),
             ),

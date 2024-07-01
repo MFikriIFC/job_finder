@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:job_finder/pages/main_container.dart';
 
 class UserModel extends ChangeNotifier {
   bool isLogin = false;
@@ -49,10 +50,7 @@ class UserModel extends ChangeNotifier {
     "user_skill": "~",
   };
 
-  bool getLogin(String email, String password) {
-    print(email);
-    print(password);
-    print(listUsers);
+  bool getLogin(String email, String password, BuildContext context) {
     List<Map<String, dynamic>> hasil = listUsers
         .where((element) =>
             element["email"] == email && element["password"] == password)
@@ -61,18 +59,32 @@ class UserModel extends ChangeNotifier {
       isLogin = true;
       verif = true;
       user = hasil[0];
+      print("hasil : ${hasil[0]}");
       notifyListeners();
-      print(true);
       return true;
     } else {
-      print(false);
       verif = false;
+      showDialog<String>(
+        context: context,
+        builder: (BuildContext context) => AlertDialog(
+          title: const Text('Login Gagal'),
+          content: const Text(
+              'Email atau password yang Anda masukkan salah. Silakan coba lagi.'),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () => Navigator.pop(context, 'OK'),
+              child: const Text('OK'),
+            ),
+          ],
+        ),
+      );
       notifyListeners();
       return false;
     }
   }
 
-  void addUser(String name, String email, String password) {
+  void addUser(
+      String name, String email, String password, BuildContext context) {
     List<Map<String, dynamic>> hasil =
         listUsers.where((element) => element["email"] == email).toList();
     if (hasil.isEmpty) {
@@ -90,10 +102,43 @@ class UserModel extends ChangeNotifier {
       already = false;
       berhasil = true;
 
+      showDialog<String>(
+        context: context,
+        builder: (BuildContext context) => AlertDialog(
+          title: const Text('Registrasi Berhasil'),
+          content: const Text('Akun Anda berhasil dibuat. Selamat datang!'),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () => Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (BuildContext context) {
+                    return const MainContainer();
+                  },
+                ),
+              ),
+              child: const Text('Login'),
+            ),
+          ],
+        ),
+      );
       notifyListeners();
     } else {
       already = true;
       berhasil = false;
+      showDialog<String>(
+        context: context,
+        builder: (BuildContext context) => AlertDialog(
+          title: const Text('Registrasi Gagal'),
+          content: const Text(
+              'Email yang Anda masukkan sudah terdaftar. Silakan gunakan email lain.'),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () => Navigator.pop(context, 'OK'),
+              child: const Text('OK'),
+            ),
+          ],
+        ),
+      );
       notifyListeners();
     }
   }
@@ -104,6 +149,14 @@ class UserModel extends ChangeNotifier {
 
   void logout() {
     isLogin = false;
+    user = {
+      "name": "",
+      "email": "",
+      "password": "",
+      "profile": "default.png",
+      "pronoun": "~/~",
+      "user_skill": "~",
+    };
     notifyListeners();
   }
 
@@ -122,7 +175,7 @@ class UserModel extends ChangeNotifier {
   }
 
   bool getLoginStatus() {
-    print("is login" + isLogin.toString());
+    print("status login : ${isLogin}");
     return isLogin;
   }
 }

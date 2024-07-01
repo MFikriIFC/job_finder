@@ -17,91 +17,34 @@ class CardTimeLine extends StatelessWidget {
         ),
         Padding(
           padding: const EdgeInsets.all(8.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Text(
-                "I have complited an introduction to programming concepts in Kotlin to prepare for creating Android applications in Kotlin.",
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              Text(
-                "#AndroidBasics",
-                style: TextStyle(
-                  color: Colors.blue.shade600,
-                  fontWeight: FontWeight.bold,
+          child: SizedBox(
+            width: double.infinity,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  data["desc"],
                 ),
-              ),
-              Text(
-                "#JuaraAndroid",
-                style: TextStyle(
-                  color: Colors.blue.shade600,
-                  fontWeight: FontWeight.bold,
+                const SizedBox(
+                  height: 20,
                 ),
-              ),
-            ],
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Row(
-            children: [
-              Image.asset(
-                "assets/images/gdev.webp",
-                width: 100,
-                height: 100,
-              ),
-              const SizedBox(
-                width: 8,
-              ),
-              Expanded(
-                child: Column(
-                  children: [
-                    const SizedBox(
-                      child: Text(
-                        "Introduction to programming in Kotlin | Google Developer Profile | Google for Developers",
-                        overflow: TextOverflow.ellipsis,
-                        maxLines: 2,
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                    Row(
-                      children: [
-                        Text(
-                          "developers.google.com",
-                          style: TextStyle(
-                              color: Theme.of(context).colorScheme.secondary),
+                ...data["tag"].map(
+                  (e) {
+                    if (e != "") {
+                      return Text(
+                        e,
+                        style: TextStyle(
+                          color: Colors.blue.shade600,
+                          fontWeight: FontWeight.bold,
                         ),
-                        const SizedBox(
-                          width: 4,
-                        ),
-                        Visibility(
-                          visible: !isLoading,
-                          child: Container(
-                            width: 4,
-                            height: 4,
-                            decoration: BoxDecoration(
-                              color:
-                                  Theme.of(context).colorScheme.inversePrimary,
-                              borderRadius: BorderRadius.circular(15),
-                            ),
-                          ),
-                        ),
-                        const SizedBox(
-                          width: 4,
-                        ),
-                        Text(
-                          "bacaan 1 menit",
-                          style: TextStyle(
-                              color: Theme.of(context).colorScheme.secondary),
-                        )
-                      ],
-                    ),
-                  ],
-                ),
-              )
-            ],
+                      );
+                    } else {
+                      return const SizedBox();
+                    }
+                  },
+                )
+              ],
+            ),
           ),
         ),
         Padding(
@@ -112,7 +55,7 @@ class CardTimeLine extends StatelessWidget {
               const SizedBox(
                 width: 4,
               ),
-              const Text("150"),
+              Text(data["likes"].toString()),
             ],
           ),
         ),
@@ -131,14 +74,19 @@ class CardTimeLine extends StatelessWidget {
                   children: [
                     Icon(
                       Icons.thumb_up_alt_outlined,
-                      color: Colors.blue.shade600,
+                      color: data["like"]
+                          ? Colors.blue.shade600
+                          : Theme.of(context).colorScheme.inversePrimary,
                     ),
                     const SizedBox(
                       height: 2,
                     ),
                     Text(
                       "Like",
-                      style: TextStyle(color: Colors.blue.shade600),
+                      style: TextStyle(
+                          color: data["like"]
+                              ? Colors.blue.shade600
+                              : Theme.of(context).colorScheme.inversePrimary),
                     )
                   ],
                 ),
