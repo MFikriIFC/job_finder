@@ -3,6 +3,7 @@ import 'package:job_finder/models/pages_model.dart';
 import 'package:job_finder/pages/chatting/chatting_page.dart';
 import 'package:job_finder/widgets/bottom_navbar.dart';
 import 'package:job_finder/widgets/drawer_template.dart';
+import 'package:job_finder/widgets/network/event_section.dart';
 import 'package:job_finder/widgets/network/invitation_section.dart';
 import 'package:job_finder/widgets/network/suggestion_section.dart';
 import 'package:job_finder/widgets/scroll_appbar.dart';
@@ -49,7 +50,7 @@ class NetworkPage extends StatelessWidget {
                 thickness: 8,
                 color: Theme.of(context).colorScheme.outline,
               ),
-              InvitationSection(),
+              const InvitationSection(),
               Divider(
                 height: 24,
                 thickness: 8,
@@ -117,6 +118,7 @@ class NetworkPage extends StatelessWidget {
                 thickness: 8,
                 color: Theme.of(context).colorScheme.outline,
               ),
+              EventSection(),
             ],
           ),
           actionIcon: Icons.chat,

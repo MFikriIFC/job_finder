@@ -1,19 +1,17 @@
 import 'package:flutter/material.dart';
 
-class SuggestionCard extends StatelessWidget {
-  final String name;
+class EventCard extends StatelessWidget {
+  final String header;
   final String title;
-  final int mutualConnections;
-  final String profileImageUrl;
-  final String backgroundUrl;
+  final String date;
+  final String attendees;
 
-  const SuggestionCard({
+  const EventCard({
     super.key,
-    required this.name,
+    required this.header,
     required this.title,
-    required this.mutualConnections,
-    required this.profileImageUrl,
-    required this.backgroundUrl,
+    required this.date,
+    required this.attendees,
   });
 
   @override
@@ -31,23 +29,15 @@ class SuggestionCard extends StatelessWidget {
             clipBehavior: Clip.none,
             children: [
               Container(
-                height: 96,
+                height: 200,
                 width: double.infinity,
                 decoration: BoxDecoration(
                   borderRadius:
                       const BorderRadius.vertical(top: Radius.circular(8)),
                   image: DecorationImage(
-                    image: AssetImage(backgroundUrl),
+                    image: AssetImage(header),
                     fit: BoxFit.cover,
                   ),
-                ),
-              ),
-              Positioned(
-                bottom: 8,
-                left: 12,
-                child: CircleAvatar(
-                  radius: 36,
-                  backgroundImage: AssetImage(profileImageUrl),
                 ),
               ),
               Positioned(
@@ -70,48 +60,57 @@ class SuggestionCard extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  name,
-                  style: const TextStyle(
-                    fontWeight: FontWeight.w600,
-                    fontSize: 16,
-                  ),
-                ),
-                Text(
-                  title,
-                  style: TextStyle(
-                    fontSize: 14,
-                    color: Theme.of(context).colorScheme.inversePrimary,
-                  ),
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                ),
-                Text(
-                  '$mutualConnections mutual connections',
-                  style: TextStyle(
-                    fontSize: 14,
-                    color: Theme.of(context).colorScheme.inversePrimary,
-                  ),
+                Row(
+                  children: [
+                    Expanded(
+                      child: Text(
+                        title,
+                        style: const TextStyle(
+                          fontWeight: FontWeight.w600,
+                          fontSize: 16,
+                        ),
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 12,
+                    ),
+                    OutlinedButton(
+                      onPressed: () {},
+                      style: OutlinedButton.styleFrom(
+                        side: BorderSide(color: Colors.blue.shade900),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                      ),
+                      child: Text(
+                        'View',
+                        style: TextStyle(color: Colors.blue.shade900),
+                      ),
+                    ),
+                  ],
                 ),
                 const SizedBox(
-                  height: 12,
+                  height: 2,
                 ),
-                OutlinedButton(
-                  onPressed: () {},
-                  style: OutlinedButton.styleFrom(
-                    side: BorderSide(color: Colors.blue.shade900),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30),
-                    ),
+                Text(
+                  date,
+                  style: TextStyle(
+                    fontSize: 14,
+                    color: Theme.of(context).colorScheme.inversePrimary,
                   ),
-                  child: Text(
-                    'Connect',
-                    style: TextStyle(color: Colors.blue.shade900),
+                ),
+                Text(
+                  '$attendees attendees',
+                  style: TextStyle(
+                    fontSize: 14,
+                    color: Theme.of(context).colorScheme.inversePrimary,
                   ),
                 ),
               ],
             ),
-          ),
+          )
         ],
       ),
     );
