@@ -127,7 +127,7 @@ class DrawerTemplate extends StatelessWidget {
                       width: 20,
                       height: 20,
                       decoration: BoxDecoration(
-                        color: const Color.fromRGBO(231, 163, 62, 1),
+                        color: Colors.yellow.shade700,
                         borderRadius: BorderRadius.circular(3),
                       ),
                     ),
