@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:job_finder/models/pages_model.dart';
 import 'package:job_finder/widgets/bottom_navbar.dart';
 import 'package:job_finder/widgets/drawer_template.dart';
@@ -9,9 +10,15 @@ import 'package:job_finder/widgets/scroll_appbar.dart';
 import 'package:job_finder/pages/chatting/chatting_page.dart';
 import 'package:provider/provider.dart';
 
-class JobPage extends StatelessWidget {
+class JobPage extends StatefulWidget {
   const JobPage({super.key});
 
+  @override
+  State<JobPage> createState() => _JobPageState();
+}
+
+class _JobPageState extends State<JobPage> {
+  bool _showBanner = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,6 +44,56 @@ class JobPage extends StatelessWidget {
                         width: 12,
                       ),
                       AppBarButton(text: 'Post a free job'),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 12),
+                  child: Column(
+                    children: [
+                      if (_showBanner)
+                        MaterialBanner(
+                          dividerColor: Colors.transparent,
+                          backgroundColor: Colors.blue[50],
+                          content: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const Text(
+                                'Set up job alerts, and get notified about the latest job openings.',
+                                style: TextStyle(fontWeight: FontWeight.bold),
+                              ),
+                              const SizedBox(height: 8.0),
+                              SizedBox(
+                                width: double.infinity,
+                                child: ElevatedButton(
+                                  onPressed: () {
+                                  },
+                                  style: ElevatedButton.styleFrom(
+                                    backgroundColor: const Color(0xFF006394),
+                                    foregroundColor: Colors.white,
+                                  ),
+                                  child: const Text("Create a job alert"),
+                                ),
+                              ),
+                            ],
+                          ),
+                          leading: const CircleAvatar(
+                            backgroundColor: Color(0xFF006394),
+                            child: Icon(Icons.info, color: Colors.white),
+                          ),
+                          actions: [
+                            IconButton(
+                              icon: const Icon(Icons.close, color: Colors.black),
+                              onPressed: () {
+                                setState(() {
+                                  _showBanner = false;
+                                });
+                              },
+                            ),
+                          ],
+                          padding: const EdgeInsets.all(16),
+                        ),
+                      // Other content of your screen
                     ],
                   ),
                 ),

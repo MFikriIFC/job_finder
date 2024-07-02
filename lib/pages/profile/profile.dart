@@ -9,6 +9,7 @@ import "package:job_finder/widgets/profile/experience_section.dart";
 import "package:job_finder/widgets/profile/interest_section.dart";
 import "package:job_finder/widgets/profile/profile_img_section.dart";
 import "package:job_finder/widgets/profile/resource_section.dart";
+import "package:job_finder/widgets/profile/skill_section.dart";
 import "package:provider/provider.dart";
 
 class Profile extends StatelessWidget {
@@ -101,6 +102,12 @@ class Profile extends StatelessWidget {
               color: Theme.of(context).colorScheme.outline,
             ),
             const InterestSection(),
+            Divider(
+              height: 24,
+              thickness: 8,
+              color: Theme.of(context).colorScheme.outline,
+            ),
+            const SkillSection(),
           ],
         ),
       ),
