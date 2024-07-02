@@ -3,7 +3,6 @@ import 'package:job_finder/models/bottom_nav_model.dart';
 import 'package:job_finder/models/pages_model.dart';
 import 'package:job_finder/models/post_models.dart';
 import 'package:job_finder/models/user_model.dart';
-import 'package:job_finder/pages/main_container.dart';
 import 'package:job_finder/pages/network/network_container.dart';
 import 'package:job_finder/models/themes/theme_provider.dart';
 import 'package:provider/provider.dart';

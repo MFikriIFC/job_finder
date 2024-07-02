@@ -40,6 +40,25 @@ class PostProvider extends ChangeNotifier {
       },
       "for": "Anyone",
     },
+    {
+      "desc":
+          "I have complited an Introduction to programming concepts in Kotlin to prepare for creating Android application in Kotlin.",
+      "tag": ["#AndroidBasics", "#JuaraAndroid"],
+      "likes": 150,
+      "like": true,
+      "time": "6 bln",
+      "impressions": 462,
+      "user": "M. Fikri",
+      "userData": {
+        "name": "M. Fikri",
+        "email": "muhammadfikri4402@gmail.com",
+        "password": "password",
+        "profile": "fikri.jpeg",
+        "pronoun": "He/Him",
+        "user_skill": "Front End React Developer",
+      },
+      "for": "Anyone",
+    },
   ];
 
   String _for = "Anyone";

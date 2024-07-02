@@ -57,6 +57,7 @@ class _HomePageState extends State<HomePage> {
         child: Consumer<PostProvider>(
       builder: (context, value, child) => ListView(
         children: value.allPost
+            .take(3)
             .map((e) => CardTimeLine(
                   isLoading: _isLoading,
                   data: e,
