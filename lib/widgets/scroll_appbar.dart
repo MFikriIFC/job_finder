@@ -45,14 +45,17 @@ class _ScrollAppbarState extends State<ScrollAppbar> {
                     onTap: () {
                       Scaffold.of(context).openDrawer();
                     },
-                    child: ClipOval(
-                      child: Image.asset(
-                        "assets/images/${Provider.of<UserModel>(context).getUser()["profile"]}",
-                        fit: BoxFit.cover,
-                        width: 32,
-                        height: 32,
+                    child: Tooltip(
+                      message: 'Profile',
+                      child: ClipOval(
+                        child: Image.asset(
+                          "assets/images/${Provider.of<UserModel>(context).getUser()["profile"]}",
+                          fit: BoxFit.cover,
+                          width: 32,
+                          height: 32,
+                        ),
                       ),
-                    ),
+                    ), 
                   );
                 },
               ),
@@ -96,12 +99,17 @@ class _ScrollAppbarState extends State<ScrollAppbar> {
               const SizedBox(
                 width: 16,
               ),
-              IconButton(
+              Tooltip(
+                message: 'Chatting',
+                child: IconButton(
                   onPressed: _changeScreen,
                   icon: Icon(
                     widget.actionIcon,
                     color: Theme.of(context).iconTheme.color,
-                  ))
+                  )
+                )
+              ), 
+              
             ],
           ),
         )
