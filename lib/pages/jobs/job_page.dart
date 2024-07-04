@@ -66,8 +66,7 @@ class _JobPageState extends State<JobPage> {
                               SizedBox(
                                 width: double.infinity,
                                 child: ElevatedButton(
-                                  onPressed: () {
-                                  },
+                                  onPressed: () {},
                                   style: ElevatedButton.styleFrom(
                                     backgroundColor: const Color(0xFF006394),
                                     foregroundColor: Colors.white,
@@ -83,7 +82,8 @@ class _JobPageState extends State<JobPage> {
                           ),
                           actions: [
                             IconButton(
-                              icon: const Icon(Icons.close, color: Colors.black),
+                              icon:
+                                  const Icon(Icons.close, color: Colors.black),
                               onPressed: () {
                                 setState(() {
                                   _showBanner = false;
@@ -231,36 +231,30 @@ class _JobPageState extends State<JobPage> {
                     const Column(
                       children: [
                         HiringInNetwork(
-                            companyImg:
-                                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLY2_6n1KvFhEmhVfB0vU3KeW75RIFMtKMfT6leeqyoQ&s",
+                            companyImg: "ssss.jpeg",
                             position: 'Frontend Developer',
                             companyName: 'Sumatra Sarana Sekar Sakti',
                             location: 'Medan, Indonesia',
                             workSetup: '(On-site)',
-                            mutualImg:
-                                'https://thumb.viva.co.id/media/frontend/tokoh/2017/10/16/59e4500ae2296-andre-taulany3_216_287.jpg',
+                            mutualImg: 'andre.webp',
                             mutualAmount: 1,
                             timePosted: '6 months ago'),
                         HiringInNetwork(
-                            companyImg:
-                                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhxhOwtI3TkbGrxuxgCr-0l1vXyW9x_6RfopdDcnlMaA&s",
+                            companyImg: "topremit.png",
                             position: 'Chef',
                             companyName: 'Topremit',
                             location: 'Greater Medan',
                             workSetup: '(On-site)',
-                            mutualImg:
-                                'https://thumb.viva.co.id/media/frontend/tokoh/2017/10/16/59e4500ae2296-andre-taulany3_216_287.jpg',
+                            mutualImg: 'andre.webp',
                             mutualAmount: 1,
                             timePosted: '1 week ago'),
                         HiringInNetwork(
-                            companyImg:
-                                "https://d3g5ywftkpzr0e.cloudfront.net/wp-content/uploads/2023/04/12113212/FIT-HUB-Logo.png",
+                            companyImg: "fithub.png",
                             position: 'Fitness Manager',
                             companyName: 'FIT HUB',
                             location: 'Jakarta, Indonesia',
                             workSetup: '(On-site)',
-                            mutualImg:
-                                'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxCWIZ7DJcuvrs-ck07PxK4TZQiHLZB12fpwLvkPOdWw&s',
+                            mutualImg: 'botak.jpeg',
                             mutualAmount: 1,
                             timePosted: '2 weeks ago'),
                       ],
@@ -271,7 +265,11 @@ class _JobPageState extends State<JobPage> {
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           const Text("Show all "),
-                          Icon(Icons.arrow_right_alt_sharp, size: 18, color: Theme.of(context).iconTheme.color,),
+                          Icon(
+                            Icons.arrow_right_alt_sharp,
+                            size: 18,
+                            color: Theme.of(context).iconTheme.color,
+                          ),
                         ],
                       ),
                     ),
@@ -301,7 +299,7 @@ class _JobPageState extends State<JobPage> {
                 Padding(
                   padding:
                       const EdgeInsets.symmetric(horizontal: 48, vertical: 16),
-                  child: Expanded(
+                  child: Container(
                     child: Column(
                       children: [
                         Image.asset(
@@ -313,7 +311,7 @@ class _JobPageState extends State<JobPage> {
                         ),
                         const Text('Want more jobs?'),
                         const Text(
-                            "Search for jobs and we'll server recommendations that match your criteria"),
+                            "Search for jobs and we'll serve recommendations that match your criteria"),
                         const SizedBox(
                           height: 32,
                         ),

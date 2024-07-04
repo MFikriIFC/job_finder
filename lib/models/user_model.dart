@@ -51,25 +51,42 @@ class UserModel extends ChangeNotifier {
   };
 
   bool getLogin(String email, String password, BuildContext context) {
-    List<Map<String, dynamic>> hasil = listUsers
-        .where((element) =>
-            element["email"] == email && element["password"] == password)
-        .toList();
-    if (hasil.isNotEmpty) {
-      isLogin = true;
-      verif = true;
-      user = hasil[0];
-      print("hasil : ${hasil[0]}");
-      notifyListeners();
-      return true;
+    if (email.isNotEmpty && password.isNotEmpty) {
+      List<Map<String, dynamic>> hasil = listUsers
+          .where((element) =>
+              element["email"] == email && element["password"] == password)
+          .toList();
+      if (hasil.isNotEmpty) {
+        isLogin = true;
+        verif = true;
+        user = hasil[0];
+        print("hasil : ${hasil[0]}");
+        notifyListeners();
+        return true;
+      } else {
+        verif = false;
+        showDialog<String>(
+          context: context,
+          builder: (BuildContext context) => AlertDialog(
+            title: const Text('Login Gagal'),
+            content: const Text(
+                'Email atau password yang Anda masukkan salah. Silakan coba lagi.'),
+            actions: <Widget>[
+              TextButton(
+                onPressed: () => Navigator.pop(context, 'OK'),
+                child: const Text('OK'),
+              ),
+            ],
+          ),
+        );
+        notifyListeners();
+      }
     } else {
-      verif = false;
       showDialog<String>(
         context: context,
         builder: (BuildContext context) => AlertDialog(
           title: const Text('Login Gagal'),
-          content: const Text(
-              'Email atau password yang Anda masukkan salah. Silakan coba lagi.'),
+          content: const Text('Email atau password tidak boleh kosong.'),
           actions: <Widget>[
             TextButton(
               onPressed: () => Navigator.pop(context, 'OK'),
@@ -78,59 +95,75 @@ class UserModel extends ChangeNotifier {
           ],
         ),
       );
-      notifyListeners();
-      return false;
     }
+    return false;
   }
 
   void addUser(
       String name, String email, String password, BuildContext context) {
-    List<Map<String, dynamic>> hasil =
-        listUsers.where((element) => element["email"] == email).toList();
-    if (hasil.isEmpty) {
-      listUsers.add(
-        {
-          "name": name,
-          "email": email,
-          "password": password,
-          "profile": "default.png",
-          "pronoun": "~/~",
-          "user_skill": "~",
-        },
-      );
+    if (name.isNotEmpty && email.isNotEmpty && password.isNotEmpty) {
+      List<Map<String, dynamic>> hasil =
+          listUsers.where((element) => element["email"] == email).toList();
+      if (hasil.isEmpty) {
+        listUsers.add(
+          {
+            "name": name,
+            "email": email,
+            "password": password,
+            "profile": "default.png",
+            "pronoun": "~/~",
+            "user_skill": "~",
+          },
+        );
 
-      already = false;
-      berhasil = true;
+        already = false;
+        berhasil = true;
 
-      showDialog<String>(
-        context: context,
-        builder: (BuildContext context) => AlertDialog(
-          title: const Text('Registrasi Berhasil'),
-          content: const Text('Akun Anda berhasil dibuat. Selamat datang!'),
-          actions: <Widget>[
-            TextButton(
-              onPressed: () => Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (BuildContext context) {
-                    return const MainContainer();
-                  },
+        showDialog<String>(
+          context: context,
+          builder: (BuildContext context) => AlertDialog(
+            title: const Text('Registrasi Berhasil'),
+            content: const Text('Akun Anda berhasil dibuat. Selamat datang!'),
+            actions: <Widget>[
+              TextButton(
+                onPressed: () => Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (BuildContext context) {
+                      return const MainContainer();
+                    },
+                  ),
                 ),
+                child: const Text('Login'),
               ),
-              child: const Text('Login'),
-            ),
-          ],
-        ),
-      );
-      notifyListeners();
+            ],
+          ),
+        );
+        notifyListeners();
+      } else {
+        already = true;
+        berhasil = false;
+        showDialog<String>(
+          context: context,
+          builder: (BuildContext context) => AlertDialog(
+            title: const Text('Registrasi Gagal'),
+            content: const Text(
+                'Email yang Anda masukkan sudah terdaftar. Silakan gunakan email lain.'),
+            actions: <Widget>[
+              TextButton(
+                onPressed: () => Navigator.pop(context, 'OK'),
+                child: const Text('OK'),
+              ),
+            ],
+          ),
+        );
+        notifyListeners();
+      }
     } else {
-      already = true;
-      berhasil = false;
       showDialog<String>(
         context: context,
         builder: (BuildContext context) => AlertDialog(
           title: const Text('Registrasi Gagal'),
-          content: const Text(
-              'Email yang Anda masukkan sudah terdaftar. Silakan gunakan email lain.'),
+          content: const Text('Tidak boleh ada data yang kosong.'),
           actions: <Widget>[
             TextButton(
               onPressed: () => Navigator.pop(context, 'OK'),
@@ -139,7 +172,6 @@ class UserModel extends ChangeNotifier {
           ],
         ),
       );
-      notifyListeners();
     }
   }
 

@@ -3,8 +3,7 @@ import 'package:flutter/material.dart';
 class ChatDataProvider extends ChangeNotifier {
   final List<Map<String, dynamic>> _chatData = [
     {
-      "userImg":
-          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLY2_6n1KvFhEmhVfB0vU3KeW75RIFMtKMfT6leeqyoQ&s',
+      "userImg": 'ssss.jpeg',
       "userName": "Sumatra Sarana Sekar Sakti",
       "lastText":
           "Hi juga pak Jordan. Terima kasih untuk kesempatan yang bapak berikan, kalau boleh tau, apa saja ya kriteria kriteria yang harus dipenuhi untuk posisi ini ya?",
@@ -12,16 +11,14 @@ class ChatDataProvider extends ChangeNotifier {
       "you": true
     },
     {
-      "userImg":
-          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxCWIZ7DJcuvrs-ck07PxK4TZQiHLZB12fpwLvkPOdWw&s',
+      "userImg": 'botak.jpeg',
       "userName": "Deddy Corbuzier",
       "lastText": "Gimana bro, jadi lamar di fit hub?",
       "lastDate": "2023-06-13T06:00:00",
       "you": false
     },
     {
-      "userImg":
-          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhxhOwtI3TkbGrxuxgCr-0l1vXyW9x_6RfopdDcnlMaA&s',
+      "userImg": 'topremit.png',
       "userName": "Topremit",
       "lastText": "Halo Go Youn Jung, ada loker ni, mau gak?",
       "lastDate": "2023-11-15T10:00:00",
@@ -31,26 +28,22 @@ class ChatDataProvider extends ChangeNotifier {
 
   final List<Map<String, dynamic>> _userList = [
     {
-      "userImg":
-          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLY2_6n1KvFhEmhVfB0vU3KeW75RIFMtKMfT6leeqyoQ&s',
+      "userImg": 'ssss.jpeg',
       "userName": "Sumatra Sarana Sekar Sakti",
       "userDesc": "SSSS Company",
     },
     {
-      "userImg":
-          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxCWIZ7DJcuvrs-ck07PxK4TZQiHLZB12fpwLvkPOdWw&s',
+      "userImg": 'botak.jpeg',
       "userName": "Deddy Corbuzier",
       "userDesc": "Masa gk kenal bro",
     },
     {
-      "userImg":
-          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhxhOwtI3TkbGrxuxgCr-0l1vXyW9x_6RfopdDcnlMaA&s',
+      "userImg": 'topremit.jpeg',
       "userName": "Topremit",
       "userDesc": "Finance company",
     },
     {
-      "userImg":
-          'https://akcdn.detik.net.id/community/media/visual/2024/01/27/shin-tae-yong_169.jpeg?w=600&q=90',
+      "userImg": 'sty.jpeg',
       "userName": "Shin Tae Young",
       "userDesc": "Indonesia Football coach",
     },
@@ -138,7 +131,8 @@ class ChatDataProvider extends ChangeNotifier {
     if (chatDataIndex != -1) {
       _chatData[chatDataIndex]['lastText'] = message['message'];
       _chatData[chatDataIndex]['lastDate'] = message['time'];
-      _chatData[chatDataIndex]['you'] = message['sender'] == 'Me'; // Update 'you' field
+      _chatData[chatDataIndex]['you'] =
+          message['sender'] == 'Me'; // Update 'you' field
     }
 
     // Sort _chatData by lastDate

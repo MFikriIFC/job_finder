@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import "package:job_finder/models/pages_model.dart";
+import "package:job_finder/models/user_model.dart";
 import "package:job_finder/widgets/profile/about_section.dart";
 import "package:job_finder/widgets/profile/activity_section.dart";
 import "package:job_finder/widgets/profile/analytic_section.dart";
@@ -17,98 +18,100 @@ class Profile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          onPressed: () {
-            Provider.of<PageModel>(context, listen: false).resetIndex();
-          },
-        ),
-        title: const Text("Profile"),
-        actions: [
-          IconButton(onPressed: () {}, icon: const Icon(Icons.settings))
-        ],
-      ),
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const ProfileImgSection(
-              profileImg: "assets/images/gyt.png",
-              backgroundHeaderImg: "assets/images/patrick.jpg",
-            ),
-            Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  IconButton(
-                    onPressed: () {},
-                    icon: const Icon(Icons.create_outlined),
-                    color: Theme.of(context).colorScheme.inversePrimary,
-                  )
-                ],
-              ),
-            ),
-            const BiodataSection(
-              name: "Go Youn Jung",
-              pronouns: "She/Her",
-              headline:
-                  'Well-known Actress on South Korea || Watch "Death Game" on Netflix || Student at Universitas Mikroskil',
-              jobs: "Gold Medalist • TVN Company",
-              region: "Seoul, Gyeonggi, South Korea",
-              connectionCount: "999+",
-            ),
-            Divider(
-              height: 24,
-              thickness: 8,
-              color: Theme.of(context).colorScheme.outline,
-            ),
-            const AnalyticSession(),
-            Divider(
-              height: 24,
-              thickness: 8,
-              color: Theme.of(context).colorScheme.outline,
-            ),
-            const ResourceSection(),
-            Divider(
-              height: 24,
-              thickness: 8,
-              color: Theme.of(context).colorScheme.outline,
-            ),
-            const AboutSection(),
-            Divider(
-              height: 24,
-              thickness: 8,
-              color: Theme.of(context).colorScheme.outline,
-            ),
-            const ActivitySection(),
-            Divider(
-              height: 24,
-              thickness: 8,
-              color: Theme.of(context).colorScheme.outline,
-            ),
-            ExperienceSection(),
-            Divider(
-              height: 24,
-              thickness: 8,
-              color: Theme.of(context).colorScheme.outline,
-            ),
-            const EducationSection(),
-            Divider(
-              height: 24,
-              thickness: 8,
-              color: Theme.of(context).colorScheme.outline,
-            ),
-            const InterestSection(),
-            Divider(
-              height: 24,
-              thickness: 8,
-              color: Theme.of(context).colorScheme.outline,
-            ),
-            const SkillSection(),
+    return Consumer<UserModel>(
+      builder: (context, value, child) => Scaffold(
+        appBar: AppBar(
+          leading: IconButton(
+            icon: const Icon(Icons.arrow_back),
+            onPressed: () {
+              Provider.of<PageModel>(context, listen: false).resetIndex();
+            },
+          ),
+          title: const Text("Profile"),
+          actions: [
+            IconButton(onPressed: () {}, icon: const Icon(Icons.settings))
           ],
+        ),
+        body: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              ProfileImgSection(
+                profileImg: "assets/images/${value.getUser()["profile"]}",
+                backgroundHeaderImg: "assets/images/patrick.jpg",
+              ),
+              Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    IconButton(
+                      onPressed: () {},
+                      icon: const Icon(Icons.create_outlined),
+                      color: Theme.of(context).colorScheme.inversePrimary,
+                    )
+                  ],
+                ),
+              ),
+              BiodataSection(
+                name: "${value.getUser()["name"]}",
+                pronouns: "${value.getUser()["pronoun"]}",
+                headline:
+                    'Well-known Actress on South Korea || Watch "Death Game" on Netflix || Student at Universitas Mikroskil',
+                jobs: "Gold Medalist • TVN Company",
+                region: "Seoul, Gyeonggi, South Korea",
+                connectionCount: "999+",
+              ),
+              Divider(
+                height: 24,
+                thickness: 8,
+                color: Theme.of(context).colorScheme.outline,
+              ),
+              const AnalyticSession(),
+              Divider(
+                height: 24,
+                thickness: 8,
+                color: Theme.of(context).colorScheme.outline,
+              ),
+              const ResourceSection(),
+              Divider(
+                height: 24,
+                thickness: 8,
+                color: Theme.of(context).colorScheme.outline,
+              ),
+              const AboutSection(),
+              Divider(
+                height: 24,
+                thickness: 8,
+                color: Theme.of(context).colorScheme.outline,
+              ),
+              const ActivitySection(),
+              Divider(
+                height: 24,
+                thickness: 8,
+                color: Theme.of(context).colorScheme.outline,
+              ),
+              ExperienceSection(),
+              Divider(
+                height: 24,
+                thickness: 8,
+                color: Theme.of(context).colorScheme.outline,
+              ),
+              const EducationSection(),
+              Divider(
+                height: 24,
+                thickness: 8,
+                color: Theme.of(context).colorScheme.outline,
+              ),
+              const InterestSection(),
+              Divider(
+                height: 24,
+                thickness: 8,
+                color: Theme.of(context).colorScheme.outline,
+              ),
+              const SkillSection(),
+            ],
+          ),
         ),
       ),
     );

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:job_finder/models/user_model.dart';
 import 'package:provider/provider.dart';
 import 'package:job_finder/providers/chat_data_provider.dart';
 import 'package:intl/intl.dart';
@@ -40,18 +41,15 @@ class _ChattingPageViewState extends State<ChattingPageView> {
     _isTyping = false;
   }
 
-
-  
-  
-
   String _formatDate(String dateString) {
     DateTime date = DateTime.parse(dateString);
     return DateFormat('MMM d, yyyy, h:mm a').format(date);
   }
-  
+
   @override
   Widget build(BuildContext context) {
-    final chatHistory = Provider.of<ChatDataProvider>(context).getChatHistory(widget.userName);
+    final chatHistory =
+        Provider.of<ChatDataProvider>(context).getChatHistory(widget.userName);
 
     return Scaffold(
       appBar: AppBar(
@@ -60,7 +58,8 @@ class _ChattingPageViewState extends State<ChattingPageView> {
         ),
         backgroundColor: Theme.of(context).colorScheme.background,
         shape: const Border(
-            bottom: BorderSide(color: Color.fromARGB(83, 140, 140, 140), width: 1)),
+            bottom:
+                BorderSide(color: Color.fromARGB(83, 140, 140, 140), width: 1)),
         title: Text(
           widget.userName,
           maxLines: 1,
@@ -102,10 +101,10 @@ class _ChattingPageViewState extends State<ChattingPageView> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     ClipOval(
-                      child: Image.network(
+                      child: Image.asset(
                         chat["sender"] == "Me"
-                            ? "assets/images/gyt.png"
-                            : widget.userImg,
+                            ? "assets/images/${Provider.of<UserModel>(context).getUser()["profile"]}"
+                            : "assets/images/${widget.userImg}",
                         fit: BoxFit.cover,
                         width: 32,
                         height: 32,

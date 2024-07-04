@@ -24,8 +24,8 @@ class NewMessageRow extends StatelessWidget {
           Stack(
             children: [
               ClipOval(
-                child: Image.network(
-                  userImg,
+                child: Image.asset(
+                  "assets/images/$userImg",
                   fit: BoxFit.cover,
                   width: 52,
                   height: 52,

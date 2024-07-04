@@ -73,8 +73,8 @@ class _NotificationPageState extends State<NotificationPage> {
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Image.network(
-                            "https://www.asterhospitals.in/sites/default/files/styles/webp/public/2023-09/The%20Intersection%20of%20Neuroscience%20and%20AI%20Understanding%20the%20Human%20Brain_Blog%20Image.png.webp?itok=U2LurI98",
+                          Image.asset(
+                            "assets/images/ai.webp",
                             width: 60,
                             height: 60,
                             fit: BoxFit.cover,
@@ -125,9 +125,7 @@ class _NotificationPageState extends State<NotificationPage> {
                               Text("28m"),
                               Icon(
                                 Icons.keyboard_control_rounded,
-                                color: Theme.of(context)
-                                    .iconTheme
-                                    .color,
+                                color: Theme.of(context).iconTheme.color,
                               )
                             ],
                           )
@@ -139,8 +137,8 @@ class _NotificationPageState extends State<NotificationPage> {
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Image.network(
-                            "https://media.licdn.com/dms/image/C4D0BAQGV_B0uVb2MOQ/company-logo_100_100/0/1656982864099?e=1722470400&v=beta&t=-Lg5SsU0ob6Il44OHgUgm-lk6zuzj9Z72ygsRIe6eJg",
+                          Image.asset(
+                            "assets/images/bumn.jpeg",
                             width: 60,
                             height: 60,
                             fit: BoxFit.cover,
@@ -193,9 +191,7 @@ class _NotificationPageState extends State<NotificationPage> {
                               const Text("1h"),
                               Icon(
                                 Icons.keyboard_control_rounded,
-                                color: Theme.of(context)
-                                    .iconTheme
-                                    .color,
+                                color: Theme.of(context).iconTheme.color,
                               )
                             ],
                           )
@@ -207,8 +203,8 @@ class _NotificationPageState extends State<NotificationPage> {
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Image.network(
-                            "https://media.licdn.com/dms/image/D4D0BAQFThEvZuev8jA/company-logo_100_100/0/1693993872406/codingninjas_logo?e=1722470400&v=beta&t=vH5rd75SAAexNHSWr9qcHWWypZDObSQe8bS27j6PzUI",
+                          Image.asset(
+                            "assets/images/coding_ninja.jpeg",
                             width: 60,
                             height: 60,
                             fit: BoxFit.cover,
@@ -261,9 +257,7 @@ class _NotificationPageState extends State<NotificationPage> {
                               const Text("1h"),
                               Icon(
                                 Icons.keyboard_control_rounded,
-                                color: Theme.of(context)
-                                    .iconTheme
-                                    .color,
+                                color: Theme.of(context).iconTheme.color,
                               )
                             ],
                           )
@@ -275,8 +269,8 @@ class _NotificationPageState extends State<NotificationPage> {
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Image.network(
-                            "https://media.licdn.com/dms/image/D560BAQFxmaCU1DA7pA/company-logo_100_100/0/1698214625555/tech_in_asia_logo?e=1722470400&v=beta&t=726jj66T9kST20sFMMgfg4onNN3N7XLKEyVeQWhgteU",
+                          Image.asset(
+                            "assets/images/tech_asia.jpeg",
                             width: 60,
                             height: 60,
                             fit: BoxFit.cover,
@@ -329,9 +323,7 @@ class _NotificationPageState extends State<NotificationPage> {
                               const Text("2h"),
                               Icon(
                                 Icons.keyboard_control_rounded,
-                                color: Theme.of(context)
-                                    .iconTheme
-                                    .color,
+                                color: Theme.of(context).iconTheme.color,
                               )
                             ],
                           )

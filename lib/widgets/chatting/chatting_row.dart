@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:job_finder/pages/chatting/chatting_page_view.dart';
 import 'package:intl/intl.dart';
@@ -50,8 +49,8 @@ class _ChattingRowState extends State<ChattingRow> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           ClipOval(
-            child: Image.network(
-              widget.userImg,
+            child: Image.asset(
+              "assets/images/${widget.userImg}",
               fit: BoxFit.cover,
               width: 50,
               height: 50,
@@ -70,20 +69,28 @@ class _ChattingRowState extends State<ChattingRow> {
                     children: [
                       Row(
                         children: [
-                          Text(
-                            widget.userName,
-                            style: const TextStyle(
-                                fontSize: 16, fontWeight: FontWeight.w500),
+                          Flexible(
+                            child: Text(
+                              widget.userName,
+                              style: const TextStyle(
+                                  fontSize: 16, fontWeight: FontWeight.w500),
+                              overflow: TextOverflow
+                                  .ellipsis, // Optional: to handle long text
+                            ),
                           ),
                           const Spacer(),
-                          Text(
-                            _formatDate(widget.lastDate),
-                            style: TextStyle(
-                                color: Theme.of(context)
-                                    .colorScheme
-                                    .inversePrimary,
-                                fontSize: 12),
-                          )
+                          Flexible(
+                            child: Text(
+                              _formatDate(widget.lastDate),
+                              style: TextStyle(
+                                  color: Theme.of(context)
+                                      .colorScheme
+                                      .inversePrimary,
+                                  fontSize: 12),
+                              overflow: TextOverflow
+                                  .ellipsis, // Optional: to handle long text
+                            ),
+                          ),
                         ],
                       ),
                       Row(

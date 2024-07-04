@@ -57,7 +57,7 @@ class SuggestionSection extends StatelessWidget {
             crossAxisCount: 2,
             crossAxisSpacing: 8,
             mainAxisSpacing: 8,
-            childAspectRatio: 1 / 1.15,
+            childAspectRatio: 1 / 1.32,
             children: suggestions.map((e) {
               return SuggestionCard(
                 name: e['name'],

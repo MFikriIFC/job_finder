@@ -27,8 +27,8 @@ class HiringInNetwork extends StatelessWidget {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Image.network(
-          companyImg,
+        Image.asset(
+          "assets/images/$companyImg",
           fit: BoxFit.cover,
           width: 50,
           height: 50,
@@ -64,8 +64,8 @@ class HiringInNetwork extends StatelessWidget {
               Row(
                 children: [
                   ClipOval(
-                    child: Image.network(
-                      mutualImg,
+                    child: Image.asset(
+                      "assets/images/$mutualImg",
                       fit: BoxFit.cover,
                       width: 24,
                       height: 24,
@@ -104,7 +104,8 @@ class HiringInNetwork extends StatelessWidget {
                   ),
                   Text('Easy Apply',
                       style: TextStyle(
-                          color: Theme.of(context).colorScheme.secondary,))
+                        color: Theme.of(context).colorScheme.secondary,
+                      ))
                 ],
               ),
               Divider(
